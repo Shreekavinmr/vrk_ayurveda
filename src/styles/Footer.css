@@ -1,0 +1,376 @@
+/* CSS Root Variables - Green Based Color Scheme (same as header) */
+:root {
+  /* Primary Green Shades */
+  --primary-green: #2d5a27;        /* Deep forest green */
+  --primary-green-light: #4a7c59;  /* Medium forest green */
+  --primary-green-dark: #1a3d1a;   /* Very dark green */
+  
+  /* Secondary Green Shades */
+  --secondary-green: #6b8e23;      /* Olive green */
+  --secondary-green-light: #8fbc8f; /* Light sea green */
+  --secondary-green-pale: #f0f8e8;  /* Very pale green */
+  
+  /* Accent Colors */
+  --accent-green: #90ee90;          /* Light green accent */
+  --accent-gold: #daa520;           /* Golden rod for highlights */
+  --accent-cream: #f5f5dc;          /* Beige/cream */
+  
+  /* Neutral Colors */
+  --white: #ffffff;
+  --black: #000000;
+  --gray-light: #f8f9fa;
+  --gray-medium: #e9ecef;
+  --gray-dark: #6c757d;
+  
+  /* Functional Colors */
+  --hover-green: rgba(109, 142, 35, 0.1);
+  --shadow-green: rgba(45, 90, 39, 0.15);
+  --border-green: rgba(107, 142, 35, 0.3);
+  
+  /* Footer specific colors */
+  --footer-bg: var(--primary-green-dark);
+  --footer-text: var(--accent-cream);
+  --footer-text-muted: rgba(245, 245, 220, 0.7);
+  --footer-accent: var(--accent-gold);
+  --footer-bubble: rgba(144, 238, 144, 0.08);
+}
+
+/* Reset default footer styles to prevent browser-applied borders */
+.site-footer {
+    position: relative;
+    background: var(--footer-bg);
+    color: var(--footer-text);
+    padding: 80px 0 30px;
+    overflow: hidden;
+    z-index: 1;
+    border: none;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* Animated bubbles in the background */
+.footer-bubble {
+    position: absolute;
+    border-radius: 50%;
+    background-color: var(--footer-bubble);
+    animation: bubbleFloat linear infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes bubbleFloat {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.2;
+    }
+    50% {
+        transform: translateY(-120px) rotate(180deg);
+        opacity: 0.1;
+    }
+    100% {
+        transform: translateY(-240px) rotate(360deg) scale(0.8);
+        opacity: 0;
+    }
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 2;
+}
+
+.footer-top {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+/* Logo section styling */
+.footer-logo {
+    margin-bottom: 16px;
+}
+
+.footer-logo-text {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--footer-text);
+    position: relative;
+    display: inline-block;
+}
+
+.footer-logo-text::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background-color: var(--footer-accent);
+    border-radius: 2px;
+}
+
+.footer-tagline {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--footer-text-muted);
+    margin-bottom: 24px;
+    max-width: 280px;
+}
+
+/* Footer navigation */
+.footer-heading {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--footer-text);
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-heading::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 30px;
+    height: 2px;
+    background-color: var(--footer-accent);
+    border-radius: 2px;
+}
+
+.footer-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-link {
+    display: flex;
+    align-items: center;
+    color: var(--footer-text-muted);
+    text-decoration: none;
+    padding: 8px 0;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.footer-link svg {
+    margin-left: 6px;
+    opacity: 0;
+    transform: translateX(-5px);
+    transition: all 0.3s ease;
+    color: var(--footer-accent);
+}
+
+.footer-link:hover {
+    color: var(--footer-text);
+    transform: translateX(5px);
+}
+
+.footer-link:hover svg {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Contact information styling */
+.contact-info {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 16px;
+    color: var(--footer-text-muted);
+    font-size: 0.95rem;
+}
+
+.contact-item svg {
+    margin-right: 12px;
+    margin-top: 3px;
+    flex-shrink: 0;
+    color: var(--footer-accent);
+}
+
+.contact-item a {
+    color: var(--footer-text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.contact-item a:hover {
+    color: var(--footer-accent);
+}
+
+/* Footer bottom section */
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 30px;
+    border-top: 1px solid var(--border-green);
+    font-size: 0.85rem;
+    color: var(--footer-text-muted);
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.copyright {
+    flex: 1;
+}
+
+.footer-legal {
+    display: flex;
+    gap: 20px;
+}
+
+.legal-link {
+    color: var(--footer-text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.legal-link:hover {
+    color: var(--footer-accent);
+}
+
+.footer-logo-image {
+    max-width: 150px;
+    height: auto;
+    margin-bottom: 10px;
+    display: block;
+    filter: brightness(1.2) contrast(1.1);
+}
+
+/* Enhanced styling for Ayurvedic theme */
+.footer-column {
+    position: relative;
+}
+
+.footer-column::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: linear-gradient(135deg, transparent, var(--footer-bubble), transparent);
+    border-radius: 12px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+.footer-column:hover::before {
+    opacity: 1;
+}
+
+/* Special styling for contact section */
+.footer-contact .contact-item:last-child {
+    margin-bottom: 0;
+}
+
+/* Ayurvedic themed decorative elements */
+.footer-info::after {
+    content: '🌿';
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    font-size: 1.2rem;
+    opacity: 0.3;
+}
+
+.footer-services::after {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    font-size: 1.2rem;
+    opacity: 0.3;
+}
+
+.footer-contact::after {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    font-size: 1.2rem;
+    opacity: 0.3;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .site-footer {
+        padding: 60px 0 30px;
+    }
+
+    .footer-top {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .footer-legal {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .footer-logo-text {
+        font-size: 1.5rem;
+    }
+
+    .footer-tagline {
+        max-width: 100%;
+    }
+
+    /* Hide decorative elements on mobile */
+    .footer-info::after,
+    .footer-services::after,
+    .footer-contact::after {
+        display: none;
+    }
+}
+
+/* Focus states for accessibility */
+.footer-link:focus,
+.legal-link:focus,
+.contact-item a:focus {
+    outline: 2px solid var(--footer-accent);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+/* Smooth animations for better UX */
+.footer-column {
+    transition: transform 0.3s ease;
+}
+
+.footer-column:hover {
+    transform: translateY(-2px);
+}
+
+/* Custom scrollbar for webkit browsers */
+.site-footer::-webkit-scrollbar {
+    width: 6px;
+}
+
+.site-footer::-webkit-scrollbar-track {
+    background: var(--primary-green);
+}
+
+.site-footer::-webkit-scrollbar-thumb {
+    background: var(--footer-accent);
+    border-radius: 3px;
+}
+
+.site-footer::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-green-light);
+}
