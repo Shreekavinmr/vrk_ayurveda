@@ -133,7 +133,7 @@ const Home = () => {
       name: 'Treatment Rooms',
       description: 'Peaceful, private spaces designed for healing',
       images: [
-        '/api/placeholder/800/500',
+        ourfound,
         '/api/placeholder/800/500',
         '/api/placeholder/800/500',
       ],
@@ -289,30 +289,8 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section ref={(el) => (sectionRefs.current[1] = el)} className="stats-section">
-        <div className="content-container">
-          <div className="section-header">
-            <h2 className="section-title1">Our Impact</h2>
-            <p className="section-description">
-              Transforming lives through authentic Ayurvedic care.
-            </p>
-          </div>
-          <div className="stats-grid">
-            {stats.map((stat, index) => (
-              <StatCounter
-                key={index}
-                number={stat.number}
-                label={stat.label}
-                icon={stat.icon}
-                index={index}
-                ref={(el) => (itemRefs.current[index] = el)}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-      <div className="content-container1">
+
+       <div className="content-container1">
       <div className="section-header">
         <h2 className="section-title">Our Foundation</h2>
         <p className="section-description">
@@ -357,6 +335,30 @@ const Home = () => {
                   <button className="treatment-cta">Learn More</button>
                 </div>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section ref={(el) => (sectionRefs.current[1] = el)} className="stats-section">
+        <div className="content-container">
+          <div className="section-header">
+            <h2 className="section-title1">Our Impact</h2>
+            <p className="section-description">
+              Transforming lives through authentic Ayurvedic care.
+            </p>
+          </div>
+          <div className="stats-grid">
+            {stats.map((stat, index) => (
+              <StatCounter
+                key={index}
+                number={stat.number}
+                label={stat.label}
+                icon={stat.icon}
+                index={index}
+                ref={(el) => (itemRefs.current[index] = el)}
+              />
             ))}
           </div>
         </div>
@@ -458,53 +460,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="contact-section">
-        <div className="contact-overlay"></div>
-        <div className="contact-content">
-          <div className="contact-header">
-            <h2 className="contact-title">Ready to Begin Your Healing Journey?</h2>
-            <p className="contact-description">
-              Contact us to schedule a consultation or learn more about our treatments.
-            </p>
-          </div>
-          <div className="contact-actions">
-            <a href="tel:+919080108558" className="contact-btn contact-btn-primary">
-              <Phone className="btn-icon" />
-              <span>Call Now</span>
-            </a>
-            <a href="mailto:v.sglobal2025@gmail.com" className="contact-btn contact-btn-secondary">
-              <Mail className="btn-icon" />
-              <span>Send Email</span>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer Section */}
-      <section className="footer-section">
-        <div className="content-container">
-          <h3 className="footer-title">VRK Ayurveda Clinic</h3>
-          <p className="footer-text">Your partner in natural healing and holistic wellness.</p>
-          <div className="footer-info">
-            <div className="footer-info-card">
-              <h4 className="footer-info-title">Contact Information</h4>
-              <p>Phone: +91 90801 08558</p>
-              <p>Email: v.sglobal2025@gmail.com</p>
-            </div>
-            <div className="footer-info-card">
-              <h4 className="footer-info-title">Treatment Approach</h4>
-              <p>
-                Natural healing methods combined with modern medical care for comprehensive wellness.
-              </p>
-            </div>
-            <div className="footer-info-card">
-              <h4 className="footer-info-title">Consultation Required</h4>
-              <p>Prior consultation mandatory for personalized treatment plans.</p>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   );
 };

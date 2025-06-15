@@ -831,34 +831,11 @@
   }
 }
 
-
-
-
 .section-header-image {
+  width: 100%;
+  max-width: 1000px; /* Doubled from 600px */
+  height: auto; /* Maintains aspect ratio */
+  object-fit: contain; /* Ensures full image is visible */
+  margin: 2rem auto 0; /* Top margin + auto center horizontally */
   display: block;
-  width: 500px; /* Fixed width for consistency */
-  height: auto; /* Maintain aspect ratio */
-  margin: 1.5rem auto 0; 
-  object-fit: contain; /* Ensure entire image is visible */
-  transition: var(--transition); /* Smooth hover effect */
-}
-
-
-/* Responsive adjustments */
-@media (min-width: 768px) {
-  .section-header-image {
-    width: 120px; /* Slightly larger on tablets and up */
-  }
-}
-
-@media (min-width: 992px) {
-  .section-header-image {
-    width: 140px; /* Larger on desktops */
-  }
-}
-
-@media (max-width: 576px) {
-  .section-header-image {
-    width: 80px; /* Smaller on mobile */
-  }
 }
