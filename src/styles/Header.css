@@ -40,9 +40,9 @@
 }
 
 .site-header.scrolled {
-    background-color: var(--white);
+    background-color: var(--secondary-green-pale);
     box-shadow: 0 4px 20px var(--shadow-green);
-    padding: 12px 0;
+    padding: 2px 0;
     backdrop-filter: blur(10px);
 }
 

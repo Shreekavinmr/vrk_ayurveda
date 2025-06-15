@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X, ChevronDown ,ArrowRight } from 'lucide-react';
 import '../styles/Header.css';
 import logo from '../assets/logo.png';
+import { Link } from 'react-router-dom';
 
 export const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -96,7 +97,7 @@ const closeSubmenu = () => {
     <header className={`site-header ${scrolled ? 'scrolled' : ''} ${mobileMenuOpen ? 'menu-open' : ''}`}>
       <div className="header-container">
         <div className="logo-container">
-          <a href="/" className="logo">
+          <a to="/" className="logo">
             <div className="logo-image">
               <img src={logo} alt="VRK Logo" className="company-logo" />
             </div>
@@ -114,8 +115,8 @@ const closeSubmenu = () => {
               onMouseEnter={item.submenu ? () => openSubmenu(index) : undefined}
   onMouseLeave={item.submenu ? () => closeSubmenu() : undefined}
               >
-                <a 
-                  href={item.link} 
+                <Link 
+                  to={item.link} 
                   className="nav-link"
                   onClick={item.submenu ? (e) => {
                     e.preventDefault();
@@ -128,7 +129,7 @@ onMouseLeave={item.submenu ? () => closeSubmenu() : undefined}
                   {item.submenu && (
                     <ChevronDown className={`submenu-icon ${activeSubmenu === index ? 'active' : ''}`} size={16} />
                   )}
-                </a>
+                </Link>
                 
                 {item.submenu && (
                   <ul 
@@ -136,9 +137,9 @@ onMouseLeave={item.submenu ? () => closeSubmenu() : undefined}
                   >
                     {item.submenu.map((subItem, subIndex) => (
                       <li key={subIndex} className="submenu-item">
-                        <a href={subItem.link} className="submenu-link">
+                        <Link  to={subItem.link} className="submenu-link">
                           {subItem.title}
-                        </a>
+                        </Link >
                       </li>
                     ))}
                   </ul>
@@ -157,8 +158,8 @@ onMouseLeave={item.submenu ? () => closeSubmenu() : undefined}
             {navItems.map((item, index) => (
               <React.Fragment key={index}>
                 <li className={`mobile-nav-item ${item.submenu ? 'has-submenu' : ''}`}>
-                  <a 
-                    href={item.link} 
+                  <Link  
+                    to={item.link} 
                     className="mobile-nav-link"
                     onClick={item.submenu ? (e) => {
                       e.preventDefault();
@@ -169,16 +170,16 @@ onMouseLeave={item.submenu ? () => closeSubmenu() : undefined}
                     {item.submenu && (
                       <ChevronDown className={`mobile-submenu-icon ${activeSubmenu === index ? 'active' : ''}`} size={20} />
                     )}
-                  </a>
+                  </Link >
                 </li>
                 
                 {item.submenu && (
                   <ul className={`mobile-submenu ${activeSubmenu === index ? 'active' : ''}`}>
                     {item.submenu.map((subItem, subIndex) => (
                       <li key={subIndex} className="mobile-submenu-item">
-                        <a href={subItem.link} className="mobile-submenu-link">
+                        <Link  to={subItem.link} className="mobile-submenu-link">
                           {subItem.title}
-                        </a>
+                        </Link >
                       </li>
                     ))}
                   </ul>

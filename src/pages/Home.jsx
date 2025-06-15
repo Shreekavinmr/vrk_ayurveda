@@ -1,106 +1,179 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ArrowRight, Star, Quote, CheckCircle, Heart, Target, Award, Users } from 'lucide-react';
+import { ArrowRight, Star, Quote, CheckCircle, ChevronLeft, ChevronRight, HeartPulse, Users, Award, Clock, Phone, Mail } from 'lucide-react';
 import '../styles/Home.css';
+import img1 from '../assets/image1.png';
+import ourfound from '../assets/ourfound.png';
+
+const StatCounter = ({ number, label, index, icon: Icon }) => {
+  const [count, setCount] = useState(0);
+  const ref = useRef(null);
+  const duration = 2000;
+
+  useEffect(() => {
+    let observer;
+    const targetNumber = parseInt(number.replace(/[^0-9]/g, ''));
+    const suffix = number.replace(/[0-9]/g, '');
+
+    const startCounting = () => {
+      let start = 0;
+      const increment = targetNumber / (duration / 16);
+
+      const updateCount = () => {
+        start += increment;
+        if (start >= targetNumber) {
+          setCount(targetNumber + suffix);
+          clearInterval(timer);
+        } else {
+          setCount(Math.ceil(start) + suffix);
+        }
+      };
+
+      const timer = setInterval(updateCount, 16);
+      return () => clearInterval(timer);
+    };
+
+    if (ref.current) {
+      observer = new IntersectionObserver(
+        (entries) => {
+          if (entries[0].isIntersecting) {
+            startCounting();
+            observer.disconnect();
+          }
+        },
+        { threshold: 0.1 }
+      );
+      observer.observe(ref.current);
+    }
+
+    return () => observer && observer.disconnect();
+  }, [number]);
+
+  return (
+    <div
+      className="stat-card"
+      ref={ref}
+      style={{
+        transition: `all 0.6s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.15}s`,
+      }}
+    >
+      {Icon && <Icon className="stat-icon" />}
+      <div className="stat-number">{count}</div>
+      <div className="stat-label">{label}</div>
+    </div>
+  );
+};
 
 const Home = () => {
-  const heroTextRefs = useRef([]);
   const sectionRefs = useRef([]);
+  const itemRefs = useRef([]);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [currentFacility, setCurrentFacility] = useState(0);
+  const [facilitySlideIndex, setFacilitySlideIndex] = useState({});
+
+  const stats = [
+    { number: '80+', label: 'Clinical Trials', icon: Users },
+    { number: '800+', label: 'Cases', icon: HeartPulse },
+    { number: '6+', label: 'Sponsoring Countries', icon: Award },
+    { number: '98%', label: 'Client Retention', icon: Clock },
+  ];
 
   const treatments = [
     {
-      name: "Ayurvedic Massage",
-      description: "Traditional therapeutic massage using herbal oils to restore balance and vitality",
-      image: "/api/placeholder/400/300",
-      benefits: ["Stress Relief", "Improved Circulation", "Muscle Relaxation"]
+      name: 'Ayurvedic Massage',
+      description: 'Traditional therapeutic massage using herbal oils',
+      image: '/api/placeholder/400/300',
+      benefits: ['Stress Relief', 'Improved Circulation'],
     },
     {
-      name: "Detox Therapy",
-      description: "Natural detoxification treatments to cleanse and purify your body",
-      image: "/api/placeholder/400/300",
-      benefits: ["Body Detox", "Skin Purification", "Enhanced Energy"]
+      name: 'Detox Therapy',
+      description: 'Natural detoxification treatments to cleanse body',
+      image: '/api/placeholder/400/300',
+      benefits: ['Body Detox', 'Enhanced Energy'],
     },
     {
-      name: "Herbal Medicine",
-      description: "Customized herbal formulations for targeted healing and wellness",
-      image: "/api/placeholder/400/300",
-      benefits: ["Natural Healing", "Personalized Care", "Holistic Treatment"]
+      name: 'Herbal Medicine',
+      description: 'Customized herbal formulations for healing',
+      image: '/api/placeholder/400/300',
+      benefits: ['Natural Healing', 'Personalized Care'],
     },
     {
-      name: "Wellness Programs",
-      description: "Comprehensive programs combining diet, lifestyle, and therapeutic treatments",
-      image: "/api/placeholder/400/300",
-      benefits: ["Complete Wellness", "Lifestyle Guidance", "Long-term Health"]
-    }
+      name: 'Wellness Programs',
+      description: 'Comprehensive programs for complete wellness',
+      image: '/api/placeholder/400/300',
+      benefits: ['Complete Wellness', 'Lifestyle Guidance'],
+    },
   ];
 
   const testimonials = [
     {
-      name: "Priya Sharma",
-      treatment: "Panchakarma Therapy",
-      text: "VRK Clinic transformed my health completely. The authentic treatments and caring staff made all the difference.",
+      name: 'Priya Sharma',
+      treatment: 'Panchakarma Therapy',
+      text: 'VRK Clinic transformed my health completely. The authentic treatments and caring staff made all the difference.',
       rating: 5,
-      image: "/api/placeholder/60/60"
+      image: '/api/placeholder/80/80',
     },
     {
-      name: "Rajesh Kumar",
-      treatment: "Stress Management",
-      text: "Finally found relief from chronic stress through their holistic approach. Highly recommend their expertise.",
+      name: 'Rajesh Kumar',
+      treatment: 'Stress Management',
+      text: 'Finally found relief from chronic stress through their holistic approach. Highly recommend their expertise.',
       rating: 5,
-      image: "/api/placeholder/60/60"
+      image: '/api/placeholder/80/80',
     },
     {
-      name: "Meera Patel",
-      treatment: "Skin Treatment",
-      text: "Natural treatments that actually work. My skin issues are completely resolved after years of struggle.",
+      name: 'Meera Patel',
+      treatment: 'Skin Treatment',
+      text: 'Natural treatments that actually work. My skin issues are completely resolved after years of struggle.',
       rating: 5,
-      image: "/api/placeholder/60/60"
-    }
+      image: '/api/placeholder/80/80',
+    },
   ];
 
   const facilities = [
     {
-      name: "Treatment Rooms",
-      description: "Peaceful, private spaces designed for healing",
-      image: "/api/placeholder/600/400"
+      name: 'Treatment Rooms',
+      description: 'Peaceful, private spaces designed for healing',
+      images: [
+        '/api/placeholder/800/500',
+        '/api/placeholder/800/500',
+        '/api/placeholder/800/500',
+      ],
     },
     {
-      name: "Herbal Lab",
-      description: "Fresh herbal medicine preparation facility",
-      image: "/api/placeholder/600/400"
+      name: 'Herbal Lab',
+      description: 'Fresh herbal medicine preparation facility',
+      images: [
+        '/api/placeholder/800/500',
+        '/api/placeholder/800/500',
+        '/api/placeholder/800/500',
+      ],
     },
     {
-      name: "Meditation Garden",
-      description: "Serene outdoor space for relaxation",
-      image: "/api/placeholder/600/400"
+      name: 'Meditation Garden',
+      description: 'Serene outdoor space for relaxation',
+      images: [
+        '/api/placeholder/800/500',
+        '/api/placeholder/800/500',
+        '/api/placeholder/800/500',
+      ],
     },
-    {
-      name: "Consultation Rooms",
-      description: "Comfortable spaces for health consultations",
-      image: "/api/placeholder/600/400"
-    }
   ];
 
-  const visionMissionValues = [
+  const features = [
     {
-      icon: <Target size={40} />,
-      title: "Our Vision",
-      description: "To be the leading center for authentic Ayurvedic healing, making natural wellness accessible to everyone.",
-      color: "#2d5a27"
+      icon: HeartPulse,
+      title: 'Holistic Healing',
+      desc: 'Treat the root cause, not just the symptoms—guided by ancient Ayurvedic principles.',
     },
     {
-      icon: <Heart size={40} />,
-      title: "Our Mission",
-      description: "Providing personalized healthcare through traditional Ayurvedic practices for optimal natural wellness.",
-      color: "#6b8e23"
+      icon: Users,
+      title: 'Natural Therapies',
+      desc: 'Experience safe and effective treatments using herbal remedies and traditional methods.',
     },
     {
-      icon: <Award size={40} />,
-      title: "Our Values",
-      description: "Authenticity, compassion, and excellence guide our commitment to patient care and traditional healing.",
-      color: "#4a7c59"
-    }
+      icon: Award,
+      title: 'Personalized Care',
+      desc: 'Every patient receives a tailored plan based on their body constitution and condition.',
+    },
   ];
 
   useEffect(() => {
@@ -115,132 +188,173 @@ const Home = () => {
       { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
     );
 
-    [...heroTextRefs.current, ...sectionRefs.current].forEach((ref) => {
+    sectionRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+    itemRefs.current.forEach((ref) => {
       if (ref) observer.observe(ref);
     });
 
     return () => {
-      [...heroTextRefs.current, ...sectionRefs.current].forEach((ref) => {
+      sectionRefs.current.forEach((ref) => {
+        if (ref) observer.unobserve(ref);
+      });
+      itemRefs.current.forEach((ref) => {
         if (ref) observer.unobserve(ref);
       });
     };
   }, []);
 
-  // Auto-rotate testimonials
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-    }, 4000);
+    }, 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, [testimonials.length]);
 
-  // Auto-rotate facilities
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentFacility((prev) => (prev + 1) % facilities.length);
-    }, 3500);
-    return () => clearInterval(interval);
-  }, []);
+  const handleSlideChange = (facilityIndex, direction) => {
+    const images = facilities[facilityIndex].images;
+    setFacilitySlideIndex((prev) => {
+      const current = prev[facilityIndex] || 0;
+      let next = direction === 'next' ? current + 1 : current - 1;
+      if (next >= images.length) next = 0;
+      if (next < 0) next = images.length - 1;
+      return { ...prev, [facilityIndex]: next };
+    });
+  };
 
   return (
     <div className="home-container">
       {/* Hero Section */}
       <section className="hero-section">
-        <div className="hero-content">
-          <div className="hero-text">
-            <h1 ref={(el) => (heroTextRefs.current[0] = el)} className="hero-title">
-              Welcome to VRK Ayurvedic Clinic
+        <div className="hero-overlay"></div>
+        <div className="contact-shape contact-shape-1"></div>
+        <div className="contact-shape contact-shape-2"></div>
+        <div className="contact-dots-pattern contact-dots-1"></div>
+        <div className="contact-dots-pattern contact-dots-2"></div>
+        <div className="content-container">
+          <div className="hero-content">
+            <div className="contact-hero-badge">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+              </svg>
+              Welcome to VRK Ayurveda
+            </div>
+            <h1 className="hero-title">
+              Discover Holistic Healing at
+              <span className="hero-accent"> VRK Ayurveda</span>
             </h1>
-            <p ref={(el) => (heroTextRefs.current[1] = el)} className="hero-subtitle">
-              Embrace Nature's Healing Touch for Holistic Wellness
+            <p className="hero-description">
+              Experience authentic Ayurvedic treatments for mind, body, and soul.
             </p>
-            <a href="/reservation" ref={(el) => (heroTextRefs.current[2] = el)} className="hero-cta">
-              Book Your Appointment
-              <ArrowRight size={20} />
-            </a>
           </div>
         </div>
-        <div className="hero-overlay"></div>
       </section>
 
-      {/* About Section */}
+      {/* About Us Section */}
       <section ref={(el) => (sectionRefs.current[0] = el)} className="about-section">
-        <div className="container">
+        <div className="content-container">
+          <div className="section-header">
+            <h2 className="section-title">About Us</h2>
+            <p className="section-description">
+              Learn about our commitment to holistic healing and authentic Ayurvedic care.
+            </p>
+          </div>
           <div className="about-content">
             <div className="about-text">
-              <h2 className="section-title">About VRK Ayurvedic Clinic</h2>
-              <p className="about-description">
-                At VRK Ayurvedic Clinic, we blend ancient wisdom with modern care to provide authentic healing experiences. 
-                Our expert practitioners are dedicated to restoring your natural balance through time-tested Ayurvedic treatments.
+              <p>
+                VRK Ayurvedic Clinic is a leading center for holistic healing, offering authentic Ayurvedic treatments tailored to your needs. Our experienced practitioners combine ancient wisdom with modern care to promote wellness.
               </p>
-              <p className="about-description">
-                With over two decades of experience, we have helped thousands of patients achieve optimal health through 
-                personalized treatment plans that address the root cause of ailments, not just symptoms.
+              <p>
+                We are committed to delivering personalized care in a serene environment, adhering to the highest standards of quality and safety. Our focus is on restoring balance and vitality for long-term health.
               </p>
-              <div className="about-stats">
-                <div className="stat">
-                  <div className="stat-number">20+</div>
-                  <div className="stat-label">Years Experience</div>
-                </div>
-                <div className="stat">
-                  <div className="stat-number">5000+</div>
-                  <div className="stat-label">Happy Patients</div>
-                </div>
-                <div className="stat">
-                  <div className="stat-number">50+</div>
-                  <div className="stat-label">Treatments</div>
-                </div>
-              </div>
+              <a href="/about" className="about-cta">
+                More About Us <ArrowRight size={20} />
+              </a>
             </div>
             <div className="about-image">
-              <img src="/api/placeholder/500/400" alt="VRK Ayurvedic Clinic" />
+              <img src={img1} alt="Ayurvedic clinic team" />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Vision Mission Values */}
-      <section ref={(el) => (sectionRefs.current[1] = el)} className="vmv-section">
-        <div className="container">
-          <h2 className="section-title centered">Our Foundation</h2>
-          <div className="vmv-grid">
-            {visionMissionValues.map((item, index) => (
-              <div key={index} className="vmv-card" style={{ '--accent-color': item.color }}>
-                <div className="vmv-icon">{item.icon}</div>
-                <h3 className="vmv-title">{item.title}</h3>
-                <p className="vmv-description">{item.description}</p>
-              </div>
+      {/* Stats Section */}
+      <section ref={(el) => (sectionRefs.current[1] = el)} className="stats-section">
+        <div className="content-container">
+          <div className="section-header">
+            <h2 className="section-title1">Our Impact</h2>
+            <p className="section-description">
+              Transforming lives through authentic Ayurvedic care.
+            </p>
+          </div>
+          <div className="stats-grid">
+            {stats.map((stat, index) => (
+              <StatCounter
+                key={index}
+                number={stat.number}
+                label={stat.label}
+                icon={stat.icon}
+                index={index}
+                ref={(el) => (itemRefs.current[index] = el)}
+              />
             ))}
           </div>
         </div>
       </section>
+      <div className="content-container1">
+      <div className="section-header">
+        <h2 className="section-title">Our Foundation</h2>
+        <p className="section-description">
+          Empowering Health, Advancing Knowledge
+        </p>
+        <img
+          src={ourfound}
+          alt="Ayurvedic Icon"
+          className="section-header-image"
+        />
+      </div>
+      </div>
 
       {/* Treatments Section */}
       <section ref={(el) => (sectionRefs.current[2] = el)} className="treatments-section">
-        <div className="container">
+        <div className="content-container">
           <div className="section-header">
             <h2 className="section-title">Our Treatments</h2>
-            <p className="section-subtitle">Discover authentic Ayurvedic therapies for complete wellness</p>
+            <p className="section-description">
+              Discover authentic Ayurvedic therapies for complete wellness.
+            </p>
           </div>
           <div className="treatments-grid">
             {treatments.map((treatment, index) => (
-              <div key={index} className="treatment-card">
-                <div className="treatment-image">
-                  <img src={treatment.image} alt={treatment.name} />
-                  <div className="treatment-badge">Featured</div>
-                </div>
+              <div
+                key={index}
+                className="treatment-card"
+                ref={(el) => (itemRefs.current[stats.length + index] = el)}
+              >
+                <img src={treatment.image} alt={treatment.name} className="treatment-image" />
                 <div className="treatment-content">
-                  <h3 className="treatment-name">{treatment.name}</h3>
-                  <p className="treatment-description">{treatment.description}</p>
+                  <h3>{treatment.name}</h3>
+                  <p>{treatment.description}</p>
                   <div className="treatment-benefits">
                     {treatment.benefits.map((benefit, idx) => (
                       <div key={idx} className="benefit-item">
-                        <CheckCircle size={14} />
+                        <CheckCircle size={16} />
                         <span>{benefit}</span>
                       </div>
                     ))}
                   </div>
-                  <button className="treatment-btn">Learn More</button>
+                  <button className="treatment-cta">Learn More</button>
                 </div>
               </div>
             ))}
@@ -250,64 +364,82 @@ const Home = () => {
 
       {/* Facilities Section */}
       <section ref={(el) => (sectionRefs.current[3] = el)} className="facilities-section">
-        <div className="container">
+        <div className="content-container">
           <div className="section-header">
             <h2 className="section-title">Our Facilities</h2>
-            <p className="section-subtitle">Modern amenities designed for your comfort and healing</p>
+            <p className="section-description">
+              Modern amenities designed for your comfort and healing.
+            </p>
           </div>
-          <div className="facilities-content">
-            <div className="facility-showcase">
-              <div className="facility-image">
-                <img src={facilities[currentFacility].image} alt={facilities[currentFacility].name} />
-                <div className="facility-overlay">
-                  <h3>{facilities[currentFacility].name}</h3>
-                  <p>{facilities[currentFacility].description}</p>
+          <div className="facilities-grid">
+            {facilities.map((facility, index) => (
+              <div
+                key={index}
+                className={`facility-card ${currentFacility === index ? 'active' : ''}`}
+                onClick={() => {
+                  setCurrentFacility(index);
+                  setFacilitySlideIndex((prev) => ({ ...prev, [index]: 0 }));
+                }}
+                ref={(el) => (itemRefs.current[stats.length + treatments.length + index] = el)}
+              >
+                <div className="facility-slideshow">
+                  {facility.images.map((image, imgIndex) => (
+                    <div
+                      key={imgIndex}
+                      className={`facility-slide ${facilitySlideIndex[index] === imgIndex ? 'active' : ''}`}
+                    >
+                      <img src={image} alt={facility.name} />
+                    </div>
+                  ))}
+                  <div className="facility-overlay">
+                    <h3>{facility.name}</h3>
+                    <p>{facility.description}</p>
+                  </div>
+                  <button
+                    className="slide-btn prev-btn"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleSlideChange(index, 'prev');
+                    }}
+                  >
+                    <ChevronLeft size={24} />
+                  </button>
+                  <button
+                    className="slide-btn next-btn"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleSlideChange(index, 'next');
+                    }}
+                  >
+                    <ChevronRight size={24} />
+                  </button>
                 </div>
               </div>
-            </div>
-            <div className="facilities-nav">
-              <div className="facility-buttons">
-                {facilities.map((facility, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentFacility(index)}
-                    className={`facility-btn ${currentFacility === index ? 'active' : ''}`}
-                  >
-                    {facility.name}
-                  </button>
-                ))}
-              </div>
-              <div className="facility-features">
-                <h4>Why Choose Our Facilities?</h4>
-                <ul>
-                  <li><CheckCircle size={16} />Modern equipment with traditional methods</li>
-                  <li><CheckCircle size={16} />Hygienic and peaceful environment</li>
-                  <li><CheckCircle size={16} />Expert supervision and care</li>
-                  <li><CheckCircle size={16} />Personalized treatment spaces</li>
-                </ul>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Testimonials Section */}
       <section ref={(el) => (sectionRefs.current[4] = el)} className="testimonials-section">
-        <div className="container">
-          <h2 className="section-title centered">What Our Patients Say</h2>
-          <div className="testimonial-container">
-            <div className="testimonial-card">
-              <Quote size={24} className="quote-icon" />
-              <p className="testimonial-text">"{testimonials[currentTestimonial].text}"</p>
-              <div className="testimonial-author">
-                <img src={testimonials[currentTestimonial].image} alt={testimonials[currentTestimonial].name} />
-                <div className="author-info">
-                  <h4>{testimonials[currentTestimonial].name}</h4>
-                  <p>{testimonials[currentTestimonial].treatment}</p>
-                </div>
+        <div className="content-container">
+          <div className="section-header">
+            <h2 className="section-title">What Our Patients Say</h2>
+            <p className="section-description">
+              Hear from those who have experienced our care.
+            </p>
+          </div>
+          <div className="testimonial-card">
+            <Quote size={32} className="quote-icon" />
+            <p className="testimonial-text">"{testimonials[currentTestimonial].text}"</p>
+            <div className="testimonial-author">
+              <img src={testimonials[currentTestimonial].image} alt={testimonials[currentTestimonial].name} />
+              <div>
+                <h4>{testimonials[currentTestimonial].name}</h4>
+                <p>{testimonials[currentTestimonial].treatment}</p>
                 <div className="rating">
                   {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
-                    <Star key={i} size={14} />
+                    <Star key={i} size={16} fill="#FFD700" />
                   ))}
                 </div>
               </div>
@@ -318,8 +450,57 @@ const Home = () => {
                   key={index}
                   onClick={() => setCurrentTestimonial(index)}
                   className={`dot ${currentTestimonial === index ? 'active' : ''}`}
+                  ref={(el) => (itemRefs.current[stats.length + treatments.length + facilities.length + index] = el)}
                 />
               ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section className="contact-section">
+        <div className="contact-overlay"></div>
+        <div className="contact-content">
+          <div className="contact-header">
+            <h2 className="contact-title">Ready to Begin Your Healing Journey?</h2>
+            <p className="contact-description">
+              Contact us to schedule a consultation or learn more about our treatments.
+            </p>
+          </div>
+          <div className="contact-actions">
+            <a href="tel:+919080108558" className="contact-btn contact-btn-primary">
+              <Phone className="btn-icon" />
+              <span>Call Now</span>
+            </a>
+            <a href="mailto:v.sglobal2025@gmail.com" className="contact-btn contact-btn-secondary">
+              <Mail className="btn-icon" />
+              <span>Send Email</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer Section */}
+      <section className="footer-section">
+        <div className="content-container">
+          <h3 className="footer-title">VRK Ayurveda Clinic</h3>
+          <p className="footer-text">Your partner in natural healing and holistic wellness.</p>
+          <div className="footer-info">
+            <div className="footer-info-card">
+              <h4 className="footer-info-title">Contact Information</h4>
+              <p>Phone: +91 90801 08558</p>
+              <p>Email: v.sglobal2025@gmail.com</p>
+            </div>
+            <div className="footer-info-card">
+              <h4 className="footer-info-title">Treatment Approach</h4>
+              <p>
+                Natural healing methods combined with modern medical care for comprehensive wellness.
+              </p>
+            </div>
+            <div className="footer-info-card">
+              <h4 className="footer-info-title">Consultation Required</h4>
+              <p>Prior consultation mandatory for personalized treatment plans.</p>
             </div>
           </div>
         </div>

@@ -1,0 +1,48 @@
+
+.about-full-page-section {
+  position: relative;
+  min-height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.about-full-page-image {
+  position: relative;
+  width: 90%;
+  max-width: 1200px; /* Optional: Limit max width for larger screens */
+  aspect-ratio: 16 / 8; /* Maintain aspect ratio */
+  z-index: 1;
+}
+
+.about-full-page-image img {
+  width: 100%;
+  height: 70%;
+  object-fit: cover;
+  display: block;
+}
+
+.about-full-page-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .about-full-page-image {
+    width: 95%;
+    aspect-ratio: 4 / 3; /* Adjust for smaller screens */
+  }
+}
+
+@media (max-width: 576px) {
+  .about-full-page-image {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Square for very small screens */
+  }
+}
