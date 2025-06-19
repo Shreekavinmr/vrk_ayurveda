@@ -82,7 +82,7 @@
   max-width: 600px;
   text-align: left;
   z-index: 2;
-  padding-top: 3rem;
+  padding-top: 2rem;
 }
 
 .contact-hero-badge {
@@ -114,7 +114,7 @@
 }
 
 .hero-accent {
-  background: linear-gradient(45deg, #daa520, var(--accent-color));
+  background: linear-gradient(45deg, #daa520, var(--overlay-color));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -838,4 +838,109 @@
   object-fit: contain; /* Ensures full image is visible */
   margin: 2rem auto 0; /* Top margin + auto center horizontally */
   display: block;
+}
+
+/* Existing CSS remains unchanged, add the following at the end of Home.css */
+
+/* Partnerships Section */
+.partnerships-section {
+  padding: 7rem 0;
+  background: linear-gradient(180deg, var(--background-color), rgba(45, 90, 39, 0.05));
+}
+
+.partnerships-content {
+  display: flex;
+  justify-content: center;
+}
+
+.partnership-card {
+  background: var(--secondary-background);
+  border-radius: var(--border-radius);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-light);
+  text-align: center;
+  max-width: 800px;
+  width: 100%;
+  transition: var(--transition);
+}
+
+.partnership-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-4px);
+}
+
+.partnership-logos {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.partnership-logo {
+  width: 150px;
+  height: auto;
+  object-fit: contain;
+}
+
+.partnership-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.partnership-description {
+  font-size: 1.1rem;
+  color: var(--secondary-text);
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+}
+
+.partnership-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--primary-color);
+  font-weight: 600;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.partnership-cta:hover {
+  color: var(--primary-dark);
+}
+
+/* Responsive Design for Partnerships Section */
+@media (max-width: 768px) {
+  .partnership-logos {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .partnership-logo {
+    width: 120px;
+  }
+
+  .partnership-title {
+    font-size: 1.5rem;
+  }
+
+  .partnership-description {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .partnership-card {
+    padding: 1.5rem;
+  }
+
+  .partnership-logo {
+    width: 100px;
+  }
+
+  .partnership-title {
+    font-size: 1.3rem;
+  }
 }

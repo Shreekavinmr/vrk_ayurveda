@@ -13,6 +13,9 @@ import VRKAyurvedaTreatmentPage from './pages/VRKAyurvedaTreatmentPage';
 import VRKAyurvedaComplementaryPage from './pages/VRKAyurvedaComplementaryPage';
 import VRKAyurvedaDiseasesPage from './pages/VRKAyurvedaDiseasesPage';
 import VRKAyurvedaTherapiesPage from './pages/VRKAyurvedaTherapiesPage';
+import VRKAyurvedaTherapiesPage1 from './pages/VRKAyurvedaTherapiesPage-1';
+import VRKAyurvedaTherapiesPage2 from './pages/VRKAyurvedaTherapiesPage-2';
+import VRKAyurvedaTherapiesPage3 from './pages/VRKAyurvedaTherapiesPage-3';
 import VRKAyurvedaFromTheFounderPage from './pages/FromTheFounderPage';
 import VRKAyurvedaAboutUsPage from './pages/VRKAyurvedaAboutUsPage';
 import VRKPatientCareFacilitiesPage from './pages/PatientCareFacilitiesPage';
@@ -31,7 +34,10 @@ function App() {
         <Route path='/tarriff/treatment'element={<VRKAyurvedaTreatmentPage />}/>
         <Route path='/tarriff/complimentary-treatment'element={<VRKAyurvedaComplementaryPage />}/>
         <Route path='/disease-treated'element={<VRKAyurvedaDiseasesPage />}/>
-        <Route path='/therapies'element={<VRKAyurvedaTherapiesPage />}/>
+        <Route path='/therapies/Panchakarma'element={<VRKAyurvedaTherapiesPage />}/>
+        <Route path='/therapies/Naturopathy'element={<VRKAyurvedaTherapiesPage1 />}/>
+        <Route path='/therapies/Physiotherapy'element={<VRKAyurvedaTherapiesPage2 />}/>
+        <Route path='/therapies/yoga-therapy'element={<VRKAyurvedaTherapiesPage3 />}/>
         <Route path='/about/founder-message'element={<VRKAyurvedaFromTheFounderPage />}/>
         <Route path='/about/about-us'element={<VRKAyurvedaAboutUsPage />}/>
          <Route path='/about/patient-facility'element={<VRKPatientCareFacilitiesPage />}/>

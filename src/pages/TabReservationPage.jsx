@@ -5,7 +5,6 @@ const ModernHospitalUI = () => {
   const [activeSection, setActiveSection] = useState('eligibility');
 
   const eligibilityCriteria = [
-    { icon: '🤰', text: 'Pregnant women', status: 'not-eligible' },
     { icon: '🧠', text: 'Persons suffering from extreme psychological conditions', status: 'not-eligible' },
     { icon: '💔', text: 'Persons with chronic and unstable cardiac & renal disorders', status: 'not-eligible' },
     { icon: '🦠', text: 'Persons suffering from communicable diseases like tuberculosis, swine flu, dengue etc', status: 'not-eligible' },

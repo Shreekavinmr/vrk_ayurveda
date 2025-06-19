@@ -3,6 +3,8 @@ import { ArrowRight, Star, Quote, CheckCircle, ChevronLeft, ChevronRight, HeartP
 import '../styles/Home.css';
 import img1 from '../assets/image1.png';
 import ourfound from '../assets/ourfound.png';
+import cardTrustLogo from '../assets/card_trust_logo.png'; // Adjust the file name as needed
+import vrkAyurvedaLogo from '../assets/logo.png'; // Adjust the file name as needed
 
 const StatCounter = ({ number, label, index, icon: Icon }) => {
   const [count, setCount] = useState(0);
@@ -71,10 +73,10 @@ const Home = () => {
   const [facilitySlideIndex, setFacilitySlideIndex] = useState({});
 
   const stats = [
-    { number: '80+', label: 'Clinical Trials', icon: Users },
-    { number: '800+', label: 'Cases', icon: HeartPulse },
-    { number: '6+', label: 'Sponsoring Countries', icon: Award },
-    { number: '98%', label: 'Client Retention', icon: Clock },
+    { number: '10+', label: 'Years of Healing Experience', icon: Clock },
+    { number: '1000+', label: 'Happy Patients Treated', icon: HeartPulse },
+    { number: '30+', label: 'Natural Therapies Offered', icon: Award },
+    { number: '95%', label: 'Patient Satisfaction Rate', icon: Users },
   ];
 
   const treatments = [
@@ -106,25 +108,52 @@ const Home = () => {
 
   const testimonials = [
     {
-      name: 'Priya Sharma',
+      name: 'Priya',
       treatment: 'Panchakarma Therapy',
-      text: 'VRK Clinic transformed my health completely. The authentic treatments and caring staff made all the difference.',
+      text: 'Vedic Raksha Kendra helped me detox and regain my energy through Panchakarma. The process was thorough, and the results were incredible.',
       rating: 5,
-      image: '/api/placeholder/80/80',
     },
     {
       name: 'Rajesh Kumar',
-      treatment: 'Stress Management',
-      text: 'Finally found relief from chronic stress through their holistic approach. Highly recommend their expertise.',
+      treatment: 'Yoga Therapy',
+      text: 'Their yoga therapy sessions relieved my back pain and improved my flexibility. The instructors are professional and understanding.',
       rating: 5,
-      image: '/api/placeholder/80/80',
     },
     {
-      name: 'Meera Patel',
-      treatment: 'Skin Treatment',
-      text: 'Natural treatments that actually work. My skin issues are completely resolved after years of struggle.',
+      name: 'Sarath',
+      treatment: 'Naturopathy',
+      text: 'I had digestive issues for years. With naturopathy and diet guidance, my health has improved naturally without any side effects.',
       rating: 5,
-      image: '/api/placeholder/80/80',
+    },
+    {
+      name: 'Kavitha',
+      treatment: 'Physiotherapy',
+      text: 'The physiotherapy I received after my accident was highly effective. I’m walking comfortably now thanks to their expert care.',
+      rating: 5,
+    },
+    {
+      name: 'Arun',
+      treatment: 'Panchakarma & Yoga',
+      text: 'The combination of Panchakarma and yoga brought a new level of mental peace and physical strength to my life.',
+      rating: 5,
+    },
+    {
+      name: 'Meenakshi',
+      treatment: 'Naturopathy for Women’s Health',
+      text: 'Their naturopathic treatments helped me naturally balance my hormones and improve my overall wellness.',
+      rating: 5,
+    },
+    {
+      name: 'Senthil',
+      treatment: 'Physiotherapy & Pain Relief',
+      text: 'I was struggling with chronic neck pain. The physiotherapy sessions were structured, healing, and very effective.',
+      rating: 5,
+    },
+    {
+      name: 'Revathi',
+      treatment: 'Yoga for Stress Relief',
+      text: 'I used to suffer from anxiety and sleep issues. Their therapeutic yoga classes changed my life for the better.',
+      rating: 5,
     },
   ];
 
@@ -248,11 +277,11 @@ const Home = () => {
               >
                 <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
               </svg>
-              Welcome to VRK Ayurveda
+              Welcome to Vedic Raksha Kendra Ayurvedic Hosital (A unit of CARD Trust)
             </div>
             <h1 className="hero-title">
               Discover Holistic Healing at
-              <span className="hero-accent"> VRK Ayurveda</span>
+              <span className="hero-accent"> Vedic Raksha Kendra Ayurvedic Hosital</span>
             </h1>
             <p className="hero-description">
               Experience authentic Ayurvedic treatments for mind, body, and soul.
@@ -273,12 +302,15 @@ const Home = () => {
           <div className="about-content">
             <div className="about-text">
               <p>
-                VRK Ayurvedic Clinic is a leading center for holistic healing, offering authentic Ayurvedic treatments tailored to your needs. Our experienced practitioners combine ancient wisdom with modern care to promote wellness.
+                Vedic Raksha Kendra Ayurvedic Hospital is a premier destination for authentic holistic healing. Rooted in the timeless principles of Ayurveda, we offer a wide range of personalized treatments designed to restore balance and promote long-term health. From chronic pain relief and detox therapies to stress management and lifestyle consultations, every service is carefully crafted to suit individual needs.
               </p>
               <p>
-                We are committed to delivering personalized care in a serene environment, adhering to the highest standards of quality and safety. Our focus is on restoring balance and vitality for long-term health.
+                Our team of experienced Ayurvedic doctors and therapists blends ancient wisdom with modern wellness practices, ensuring safe, effective, and compassionate care. At Vedic Raksha Kendra, we believe in healing the mind, body, and spirit as one — in a tranquil environment that fosters inner peace and rejuvenation. We are dedicated to your well-being, using only natural, high-quality remedies and adhering to the highest standards of quality, hygiene, and professionalism.
               </p>
-              <a href="/about" className="about-cta">
+              <p>
+                Whether you seek relief from a specific condition or wish to enhance your overall vitality, Vedic Raksha Kendra is here to guide you on your journey to lasting wellness through the power of Ayurveda.
+              </p>
+              <a href="/about/about-us" className="about-cta">
                 More About Us <ArrowRight size={20} />
               </a>
             </div>
@@ -289,21 +321,20 @@ const Home = () => {
         </div>
       </section>
 
-
-       <div className="content-container1">
-      <div className="section-header">
-        <h2 className="section-title">Our Foundation</h2>
-        <p className="section-description">
-          Empowering Health, Advancing Knowledge
-        </p>
-        <img
-          src={ourfound}
-          alt="Ayurvedic Icon"
-          className="section-header-image"
-        />
+      <div className="content-container1">
+        <div className="section-header">
+          <h2 className="section-title">Our Foundation</h2>
+          <p className="section-description">
+            Empowering Health, Advancing Knowledge
+          </p>
+          <img
+            src={ourfound}
+            alt="Ayurvedic Icon"
+            className="section-header-image"
+          />
+        </div>
       </div>
-      </div>
-
+      
       {/* Treatments Section */}
       <section ref={(el) => (sectionRefs.current[2] = el)} className="treatments-section">
         <div className="content-container">
@@ -332,10 +363,39 @@ const Home = () => {
                       </div>
                     ))}
                   </div>
-                  <button className="treatment-cta">Learn More</button>
+                  <a href="/disease-treated">
+                    <button className="treatment-cta">Learn More</button>
+                  </a>
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Partnerships Section */}
+      <section ref={(el) => (sectionRefs.current[4] = el)} className="partnerships-section">
+        <div className="content-container">
+          <div className="section-header">
+            <h2 className="section-title">Our Partnerships</h2>
+            <p className="section-description">
+              Collaborating for holistic wellness and community impact.
+            </p>
+          </div>
+          <div className="partnerships-content">
+            <div className="partnership-card">
+              <div className="partnership-logos">
+                <img src={vrkAyurvedaLogo} alt="Vedic Raksha Kendra Logo" className="partnership-logo" />
+                <img src={cardTrustLogo} alt="CARD Trust Logo" className="partnership-logo" />
+              </div>
+              <h3 className="partnership-title">Collaboration with CARD Trust</h3>
+              <p className="partnership-description">
+                Vedic Raksha Kendra Ayurvedic Hospital is proud to be a unit of CARD Trust, a dedicated organization focused on advancing holistic health and community welfare. Together, we combine ancient Ayurvedic wisdom with modern wellness initiatives to provide comprehensive care and promote sustainable well-being.
+              </p>
+              {/* <a href="/about/partnerships" className="partnership-cta">
+                Learn More About Our Partnership <ArrowRight size={20} />
+              </a> */}
+            </div>
           </div>
         </div>
       </section>
@@ -422,8 +482,9 @@ const Home = () => {
         </div>
       </section>
 
+
       {/* Testimonials Section */}
-      <section ref={(el) => (sectionRefs.current[4] = el)} className="testimonials-section">
+      <section ref={(el) => (sectionRefs.current[5] = el)} className="testimonials-section">
         <div className="content-container">
           <div className="section-header">
             <h2 className="section-title">What Our Patients Say</h2>
@@ -435,7 +496,6 @@ const Home = () => {
             <Quote size={32} className="quote-icon" />
             <p className="testimonial-text">"{testimonials[currentTestimonial].text}"</p>
             <div className="testimonial-author">
-              <img src={testimonials[currentTestimonial].image} alt={testimonials[currentTestimonial].name} />
               <div>
                 <h4>{testimonials[currentTestimonial].name}</h4>
                 <p>{testimonials[currentTestimonial].treatment}</p>

@@ -79,7 +79,9 @@ const Footer = () => {
                 alt="VRK Ayurvedic Clinic Logo"
                 className="footer-logo-image"
               />
-              <span className="footer-logo-text">VRK Ayurvedic Clinic</span>
+              <span className="footer-logo-text">Vedic Raksha Kendra Ayurvedic Clinic<p className="footer-tagline">
+              (A unit of CARD Trust)
+            </p></span>
             </div>
             <p className="footer-tagline">
               Embracing Nature's Healing Touch for Complete Wellness and Holistic Health
@@ -100,12 +102,10 @@ const Footer = () => {
           <div className="footer-column footer-services">
             <h3 className="footer-heading">Our Services</h3>
             <ul className="footer-nav">
-              <li><a href="/therapies/panchakarma" className="footer-link">Panchakarma Therapy <ArrowUpRight size={14} /></a></li>
-              <li><a href="/therapies/abhyanga" className="footer-link">Abhyanga Massage <ArrowUpRight size={14} /></a></li>
-              <li><a href="/therapies/shirodhara" className="footer-link">Shirodhara Treatment <ArrowUpRight size={14} /></a></li>
-              <li><a href="/therapies/herbal-medicine" className="footer-link">Herbal Medicine <ArrowUpRight size={14} /></a></li>
-              <li><a href="/therapies/consultation" className="footer-link">Ayurvedic Consultation <ArrowUpRight size={14} /></a></li>
-              <li><a href="/therapies/detox" className="footer-link">Detoxification Programs <ArrowUpRight size={14} /></a></li>
+              <li><a href="/therapies/panchakarma" className="footer-link">Panchakarma<ArrowUpRight size={14} /></a></li>
+              <li><a href="/therapies/abhyanga" className="footer-link">Naturopathy<ArrowUpRight size={14} /></a></li>
+              <li><a href="/therapies/shirodhara" className="footer-link">Physiotherapy<ArrowUpRight size={14} /></a></li>
+              <li><a href="/therapies/herbal-medicine" className="footer-link">Yoga Therapy<ArrowUpRight size={14} /></a></li>
             </ul>
           </div>
 
@@ -142,7 +142,7 @@ const Footer = () => {
 
         <div className="footer-bottom">
           <div className="copyright">
-            © {new Date().getFullYear()} VRK Ayurvedic Clinic. All rights reserved.
+            © {new Date().getFullYear()} Vedic Raksha Kendra Ayurvedic Clinic. All rights reserved.
           </div>
           <div className="footer-legal">
             <a href="/privacy-policy" className="legal-link">Privacy Policy</a>

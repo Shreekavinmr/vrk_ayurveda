@@ -70,7 +70,14 @@ const closeSubmenu = () => {
         { title: 'Patient Care Facilities', link: '/about/patient-facility' },
       ]
     },
-    { title: 'Therapies', link: '/therapies' },
+    { title: 'Therapies', link: '/therapies',
+      submenu: [
+        { title: 'Panchakarma', link: '/therapies/Panchakarma' },
+        { title: 'Naturopathy', link: '/therapies/Naturopathy' },
+        { title: 'Physiotherapy', link: '/therapies/Physiotherapy' },
+        { title: 'Yoga Therapy', link: '/therapies/yoga-therapy' },
+      ]
+     },
     { title: 'Disease Treated', link: '/disease-treated' },
     { 
       title: 'Tarriff', 
@@ -102,8 +109,8 @@ const closeSubmenu = () => {
               <img src={logo} alt="VRK Logo" className="company-logo" />
             </div>
             <div className="logo-text">
-              <span className="primary">VRK Ayurvedic Clinic</span>
-              <span className="secondary">Embracing Nature's Healing Touch</span>
+              <span className="primary">Vedic Raksha Kendra</span>
+              <span className="secondary">Ayurvedic Hospital (A unit of CARD Trust)</span>
             </div>
           </a>
         </div>

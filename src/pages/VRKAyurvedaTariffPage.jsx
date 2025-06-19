@@ -5,41 +5,35 @@ const VRKAyurvedaTariffPage = () => {
   const [activeSection] = useState('tariff');
 
   const tariffData = [
-    { type: 'Temple A/C', rate: '₹2000/day', occupancy: 'Twin Sharing' },
-    { type: 'Valley', rate: '₹2250/day', occupancy: 'Twin Sharing' },
-    { type: 'Single Cottage', rate: '₹2500/day', occupancy: 'Single/Twin' },
-    { type: 'Elite Cottage', rate: '₹3000/day', occupancy: 'Single/Twin' },
-    { type: 'Family Cottage - I', rate: '₹2500/day', occupancy: 'Family (4+)' },
-    { type: 'Family Cottage - II', rate: '₹2500/day', occupancy: 'Family (4+)' }
+    { type: 'Standard A/C', rate: '₹2000/day', occupancy: 'Single/Twin' },
+    { type: 'Standard Non-A/C', rate: '₹1500/day', occupancy: 'Single/Twin' },
+    { type: 'Suite Room', rate: '₹2500/day', occupancy: 'Single/Twin/Family' },
+    { type: 'Dormitory', rate: 'Varies', occupancy: '4/6 members' },
   ];
 
   const roomDetails = [
-    {
-      type: 'Temple Rooms',
-      description: 'These are an array of rooms in a common open corridor on the ground floor. Each room is provided with two individual wooden cots, a cupboard, and a television. There is an attached bath with shower and toilet facility. The rooms overlooking the beautiful garden are available with and without A/C and are offered for single or sharing accommodation.',
-      images: ['Temple_Room_1.jpg', 'Temple_Room_2.jpg', 'Temple_Room_Garden_View.jpg']
-    },
-    {
-      type: 'Dormitory Room',
-      description: 'The room is furnished with five individual wooden cots, wardrobes, and a television. Located along the array of sharing rooms, it is attached with baths and toilets.',
-      images: ['Dormitory_Room_1.jpg', 'Dormitory_Room_2.jpg']
-    },
-    {
-      type: 'Valley Rooms',
-      description: 'These are three air-conditioned rooms located in the low-lying ground of VRK Ayureveda. The rooms overlook the tall and enchanting valley of coconut trees. These private rooms are provided with an attached bath, toilet, and furnished with a wooden double cot and wardrobe. The rooms are meant for a family of two or single accommodation.',
-      images: ['Valley_Room_1.jpg', 'Valley_Room_2.jpg', 'Valley_Room_View.jpg']
-    },
-    {
-      type: 'Deluxe Cottages',
-      description: 'Deluxe cottages located in the uphill area of VRK Ayureveda overlook the entire hospital premises and the coconut grove. These individual A/C cottages are meant for a family of two or for single accommodation. Each cottage is furnished with a wooden double cot, chairs, and wardrobe. There is an attached bath, toilet, and a private sit-out.',
-      images: ['Deluxe_Cottage_1.jpg', 'Deluxe_Cottage_2.jpg', 'Deluxe_Cottage_Sitout.jpg']
-    },
-    {
-      type: 'Family Cottage',
-      description: 'The Family Cottage is meant for a family of four or more. The cottage is provided with two bedrooms: the parent room is furnished with a single wooden double cot, wardrobe, air condition, and television, and the children’s room with two individual wooden cots, wardrobe, and air condition. Each room is attached with a bath, toilet, and dressing area. The cottage includes a hall furnished with sofa, lighting, and television. The open sit-out overlooks the valley rooms and the coconut groves.',
-      images: ['Family_Cottage_1.jpg', 'Family_Cottage_2.jpg', 'Family_Cottage_Hall.jpg', 'Family_Cottage_Sitout.jpg']
-    }
-  ];
+  {
+    type: 'Standard A/C',
+    description: 'These air-conditioned rooms are located on the ground floor with a view of the garden. Each room is equipped with two individual wooden cots, a cupboard, television, and an attached bath with shower and toilet. Ideal for single or twin occupancy, offering comfort and quiet in a traditional setting.',
+    images: ['Temple_Room_1.jpg', 'Temple_Room_2.jpg', 'Temple_Room_Garden_View.jpg']
+  },
+  {
+    type: 'Standard Non-A/C',
+    description: 'Non-air-conditioned rooms set in a peaceful corridor layout with access to the lush garden. Features include two wooden cots, a cupboard, a television, and an attached bathroom. Suitable for guests who prefer natural ventilation in a calm and serene environment.',
+    images: ['Temple_Room_1.jpg', 'Temple_Room_2.jpg']
+  },
+  {
+    type: 'Suite Room',
+    description: 'Spacious, air-conditioned premium rooms such as the Deluxe and Valley Rooms. These come with a wooden king-size or double cot, wardrobe, chairs, attached modern bathroom, and a private sit-out or scenic view. Suitable for couples or families who prefer enhanced privacy and comfort.',
+    images: ['Deluxe_Cottage_1.jpg', 'Valley_Room_2.jpg', 'Deluxe_Cottage_Sitout.jpg']
+  },
+  {
+    type: 'Dormitory',
+    description: 'The Dormitory offers shared accommodation with five individual wooden cots, wardrobes, television, and access to clean, attached baths and toilets. Best suited for group stays or budget-friendly bookings.',
+    images: ['Dormitory_Room_1.jpg', 'Dormitory_Room_2.jpg']
+  }
+];
+
 
   const paymentDetails = [
     'An advance amount will be collected during the time of admission as per the chosen type of accommodation only from those who have not made a reservation deposit.',
@@ -451,9 +445,9 @@ const VRKAyurvedaTariffPage = () => {
                   </div>
                 ))}
               </div>
-              <div style={styles.tariffNote}>
+              {/* <div style={styles.tariffNote}>
                 *Room tariffs are inclusive of food, electricity, cleaning, and maintenance charges
-              </div>
+              </div> */}
             </div>
           </section>
         </div>
