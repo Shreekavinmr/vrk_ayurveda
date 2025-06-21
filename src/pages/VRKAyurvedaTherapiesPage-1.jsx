@@ -44,119 +44,84 @@ const VRKAyurvedaTherapiesPage = () => {
   }, []);
 
   const therapiesData = [
-    {
-      name: 'Panchakarma',
-      description: 'Panchakarma is a set of five detoxifying therapies designed to cleanse the body of toxins, restore balance, and rejuvenate. It includes Vamana (therapeutic emesis), Virechana (purgation), Nasya (nasal administration), Vasti (enema), and Raktamokshana (bloodletting). These therapies are tailored to individual needs to promote holistic healing.',
-      benefits: [
-        'Eliminates toxins from the body',
-        'Improves digestion and metabolism',
-        'Enhances immunity and vitality',
-        'Balances doshas (Vata, Pitta, Kapha)',
-      ],
-      images: [
-        'Panchakarma_Vamana.jpg',
-        'Panchakarma_Virechana.jpg',
-        'Panchakarma_Nasya.jpg',
-        'Panchakarma_Vasti.jpg',
-        'Panchakarma_Raktamokshana.jpg',
-        'Panchakarma_Setup.jpg',
-      ],
-      icon: '🧘',
-      duration: '7-21 days',
-    },
-    {
-      name: 'Abhyanga',
-      description: 'Abhyanga is a full-body warm oil massage using medicated herbal oils specific to your dosha. It promotes relaxation, improves circulation, and nourishes the skin and tissues. This therapy is often combined with steam therapy (Swedana) for deeper detoxification.',
-      benefits: [
-        'Relieves stress and muscle tension',
-        'Improves blood circulation',
-        'Nourishes skin and joints',
-        'Promotes better sleep',
-      ],
-      images: [
-        'Abhyanga_Massage.jpg',
-        'Abhyanga_Oil_Application.jpg',
-        'Abhyanga_Steam.jpg',
-        'Abhyanga_Therapist.jpg',
-        'Abhyanga_Setup.jpg',
-      ],
-      icon: '💆',
-      duration: '60-90 mins',
-    },
-    {
-      name: 'Shirodhara',
-      description: 'Shirodhara involves a continuous stream of warm medicated oil or herbal decoction poured onto the forehead. This deeply relaxing therapy calms the mind, reduces stress, and is highly effective for neurological and psychological conditions.',
-      benefits: [
-        'Reduces anxiety and stress',
-        'Improves mental clarity and focus',
-        'Treats insomnia and headaches',
-        'Balances the nervous system',
-      ],
-      images: [
-        'Shirodhara_Oil_Flow.jpg',
-        'Shirodhara_Setup.jpg',
-        'Shirodhara_Forehead.jpg',
-        'Shirodhara_Relaxation.jpg',
-      ],
-      icon: '🧠',
-      duration: '45-60 mins',
-    },
-    {
-      name: 'Pizhichil',
-      description: 'Pizhichil is a luxurious therapy where warm medicated oil is poured over the body while simultaneously massaging. Known as the "king of Ayurvedic therapies," it is ideal for musculoskeletal disorders and rejuvenation.',
-      benefits: [
-        'Relieves joint and muscle pain',
-        'Enhances flexibility and mobility',
-        'Promotes detoxification',
-        'Rejuvenates the body',
-      ],
-      images: [
-        'Pizhichil_Oil_Pouring.jpg',
-        'Pizhichil_Massage.jpg',
-        'Pizhichil_Setup.jpg',
-        'Pizhichil_Therapist.jpg',
-        'Pizhichil_Relaxation.jpg',
-      ],
-      icon: '👑',
-      duration: '75-90 mins',
-    },
-    {
-      name: 'Kizhi',
-      description: 'Kizhi involves the application of warm herbal poultices (boluses) filled with medicated powders, herbs, or rice, massaged over the body. It is effective for pain relief, inflammation, and improving circulation.',
-      benefits: [
-        'Reduces inflammation and swelling',
-        'Alleviates chronic pain',
-        'Improves joint mobility',
-        'Enhances blood flow',
-      ],
-      images: [
-        'Kizhi_Herbal_Poultice.jpg',
-        'Kizhi_Application.jpg',
-        'Kizhi_Preparation.jpg',
-        'Kizhi_Massage.jpg',
-      ],
-      icon: '🌿',
-      duration: '45-60 mins',
-    },
-    {
-      name: 'Nasya',
-      description: 'Nasya involves the administration of medicated oils or herbal preparations through the nasal passages. It is highly effective for respiratory issues, sinusitis, and neurological disorders.',
-      benefits: [
-        'Clears nasal and sinus passages',
-        'Relieves headaches and migraines',
-        'Improves mental clarity',
-        'Supports respiratory health',
-      ],
-      images: [
-        'Nasya_Application.jpg',
-        'Nasya_Oil_Drop.jpg',
-        'Nasya_Setup.jpg',
-        'Nasya_Therapist.jpg',
-      ],
-      icon: '💨',
-      duration: '20-30 mins',
-    },
-  ];
+  {
+    name: 'Mud Therapy',
+    description:
+      'Mud therapy uses natural mineral-rich mud to draw out toxins, reduce inflammation, and cool the body. It is commonly applied to the abdomen, eyes, or full body and is known for its soothing and rejuvenating properties.',
+    benefits: [
+      'Detoxifies the skin and body',
+      'Reduces inflammation and stress',
+      'Improves digestion and eye health',
+      'Balances body temperature',
+    ],
+    images: [
+      'Mud_Therapy_Body.jpg',
+      'Mud_Therapy_Eye.jpg',
+      'Mud_Therapy_Pack.jpg',
+      'Mud_Therapy_Session.jpg',
+    ],
+    icon: '🪨',
+    duration: '30-60 mins',
+  },
+  {
+    name: 'Banana Leaf Therapy',
+    description:
+      'In Banana Leaf Therapy, the body is wrapped in warm banana leaves after applying herbal oils or decoctions. It helps detoxify, soothe skin conditions, and improve circulation by promoting natural sweating.',
+    benefits: [
+      'Promotes natural detoxification',
+      'Improves skin tone and texture',
+      'Relieves muscle stiffness',
+      'Stimulates blood circulation',
+    ],
+    images: [
+      'Banana_Leaf_Wrap.jpg',
+      'Banana_Leaf_Treatment.jpg',
+      'Banana_Leaf_Setup.jpg',
+      'Banana_Leaf_Oil_Application.jpg',
+    ],
+    icon: '🍃',
+    duration: '45-60 mins',
+  },
+  {
+    name: 'Diet Monitoring & Control',
+    description:
+      'Diet is a core pillar of naturopathy. Therapists monitor and guide you through a tailored natural diet plan based on your body type and health condition to promote healing from within.',
+    benefits: [
+      'Boosts metabolism and energy',
+      'Corrects nutritional imbalances',
+      'Aids in weight management',
+      'Supports long-term wellness',
+    ],
+    images: [
+      'Diet_Consultation.jpg',
+      'Healthy_Meal_Plan.jpg',
+      'Nutrition_Guidance.jpg',
+      'Diet_Control_Session.jpg',
+    ],
+    icon: '🥗',
+    duration: 'Ongoing / Daily Guidance',
+  },
+  // {
+  //   name: 'Hydrotherapy',
+  //   description:
+  //     'Hydrotherapy uses water in various forms (steam, cold packs, jets, or immersion) to stimulate circulation, relieve pain, and support detoxification. It includes treatments like hip baths, steam baths, and spinal sprays.',
+  //   benefits: [
+  //     'Improves blood circulation',
+  //     'Relieves pain and stress',
+  //     'Detoxifies through sweat',
+  //     'Boosts immune function',
+  //   ],
+  //   images: [
+  //     'Hydrotherapy_HipBath.jpg',
+  //     'Hydrotherapy_Steam.jpg',
+  //     'Hydrotherapy_JetSpray.jpg',
+  //     'Hydrotherapy_Session.jpg',
+  //   ],
+  //   icon: '💧',
+  //   duration: '20-45 mins',
+  // },
+];
+
 
   const therapyApproach = [
     {
@@ -698,11 +663,11 @@ const VRKAyurvedaTherapiesPage = () => {
         <div style={styles.heroBackground}></div>
         <div style={styles.heroContent}>
           <h1 style={styles.heroTitle}>
-            Ayurvedic Therapies
+            Ayurvedic Naturopathy Therapies
             <span style={styles.heroAccent}> VRK Ayurveda Clinic</span>
           </h1>
           <p style={styles.heroDescription}>
-            Experience our authentic Ayurvedic therapies designed for holistic healing and rejuvenation
+            Experience our authentic Ayurvedic Naturopathy therapies designed for holistic healing and rejuvenation
           </p>
         </div>
       </section>

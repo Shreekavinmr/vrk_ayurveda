@@ -44,119 +44,84 @@ const VRKAyurvedaTherapiesPage = () => {
   }, []);
 
   const therapiesData = [
-    {
-      name: 'Panchakarma',
-      description: 'Panchakarma is a set of five detoxifying therapies designed to cleanse the body of toxins, restore balance, and rejuvenate. It includes Vamana (therapeutic emesis), Virechana (purgation), Nasya (nasal administration), Vasti (enema), and Raktamokshana (bloodletting). These therapies are tailored to individual needs to promote holistic healing.',
-      benefits: [
-        'Eliminates toxins from the body',
-        'Improves digestion and metabolism',
-        'Enhances immunity and vitality',
-        'Balances doshas (Vata, Pitta, Kapha)',
-      ],
-      images: [
-        'Panchakarma_Vamana.jpg',
-        'Panchakarma_Virechana.jpg',
-        'Panchakarma_Nasya.jpg',
-        'Panchakarma_Vasti.jpg',
-        'Panchakarma_Raktamokshana.jpg',
-        'Panchakarma_Setup.jpg',
-      ],
-      icon: '🧘',
-      duration: '7-21 days',
-    },
-    {
-      name: 'Abhyanga',
-      description: 'Abhyanga is a full-body warm oil massage using medicated herbal oils specific to your dosha. It promotes relaxation, improves circulation, and nourishes the skin and tissues. This therapy is often combined with steam therapy (Swedana) for deeper detoxification.',
-      benefits: [
-        'Relieves stress and muscle tension',
-        'Improves blood circulation',
-        'Nourishes skin and joints',
-        'Promotes better sleep',
-      ],
-      images: [
-        'Abhyanga_Massage.jpg',
-        'Abhyanga_Oil_Application.jpg',
-        'Abhyanga_Steam.jpg',
-        'Abhyanga_Therapist.jpg',
-        'Abhyanga_Setup.jpg',
-      ],
-      icon: '💆',
-      duration: '60-90 mins',
-    },
-    {
-      name: 'Shirodhara',
-      description: 'Shirodhara involves a continuous stream of warm medicated oil or herbal decoction poured onto the forehead. This deeply relaxing therapy calms the mind, reduces stress, and is highly effective for neurological and psychological conditions.',
-      benefits: [
-        'Reduces anxiety and stress',
-        'Improves mental clarity and focus',
-        'Treats insomnia and headaches',
-        'Balances the nervous system',
-      ],
-      images: [
-        'Shirodhara_Oil_Flow.jpg',
-        'Shirodhara_Setup.jpg',
-        'Shirodhara_Forehead.jpg',
-        'Shirodhara_Relaxation.jpg',
-      ],
-      icon: '🧠',
-      duration: '45-60 mins',
-    },
-    {
-      name: 'Pizhichil',
-      description: 'Pizhichil is a luxurious therapy where warm medicated oil is poured over the body while simultaneously massaging. Known as the "king of Ayurvedic therapies," it is ideal for musculoskeletal disorders and rejuvenation.',
-      benefits: [
-        'Relieves joint and muscle pain',
-        'Enhances flexibility and mobility',
-        'Promotes detoxification',
-        'Rejuvenates the body',
-      ],
-      images: [
-        'Pizhichil_Oil_Pouring.jpg',
-        'Pizhichil_Massage.jpg',
-        'Pizhichil_Setup.jpg',
-        'Pizhichil_Therapist.jpg',
-        'Pizhichil_Relaxation.jpg',
-      ],
-      icon: '👑',
-      duration: '75-90 mins',
-    },
-    {
-      name: 'Kizhi',
-      description: 'Kizhi involves the application of warm herbal poultices (boluses) filled with medicated powders, herbs, or rice, massaged over the body. It is effective for pain relief, inflammation, and improving circulation.',
-      benefits: [
-        'Reduces inflammation and swelling',
-        'Alleviates chronic pain',
-        'Improves joint mobility',
-        'Enhances blood flow',
-      ],
-      images: [
-        'Kizhi_Herbal_Poultice.jpg',
-        'Kizhi_Application.jpg',
-        'Kizhi_Preparation.jpg',
-        'Kizhi_Massage.jpg',
-      ],
-      icon: '🌿',
-      duration: '45-60 mins',
-    },
-    {
-      name: 'Nasya',
-      description: 'Nasya involves the administration of medicated oils or herbal preparations through the nasal passages. It is highly effective for respiratory issues, sinusitis, and neurological disorders.',
-      benefits: [
-        'Clears nasal and sinus passages',
-        'Relieves headaches and migraines',
-        'Improves mental clarity',
-        'Supports respiratory health',
-      ],
-      images: [
-        'Nasya_Application.jpg',
-        'Nasya_Oil_Drop.jpg',
-        'Nasya_Setup.jpg',
-        'Nasya_Therapist.jpg',
-      ],
-      icon: '💨',
-      duration: '20-30 mins',
-    },
-  ];
+  {
+    name: 'Therapeutic Yoga',
+    description:
+      'Therapeutic Yoga is a gentle, customized practice focused on healing specific physical or mental conditions through yoga postures, breathing, and mindfulness. It blends classical asanas with modern rehabilitation principles.',
+    benefits: [
+      'Alleviates chronic pain and tension',
+      'Improves posture and spinal health',
+      'Supports emotional well-being',
+      'Enhances recovery from injury or illness',
+    ],
+    images: [
+      'Therapeutic_Yoga_Pose.jpg',
+      'Therapeutic_Yoga_Session.jpg',
+      'Therapeutic_Yoga_Props.jpg',
+      'Therapeutic_Yoga_Teacher.jpg',
+    ],
+    icon: '🧘‍♀️',
+    duration: '45-60 mins',
+  },
+  {
+    name: 'Pranayama',
+    description:
+      'Pranayama is the practice of breath control that balances energy flow, calms the mind, and improves lung capacity. It forms the foundation for mental clarity and physical health in yoga.',
+    benefits: [
+      'Enhances respiratory strength',
+      'Reduces anxiety and stress',
+      'Improves focus and mindfulness',
+      'Regulates nervous system function',
+    ],
+    images: [
+      'Pranayama_Breathing.jpg',
+      'Pranayama_Yoga.jpg',
+      'Pranayama_Session.jpg',
+      'Pranayama_Teacher.jpg',
+    ],
+    icon: '🌬️',
+    duration: '20-30 mins',
+  },
+  {
+    name: 'Mudras',
+    description:
+      'Mudras are symbolic hand gestures used during meditation, pranayama, or asana practice. Each mudra directs energy flow in the body and is associated with specific physical and mental benefits.',
+    benefits: [
+      'Balances internal energy (prana)',
+      'Aids in emotional regulation',
+      'Supports healing of specific ailments',
+      'Deepens meditation practice',
+    ],
+    images: [
+      'Mudra_Gyan.jpg',
+      'Mudra_Hand_Positions.jpg',
+      'Mudra_Meditation.jpg',
+      'Mudra_Session.jpg',
+    ],
+    icon: '🤲',
+    duration: '10-20 mins',
+  },
+  {
+    name: 'Bandhas',
+    description:
+      'Bandhas are energy locks or muscular contractions practiced during asanas and pranayama to control and direct prana (life force). They are powerful tools for internal cleansing and energy activation.',
+    benefits: [
+      'Tones abdominal and pelvic organs',
+      'Stimulates energy flow',
+      'Enhances focus and awareness',
+      'Improves core stability and balance',
+    ],
+    images: [
+      'Bandha_Uddiyana.jpg',
+      'Bandha_Jalandhara.jpg',
+      'Bandha_Moola.jpg',
+      'Bandha_Practice.jpg',
+    ],
+    icon: '🔒',
+    duration: '15-30 mins',
+  },
+];
+
 
   const therapyApproach = [
     {
@@ -698,11 +663,11 @@ const VRKAyurvedaTherapiesPage = () => {
         <div style={styles.heroBackground}></div>
         <div style={styles.heroContent}>
           <h1 style={styles.heroTitle}>
-            Ayurvedic Therapies
+            Ayurvedic Yoga Therapies
             <span style={styles.heroAccent}> VRK Ayurveda Clinic</span>
           </h1>
           <p style={styles.heroDescription}>
-            Experience our authentic Ayurvedic therapies designed for holistic healing and rejuvenation
+            Experience our authentic Ayurvedic yoga therapies designed for holistic healing and rejuvenation
           </p>
         </div>
       </section>

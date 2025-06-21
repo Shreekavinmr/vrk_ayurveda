@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { HeartPulse, Phone, Mail, ChevronDown, Sparkles, Award, Users, Clock, ChevronLeft, ChevronRight } from 'lucide-react';
+import panchakarma1 from '../assets/panchakarma1.png';
+import panchakarma2 from '../assets/panchakarma2.png';
+import panchakarma3 from '../assets/panchakarma3.png';
+import panchakarma4 from '../assets/panchakarma4.png';
+import panchakarma5 from '../assets/panchakarma5.png';
 
 const VRKAyurvedaTherapiesPage = () => {
   const [activeSection] = useState('therapies');
@@ -54,12 +59,7 @@ const VRKAyurvedaTherapiesPage = () => {
       'Balances doshas (Vata, Pitta, Kapha)',
     ],
     images: [
-      'Panchakarma_Vamana.jpg',
-      'Panchakarma_Virechana.jpg',
-      'Panchakarma_Nasya.jpg',
-      'Panchakarma_Vasti.jpg',
-      'Panchakarma_Raktamokshana.jpg',
-      'Panchakarma_Setup.jpg',
+      panchakarma1
     ],
     icon: '🧘',
     duration: '7-21 days',
