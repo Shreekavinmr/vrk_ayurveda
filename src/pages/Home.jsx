@@ -3,21 +3,22 @@ import { ArrowRight, Star, Quote, CheckCircle, ChevronLeft, ChevronRight, HeartP
 import '../styles/Home.css';
 import img1 from '../assets/image1.png';
 import ourfound from '../assets/ourfound.png';
-import cardTrustLogo from '../assets/card_trust_logo.png'; // Adjust the file name as needed
-import vrkAyurvedaLogo from '../assets/logo.png'; // Adjust the file name as needed
+import cardTrustLogo from '../assets/card_trust_logo.png';
+import vrkAyurvedaLogo from '../assets/logo.png';
 import massage_treatment from '../assets/home_treatment/massage.png';
 import detox_therapy from '../assets/home_treatment/detox_therapy.png';
 import herbal_medicine from '../assets/home_treatment/herbal_medicine.png';
 import wellness_programs from '../assets/home_treatment/wellness_programs.png';
-import shop1 from '../assets/home_treatment/shop1.png';
-import shop2 from '../assets/home_treatment/shop2.png';
-import shop3 from '../assets/home_treatment/shop3.png';
-import acc1 from '../assets/home_treatment/acc1.png';
-import acc2 from '../assets/home_treatment/acc2.png';
-import acc3 from '../assets/home_treatment/acc3.png';
-import treatmentroom1 from '../assets/home_treatment/treatmentroom1.png';
-import treatmentroom2 from '../assets/home_treatment/treatmentroom.png';
-// import treatmentroom3 from '../assets/home_treatment/treatmentroom3.png';
+import shop1 from '../assets/home_treatment/shop1.jpg';
+import shop2 from '../assets/home_treatment/shop2.jpg';
+import shop3 from '../assets/home_treatment/shop3.jpg';
+import acc1 from '../assets/home_treatment/acc1.jpg';
+import acc2 from '../assets/home_treatment/acc2.jpg';
+import acc3 from '../assets/home_treatment/acc3.jpg';
+import treatmentroom1 from '../assets/home_treatment/treatmentroom1.jpg';
+import treatmentroom2 from '../assets/home_treatment/treatmentroom2.jpg';
+import treatmentroom3 from '../assets/home_treatment/treatmentroom3.jpg';
+
 
 const StatCounter = ({ number, label, index, icon: Icon }) => {
   const [count, setCount] = useState(0);
@@ -83,7 +84,31 @@ const Home = () => {
   const itemRefs = useRef([]);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [currentFacility, setCurrentFacility] = useState(0);
-  const [facilitySlideIndex, setFacilitySlideIndex] = useState({});
+  const facilities = [
+    {
+      name: 'Treatment Rooms',
+      description: 'Peaceful, private spaces designed for healing',
+      images: [
+        treatmentroom1,
+        treatmentroom2,
+        treatmentroom3
+      ],
+    },
+    {
+      name: 'Accommodation',
+      description: 'Comfortable and serene living spaces for guests',
+      images: [acc1, acc2, acc3],
+    },
+    {
+      name: 'Medical Shop',
+      description: 'Authentic Ayurvedic medicines and products',
+      images: [shop1, shop2, shop3],
+    },
+  ];
+  // Initialize facilitySlideIndex with 0 for each facility
+  const [facilitySlideIndex, setFacilitySlideIndex] = useState(
+    facilities.reduce((acc, _, index) => ({ ...acc, [index]: 0 }), {})
+  );
 
   const stats = [
     { number: '10+', label: 'Years of Healing Experience', icon: Clock },
@@ -169,37 +194,6 @@ const Home = () => {
       rating: 5,
     },
   ];
-
-
-const facilities = [
-  {
-    name: 'Treatment Rooms',
-    description: 'Peaceful, private spaces designed for healing',
-    images: [
-      ourfound, // Imported image
-      acc1, // Placeholder
-      '/api/placeholder/800/500',
-    ],
-  },
-  {
-    name: 'Accommodation',
-    description: 'Comfortable and serene living spaces for guests',
-    images: [
-      '/api/placeholder/800/500', // Placeholder
-      '/api/placeholder/800/500',
-      '/api/placeholder/800/500',
-    ],
-  },
-  {
-    name: 'Medical Shop',
-    description: 'Authentic Ayurvedic medicines and products',
-    images: [
-      '/api/placeholder/800/500', // Placeholder
-      '/api/placeholder/800/500',
-      '/api/placeholder/800/500',
-    ],
-  },
-];
 
   const features = [
     {
@@ -291,11 +285,11 @@ const facilities = [
               >
                 <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
               </svg>
-              Welcome to Vedic Raksha Kendra Ayurvedic Hosital (A unit of CARD Trust)
+              Welcome to Vedic Raksha Kendra Ayurvedic Hospital (A unit of CARD Trust)
             </div>
             <h1 className="hero-title">
               Discover Holistic Healing at
-              <span className="hero-accent"> Vedic Raksha Kendra Ayurvedic Hosital</span>
+              <span className="hero-accent"> Vedic Raksha Kendra Ayurvedic Hospital</span>
             </h1>
             <p className="hero-description">
               Experience authentic Ayurvedic treatments for mind, body, and soul.
@@ -348,7 +342,7 @@ const facilities = [
           />
         </div>
       </div>
-      
+
       {/* Treatments Section */}
       <section ref={(el) => (sectionRefs.current[2] = el)} className="treatments-section">
         <div className="content-container">
@@ -454,7 +448,7 @@ const facilities = [
                 className={`facility-card ${currentFacility === index ? 'active' : ''}`}
                 onClick={() => {
                   setCurrentFacility(index);
-                  setFacilitySlideIndex((prev) => ({ ...prev, [index]: 0 }));
+                  setFacilitySlideIndex((prev) => ({ ...prev, [index]: prev[index] || 0 }));
                 }}
                 ref={(el) => (itemRefs.current[stats.length + treatments.length + index] = el)}
               >
@@ -464,7 +458,7 @@ const facilities = [
                       key={imgIndex}
                       className={`facility-slide ${facilitySlideIndex[index] === imgIndex ? 'active' : ''}`}
                     >
-                      <img src={image} alt={facility.name} />
+                      <img src={image} alt={`${facility.name} ${imgIndex + 1}`} />
                     </div>
                   ))}
                   <div className="facility-overlay">
@@ -495,7 +489,6 @@ const facilities = [
           </div>
         </div>
       </section>
-
 
       {/* Testimonials Section */}
       <section ref={(el) => (sectionRefs.current[5] = el)} className="testimonials-section">
@@ -533,7 +526,6 @@ const facilities = [
           </div>
         </div>
       </section>
-
     </div>
   );
 };
