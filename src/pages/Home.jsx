@@ -5,6 +5,19 @@ import img1 from '../assets/image1.png';
 import ourfound from '../assets/ourfound.png';
 import cardTrustLogo from '../assets/card_trust_logo.png'; // Adjust the file name as needed
 import vrkAyurvedaLogo from '../assets/logo.png'; // Adjust the file name as needed
+import massage_treatment from '../assets/home_treatment/massage.png';
+import detox_therapy from '../assets/home_treatment/detox_therapy.png';
+import herbal_medicine from '../assets/home_treatment/herbal_medicine.png';
+import wellness_programs from '../assets/home_treatment/wellness_programs.png';
+import shop1 from '../assets/home_treatment/shop1.png';
+import shop2 from '../assets/home_treatment/shop2.png';
+import shop3 from '../assets/home_treatment/shop3.png';
+import acc1 from '../assets/home_treatment/acc1.png';
+import acc2 from '../assets/home_treatment/acc2.png';
+import acc3 from '../assets/home_treatment/acc3.png';
+import treatmentroom1 from '../assets/home_treatment/treatmentroom1.png';
+import treatmentroom2 from '../assets/home_treatment/treatmentroom.png';
+// import treatmentroom3 from '../assets/home_treatment/treatmentroom3.png';
 
 const StatCounter = ({ number, label, index, icon: Icon }) => {
   const [count, setCount] = useState(0);
@@ -83,25 +96,25 @@ const Home = () => {
     {
       name: 'Ayurvedic Massage',
       description: 'Traditional therapeutic massage using herbal oils',
-      image: '/api/placeholder/400/300',
+      image: massage_treatment,
       benefits: ['Stress Relief', 'Improved Circulation'],
     },
     {
       name: 'Detox Therapy',
       description: 'Natural detoxification treatments to cleanse body',
-      image: '/api/placeholder/400/300',
+      image: detox_therapy,
       benefits: ['Body Detox', 'Enhanced Energy'],
     },
     {
       name: 'Herbal Medicine',
       description: 'Customized herbal formulations for healing',
-      image: '/api/placeholder/400/300',
+      image: herbal_medicine,
       benefits: ['Natural Healing', 'Personalized Care'],
     },
     {
       name: 'Wellness Programs',
       description: 'Comprehensive programs for complete wellness',
-      image: '/api/placeholder/400/300',
+      image: wellness_programs,
       benefits: ['Complete Wellness', 'Lifestyle Guidance'],
     },
   ];
@@ -157,35 +170,36 @@ const Home = () => {
     },
   ];
 
-  const facilities = [
-    {
-      name: 'Treatment Rooms',
-      description: 'Peaceful, private spaces designed for healing',
-      images: [
-        ourfound,
-        '/api/placeholder/800/500',
-        '/api/placeholder/800/500',
-      ],
-    },
-    {
-      name: 'Herbal Lab',
-      description: 'Fresh herbal medicine preparation facility',
-      images: [
-        '/api/placeholder/800/500',
-        '/api/placeholder/800/500',
-        '/api/placeholder/800/500',
-      ],
-    },
-    {
-      name: 'Meditation Garden',
-      description: 'Serene outdoor space for relaxation',
-      images: [
-        '/api/placeholder/800/500',
-        '/api/placeholder/800/500',
-        '/api/placeholder/800/500',
-      ],
-    },
-  ];
+
+const facilities = [
+  {
+    name: 'Treatment Rooms',
+    description: 'Peaceful, private spaces designed for healing',
+    images: [
+      ourfound, // Imported image
+      acc1, // Placeholder
+      '/api/placeholder/800/500',
+    ],
+  },
+  {
+    name: 'Accommodation',
+    description: 'Comfortable and serene living spaces for guests',
+    images: [
+      '/api/placeholder/800/500', // Placeholder
+      '/api/placeholder/800/500',
+      '/api/placeholder/800/500',
+    ],
+  },
+  {
+    name: 'Medical Shop',
+    description: 'Authentic Ayurvedic medicines and products',
+    images: [
+      '/api/placeholder/800/500', // Placeholder
+      '/api/placeholder/800/500',
+      '/api/placeholder/800/500',
+    ],
+  },
+];
 
   const features = [
     {
@@ -315,7 +329,7 @@ const Home = () => {
               </a>
             </div>
             <div className="about-image">
-              <img src={img1} alt="Ayurvedic clinic team" />
+              <img src={img1} alt="Ayurvedic hospital team" />
             </div>
           </div>
         </div>

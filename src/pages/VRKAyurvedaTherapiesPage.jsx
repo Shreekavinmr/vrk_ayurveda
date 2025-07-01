@@ -789,7 +789,7 @@ const VRKAyurvedaTherapiesPage = () => {
         <div style={styles.heroContent}>
           <h1 style={styles.heroTitle}>
             Ayurvedic Therapies
-            <span style={styles.heroAccent}> VRK Ayurveda Clinic</span>
+            <span style={styles.heroAccent}>Vedic Raksha Kendra Ayurveda hospital</span>
           </h1>
           <p style={styles.heroDescription}>
             Experience our authentic Ayurvedic therapies designed for holistic healing and rejuvenation
@@ -1026,7 +1026,7 @@ const VRKAyurvedaTherapiesPage = () => {
       {/* Footer Section */}
       <section style={styles.footerSection}>
         <div style={styles.footerContent}>
-          <h3 style={styles.footerTitle}>VRK Ayurveda Clinic</h3>
+          <h3 style={styles.footerTitle}>Vedic Raksha Kendra Ayurveda hospital</h3>
           <p style={styles.footerText}>Your partner in natural healing and holistic wellness</p>
           <div style={styles.footerInfo}>
             <div style={styles.footerInfoCard}>

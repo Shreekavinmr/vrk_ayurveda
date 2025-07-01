@@ -76,10 +76,10 @@ const Footer = () => {
             <div className="footer-logo">
               <img
                 src={logo}
-                alt="VRK Ayurvedic Clinic Logo"
+                alt="Vedic Raksha Kendra Ayurveda hospital"
                 className="footer-logo-image"
               />
-              <span className="footer-logo-text">Vedic Raksha Kendra Ayurvedic Clinic<p className="footer-tagline">
+              <span className="footer-logo-text">Vedic Raksha Kendra Ayurvedic Hospital<p className="footer-tagline">
               (A unit of CARD Trust)
             </p></span>
             </div>
@@ -142,7 +142,7 @@ const Footer = () => {
 
         <div className="footer-bottom">
           <div className="copyright">
-            © {new Date().getFullYear()} Vedic Raksha Kendra Ayurvedic Clinic. All rights reserved.
+            © {new Date().getFullYear()} Vedic Raksha Kendra Ayurvedic Hospital. All rights reserved.
           </div>
           <div className="footer-legal">
             <a href="/privacy-policy" className="legal-link">Privacy Policy</a>

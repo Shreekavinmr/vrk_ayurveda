@@ -22,27 +22,27 @@ const VRKAyurvedaFAQPage = () => {
       )
     },
     {
-      question: 'Why is VRK Ayurveda Clinic a Natural Holistic Healing Hospital?',
-      answer: 'VRK Ayurveda Clinic integrates traditional Ayurvedic therapies with modern medical practices to promote holistic healing, focusing on physical, mental, and spiritual wellness.'
+      question: 'Why is Vedic Raksha Kendra Ayurveda hospital a Natural Holistic Healing Hospital?',
+      answer: 'Vedic Raksha Kendra Ayurveda hospital integrates traditional Ayurvedic therapies with modern medical practices to promote holistic healing, focusing on physical, mental, and spiritual wellness.'
     },
     {
-      question: 'Is VRK Ayurveda Clinic a weight reduction centre / spa / hospital?',
-      answer: 'VRK Ayurveda Clinic is a holistic hospital specializing in Ayurvedic treatments for overall health, not a weight reduction centre or spa, though some treatments may support weight management.'
+      question: 'Is Vedic Raksha Kendra Ayurveda hospital a weight reduction centre / spa / hospital?',
+      answer: 'Vedic Raksha Kendra Ayurveda hospital is a holistic hospital specializing in Ayurvedic treatments for overall health, not a weight reduction centre or spa, though some treatments may support weight management.'
     },
     {
-      question: 'What is the minimum and maximum duration of stay at VRK Ayurveda Clinic?',
+      question: 'What is the minimum and maximum duration of stay at Vedic Raksha Kendra Ayurveda hospital?',
       answer: 'The minimum stay is generally 7 days, with a maximum of 28 days or more, depending on the treatment plan prescribed by our doctors.'
     },
     {
-      question: 'Are there Registered Doctors at VRK Ayurveda Clinic and what degree they hold?',
+      question: 'Are there Registered Doctors at Vedic Raksha Kendra Ayurveda hospital and what degree they hold?',
       answer: 'Yes, our doctors are registered with BAMS degrees in Ayurveda, and some hold additional certifications in specialized Ayurvedic or modern medical fields.'
     },
     {
-      question: 'Are there trained therapists in VRK Ayurveda Clinic?',
-      answer: 'Our clinic employs certified therapists trained in delivering Ayurvedic treatments under the supervision of qualified doctors.'
+      question: 'Are there trained therapists in Vedic Raksha Kendra Ayurveda hospital?',
+      answer: 'Our hospital employs certified therapists trained in delivering Ayurvedic treatments under the supervision of qualified doctors.'
     },
     {
-      question: 'How many Kgs will I lose during my stay at VRK Ayurveda Clinic and will I regain my weight after getting back to home?',
+      question: 'How many Kgs will I lose during my stay at Vedic Raksha Kendra Ayurveda hospital and will I regain my weight after getting back to home?',
       answer: 'Weight loss varies, typically 2-5 kg during a 7-14 day stay. Sustaining weight loss depends on following our post-treatment diet and lifestyle recommendations.'
     },
     {
@@ -50,7 +50,7 @@ const VRKAyurvedaFAQPage = () => {
       answer: 'Yes, we provide Ayurvedic medications tailored to your treatment plan, prescribed by our doctors, alongside any regular medications you bring.'
     },
     {
-      question: 'What type of Diet will be served for patients at VRK Ayurveda Clinic?',
+      question: 'What type of Diet will be served for patients at Vedic Raksha Kendra Ayurveda hospital?',
       answer: 'Patients receive a personalized vegetarian Ayurvedic diet, low in spices and oil, designed to support healing and treatment goals.'
     },
     {
@@ -58,7 +58,7 @@ const VRKAyurvedaFAQPage = () => {
       answer: 'We recommend booking rooms 15-30 days in advance to ensure availability, particularly during peak seasons.'
     },
     {
-      question: 'Does VRK Ayurveda Clinic offer any concessions for their customers?',
+      question: 'Does Vedic Raksha Kendra Ayurveda hospital offer any concessions for their customers?',
       answer: 'Concessions may be available for extended stays or group bookings. Please contact our office for details.'
     },
     {
@@ -66,7 +66,7 @@ const VRKAyurvedaFAQPage = () => {
       answer: 'Yes, we can arrange pick-up and drop-off services for an additional fee, based on your location. Contact us to organize.'
     },
     {
-      question: 'Whether treatments in VRK Ayurveda Clinic are complete residential or permitted to go out?',
+      question: 'Whether treatments in Vedic Raksha Kendra Ayurveda hospital are complete residential or permitted to go out?',
       answer: 'Treatments are fully residential, requiring patients to remain on premises for optimal outcomes. Outings are typically not allowed.'
     },
     {
@@ -78,7 +78,7 @@ const VRKAyurvedaFAQPage = () => {
       answer: 'Light yoga may be appropriate during menstruation, but intense poses should be avoided. Consult our yoga instructors for personalized advice.'
     },
     {
-      question: 'Is there any specific care to be noted while planning to admit in VRK Ayurveda Clinic for females?',
+      question: 'Is there any specific care to be noted while planning to admit in Vedic Raksha Kendra Ayurveda hospital for females?',
       answer: 'Females should disclose conditions like pregnancy or menstruation during consultation. We provide tailored care, including female therapists and private accommodations.'
     }
   ];
@@ -411,7 +411,7 @@ const VRKAyurvedaFAQPage = () => {
         <div style={styles.heroContent}>
           <h1 style={styles.heroTitle}>
             Frequently Asked Questions
-            <span style={styles.heroAccent}> VRK Ayurveda Clinic</span>
+            <span style={styles.heroAccent}> Vedic Raksha Kendra Ayurveda hospital</span>
           </h1>
           <p style={styles.heroDescription}>
             Get answers to common queries about your stay and treatments at our holistic healing center
@@ -439,7 +439,7 @@ const VRKAyurvedaFAQPage = () => {
                 <div style={styles.sectionHeader}>
                   <h2 style={styles.sectionTitle}>{label}</h2>
                   <p style={styles.sectionDescription}>
-                    Explore answers to help you plan your visit to VRK Ayurveda Clinic
+                    Explore answers to help you plan your visit to Vedic Raksha Kendra Ayurveda hospital
                   </p>
                 </div>
                 <div style={styles.faqContainer}>
@@ -519,7 +519,7 @@ const VRKAyurvedaFAQPage = () => {
       {/* Footer Section */}
       <section style={styles.footerSection}>
         <div style={styles.footerContent}>
-          <h3 style={styles.footerTitle}>VRK Ayurveda Clinic</h3>
+          <h3 style={styles.footerTitle}>Vedic Raksha Kendra Ayurveda hospital</h3>
           <p style={styles.footerText}>Your partner in natural healing and holistic wellness</p>
           <div style={styles.footerInfo}>
             <div style={styles.footerInfoCard}>

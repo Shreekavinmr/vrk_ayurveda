@@ -74,9 +74,9 @@ const ContactPage = () => {
               </svg>
               Get in Touch
             </div>
-            <h1>Contact VRK Ayurveda Clinic</h1>
+            <h1>Contact Vedic Raksha Kendra Ayurveda Hospital</h1>
             <p>
-              Reach out to us for inquiries about our ayurvedic clinic or any other information.
+              Reach out to us for inquiries about our ayurvedic hospital or any other information.
             </p>
           </div>
         </div>

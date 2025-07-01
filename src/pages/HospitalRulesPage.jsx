@@ -587,7 +587,7 @@ const HospitalRulesPage = () => {
     {/* Footer Section */}
     <section style={styles.footerSection}>
       <div style={styles.footerContent}>
-        <h3 style={styles.footerTitle}>VRK Ayureveda</h3>
+        <h3 style={styles.footerTitle}>Vedic Raksha Kendra Ayurveda hospital</h3>
         <p style={styles.footerText}>Your partner in natural healing and holistic wellness</p>
         <div style={styles.footerInfo}>
           <div style={styles.footerInfoCard}>

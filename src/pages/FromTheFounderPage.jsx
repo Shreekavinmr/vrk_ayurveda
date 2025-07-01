@@ -29,8 +29,8 @@ const VRKAyurvedaFromTheFounderPage = () => {
   const founderData = {
     name: 'Dr. V. R. Krishnan',
     photo: 'Founder_Photo.jpg',
-    message: 'At VRK Ayurveda Clinic, we believe in the timeless wisdom of Ayurveda to heal, rejuvenate, and bring balance to life. My mission is to guide you on a journey of holistic wellness, rooted in nature’s embrace.',
-    background: 'Dr. V. R. Krishnan, a renowned Ayurvedic practitioner with over 20 years of experience, founded VRK Ayurveda Clinic to bring authentic Ayurvedic healing to the modern world. Trained in traditional Ayurveda in Kerala, Dr. Krishnan combines ancient wisdom with contemporary insights to offer personalized care.',
+    message: 'At Vedic Raksha Kendra Ayurveda hospital, we believe in the timeless wisdom of Ayurveda to heal, rejuvenate, and bring balance to life. My mission is to guide you on a journey of holistic wellness, rooted in nature’s embrace.',
+    background: 'Dr. V. R. Krishnan, a renowned Ayurvedic practitioner with over 20 years of experience, founded Vedic Raksha Kendra Ayurveda hospital to bring authentic Ayurvedic healing to the modern world. Trained in traditional Ayurveda in Kerala, Dr. Krishnan combines ancient wisdom with contemporary insights to offer personalized care.',
     vision: 'Our vision is to create a sanctuary of healing where every individual can experience the transformative power of Ayurveda, fostering harmony of body, mind, and spirit.',
     experience: [
       'Over 20 years practicing Ayurveda, specializing in Panchakarma and chronic disease management',
@@ -423,7 +423,7 @@ const VRKAyurvedaFromTheFounderPage = () => {
   {
     icon: PenLine,
     title: 'A Personal Message',
-    desc: 'Every treatment at VRK Ayurveda is rooted in our founder’s belief in harmony, purpose, and care.'
+    desc: 'Every treatment at Vedic Raksha Kendra Ayurveda hospital is rooted in our founder’s belief in harmony, purpose, and care.'
   }
 ];
 
@@ -436,7 +436,7 @@ const VRKAyurvedaFromTheFounderPage = () => {
         <div style={styles.heroContent}>
           <h1 style={styles.heroTitle}>
             From the Founder
-            <span style={styles.heroAccent}> VRK Ayurveda Clinic</span>
+            <span style={styles.heroAccent}> Vedic Raksha Kendra Ayurveda hospital</span>
           </h1>
           <p style={styles.heroDescription}>
             Meet the visionary behind our mission to bring holistic healing through Ayurveda
@@ -581,7 +581,7 @@ const VRKAyurvedaFromTheFounderPage = () => {
       {/* Footer Section */}
       <section style={styles.footerSection}>
         <div style={styles.footerContent}>
-          <h3 style={styles.footerTitle}>VRK Ayurveda Clinic</h3>
+          <h3 style={styles.footerTitle}>Vedic Raksha Kendra Ayurveda hospital</h3>
           <p style={styles.footerText}>Your partner in natural healing and holistic wellness</p>
           <div style={styles.footerInfo}>
             <div style={styles.footerInfoCard}>

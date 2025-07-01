@@ -71,7 +71,7 @@ const VRKPatientCareFacilitiesPage = () => {
     },
     {
       title: 'Quality Commitment',
-      description: 'Perpetuating VRK Ayureveda quality policy, aiming for enhanced healthcare through continuous refinement for stakeholder satisfaction.',
+      description: 'Perpetuating Vedic Raksha Kendra Ayurveda hospital quality policy, aiming for enhanced healthcare through continuous refinement for stakeholder satisfaction.',
       icon: '🏆',
     },
   ];
@@ -609,7 +609,7 @@ const VRKPatientCareFacilitiesPage = () => {
         <div style={styles.heroContent}>
           <h1 style={styles.heroTitle}>
             Patient Care Facilities
-            <span style={styles.heroAccent}> VRK Ayurveda</span>
+            <span style={styles.heroAccent}>Vedic Raksha Kendra Ayurveda </span>
           </h1>
           <p style={styles.heroDescription}>
             Comprehensive holistic healthcare designed to heal, rejuvenate, and nurture
@@ -635,7 +635,7 @@ const VRKPatientCareFacilitiesPage = () => {
               <h2 style={styles.sectionTitle}>Our Patient Care Approach</h2>
               <div style={styles.decorativeLine}></div>
               <p style={styles.sectionSubtitle}>
-                At VRK Ayureveda, we offer comprehensive holistic healthcare to support your healing journey
+                AtVedic Raksha Kendra Ayurveda, we offer comprehensive holistic healthcare to support your healing journey
               </p>
             </div>
             <div style={styles.careGrid}>
@@ -803,7 +803,7 @@ const VRKPatientCareFacilitiesPage = () => {
       {/* Footer Section */}
       <section style={styles.footerSection}>
         <div style={styles.footerContent}>
-          <h3 style={styles.footerTitle}>VRK Ayureveda</h3>
+          <h3 style={styles.footerTitle}>Vedic Raksha Kendra Ayurveda hospital</h3>
           <p style={styles.footerText}>Your partner in natural healing and holistic wellness</p>
           <div style={styles.footerInfo}>
             <div style={styles.footerInfoCard}>

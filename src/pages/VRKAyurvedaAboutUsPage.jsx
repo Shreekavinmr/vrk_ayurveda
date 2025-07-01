@@ -27,7 +27,7 @@ const VRKAyurvedaAboutUsPage = () => {
   }, []);
 
   const aboutData = {
-    history: 'Established in 2008, VRK Ayurveda Clinic was born from a vision to revive and share the ancient healing wisdom of Ayurveda. Founded by Dr. V. R. Krishnan in Kerala, the heartland of Ayurveda, the clinic has grown into a trusted sanctuary for holistic wellness, serving over 500 patients with personalized care.',
+    history: 'Established in 2008, Vedic Raksha Kendra Ayurveda hospital was born from a vision to revive and share the ancient healing wisdom of Ayurveda. Founded by Dr. V. R. Krishnan in Kerala, the heartland of Ayurveda, the hospital has grown into a trusted sanctuary for holistic wellness, serving over 500 patients with personalized care.',
     mission: 'Our mission is to empower individuals to achieve optimal health and balance through authentic Ayurvedic practices, integrating traditional wisdom with modern care.',
     coreValues: [
   {
@@ -556,7 +556,7 @@ const VRKAyurvedaAboutUsPage = () => {
   {
     icon: Quote,
     title: 'Words that Inspire',
-    desc: '“Healing is not a process of fixing — it’s a return to balance.” — Founder, VRK Ayurveda.'
+    desc: '“Healing is not a process of fixing — it’s a return to balance.” — Founder, Vedic Raksha Kendra Ayurveda hospital'
   }
 ];
 
@@ -570,7 +570,7 @@ const VRKAyurvedaAboutUsPage = () => {
         <div style={styles.heroContent}>
           <h1 style={styles.heroTitle}>
             About Us
-            <span style={styles.heroAccent}> VRK Ayurveda Clinic</span>
+            <span style={styles.heroAccent}> Vedic Raksha Kendra Ayurveda hospital</span>
           </h1>
           <p style={styles.heroDescription}>
             Discover our story, mission, and commitment to holistic healing
@@ -754,7 +754,7 @@ const VRKAyurvedaAboutUsPage = () => {
       {/* Footer Section */}
       <section style={styles.footerSection}>
         <div style={styles.footerContent}>
-          <h3 style={styles.footerTitle}>VRK Ayurveda Clinic</h3>
+          <h3 style={styles.footerTitle}>Vedic Raksha Kendra Ayurveda hospital</h3>
           <p style={styles.footerText}>Your partner in natural healing and holistic wellness</p>
           <div style={styles.footerInfo}>
             <div style={styles.footerInfoCard}>

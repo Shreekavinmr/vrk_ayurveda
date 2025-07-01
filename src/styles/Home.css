@@ -944,3 +944,21 @@
     font-size: 1.3rem;
   }
 }
+
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: 60vh; /* Reduced height for tablets and smaller devices */
+    padding-top: 4rem; /* Adjusted padding for better content placement */
+    background-size: cover; /* Maintain cover to ensure image fills the section */
+    background-position: center; /* Keep image centered */
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-section {
+    min-height: 55vh; /* Further reduced height for mobile screens */
+    padding-top: 3rem; /* Smaller padding for mobile */
+    background-size: cover; /* Ensure image scales to cover the section */
+    background-position: center; /* Center the image */
+  }
+}
