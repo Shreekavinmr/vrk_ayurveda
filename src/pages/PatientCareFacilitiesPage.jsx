@@ -4,7 +4,6 @@ import { HeartPulse, Phone, Mail, ChevronLeft, ChevronRight, Sparkles, Award, Us
 const VRKPatientCareFacilitiesPage = () => {
   const [activeSection] = useState('patient-care');
   const [visibleElements, setVisibleElements] = useState({});
-  const [currentSlide, setCurrentSlide] = useState({});
 
   // Intersection Observer for scroll animations
   useEffect(() => {
@@ -26,21 +25,6 @@ const VRKPatientCareFacilitiesPage = () => {
     elements.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
-  }, []);
-
-  // Slideshow effect
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => {
-        const newSlides = { ...prev };
-        facilitiesData.forEach((facility, index) => {
-          const images = facility.images;
-          newSlides[index] = ((prev[index] || 0) + 1) % (images.length || 1);
-        });
-        return newSlides;
-      });
-    }, 5000); // Change slide every 5 seconds
-    return () => clearInterval(interval);
   }, []);
 
   const patientCareData = [
@@ -80,49 +64,41 @@ const VRKPatientCareFacilitiesPage = () => {
     {
       name: 'Reflexology Track',
       description: 'A reflexology track with natural pebbles designed to stimulate pressure points and promote relaxation.',
-      images: ['Reflexology_Track.jpg', 'Reflexology_Pebbles.jpg', 'Reflexology_Path.jpg'],
       icon: '🦶',
     },
     {
       name: 'Herbal Garden',
       description: 'Our herbal garden provides fresh, organic herbs used in treatments, fostering a connection with nature.',
-      images: ['Herbal_Garden.jpg', 'Herbal_Plants.jpg', 'Herbal_Harvest.jpg'],
       icon: '🌱',
     },
     {
       name: 'Walking Track',
       description: 'A long, tree-lined walking track for serene strolls, enhancing physical and mental well-being.',
-      images: ['Walking_Track.jpg', 'Tree_Lined_Path.jpg', 'Walking_Serene.jpg'],
       icon: '🚶',
     },
     {
       name: 'Yoga & Meditation Hall',
       description: 'An exquisite hall dedicated to yoga and meditation, offering a tranquil space for inner peace.',
-      images: ['Yoga_Hall.jpg', 'Meditation_Room.jpg', 'Yoga_Session.jpg'],
       icon: '🧘',
     },
     {
       name: 'Outdoor Yoga Court',
       description: 'An open-air yoga court surrounded by nature, perfect for invigorating sessions.',
-      images: ['Outdoor_Yoga.jpg', 'Yoga_Court.jpg', 'Nature_Yoga.jpg'],
       icon: '🌞',
     },
     {
       name: 'Social Gathering Court',
       description: 'An open court under coconut shades for social gatherings and community events.',
-      images: ['Social_Court.jpg', 'Coconut_Shades.jpg', 'Gathering_Space.jpg'],
       icon: '👥',
     },
     {
       name: 'Indoor & Outdoor Games',
       description: 'Indoor games and an outdoor play area for children and adults to enjoy recreational activities.',
-      images: ['Indoor_Games.jpg', 'Outdoor_Play.jpg', 'Play_Area.jpg'],
       icon: '🎲',
     },
     {
       name: 'Treatment & Wellness',
       description: 'A state-of-the-art treatment section with nourishing diets, hammocks, swings, and farm-fresh produce.',
-      images: ['Treatment_Room.jpg', 'Hammock_Swing.jpg', 'Farm_Fresh.jpg'],
       icon: '🛌',
     },
   ];
@@ -346,131 +322,50 @@ const VRKPatientCareFacilitiesPage = () => {
     },
     facilityGrid: {
       display: 'grid',
-      gap: '60px',
+      gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+      gap: '40px',
     },
     facilityCard: {
       background: 'white',
-      borderRadius: '24px',
+      borderRadius: '20px',
       overflow: 'hidden',
-      boxShadow: '0 20px 60px rgba(45, 90, 39, 0.08)',
-      border: '1px solid rgba(45, 90, 39, 0.05)',
+      boxShadow: '0 12px 32px rgba(45, 90, 39, 0.08)',
+      border: '2px solid rgba(45, 90, 39, 0.05)',
       transform: 'translateY(40px)',
       opacity: 0,
       transition: 'all 0.7s cubic-bezier(0.4, 0, 0.2, 1)',
+      cursor: 'default',
     },
     facilityCardVisible: {
       transform: 'translateY(0)',
       opacity: 1,
     },
     facilityCardInner: {
-      display: 'flex',
-      alignItems: 'center',
-      minHeight: '500px',
-      '@media (max-width: 768px)': {
-        flexDirection: 'column',
-        alignItems: 'stretch',
-      },
-    },
-    facilityContent: {
-      padding: '60px 50px',
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      flex: 1,
-    },
-    facilityHeader: {
-      display: 'flex',
-      alignItems: 'center',
-      marginBottom: '24px',
+      padding: '40px',
+      textAlign: 'center',
     },
     facilityIcon: {
-      fontSize: '2.5rem',
-      marginRight: '16px',
+      fontSize: '3rem',
       background: 'linear-gradient(135deg, #f0f8e8, #e8f5e8)',
-      width: '60px',
-      height: '60px',
-      borderRadius: '16px',
+      width: '80px',
+      height: '80px',
+      borderRadius: '20px',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
+      margin: '0 auto 24px',
       border: '2px solid rgba(45, 90, 39, 0.1)',
     },
     facilityTitle: {
-      fontSize: '2.2rem',
+      fontSize: '1.8rem',
       fontWeight: '700',
       color: '#2d5a27',
-      marginBottom: '8px',
+      marginBottom: '16px',
     },
     facilityDescription: {
       fontSize: '1.1rem',
       color: '#5a6c57',
       lineHeight: '1.7',
-      marginBottom: '32px',
-    },
-    facilityGallery: {
-      padding: '40px',
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '20px',
-      background: 'linear-gradient(135deg, #f8fffe 0%, #f0f8e8 100%)',
-      flex: 1,
-      justifyContent: 'center',
-    },
-    galleryCards: {
-      display: 'grid',
-      gridTemplateColumns: 'repeat(2, 1fr)',
-      gap: '15px',
-    },
-    galleryCard: {
-      background: 'white',
-      borderRadius: '16px',
-      padding: '20px',
-      textAlign: 'center',
-      boxShadow: '0 8px 24px rgba(45, 90, 39, 0.06)',
-      border: '1px solid rgba(45, 90, 39, 0.08)',
-      transition: 'all 0.3s ease',
-      fontSize: '0.9rem',
-      color: '#6c757d',
-      fontWeight: '500',
-      cursor: 'pointer',
-    },
-    slideshowContainer: {
-      position: 'relative',
-      width: '100%',
-      height: '200px',
-      overflow: 'hidden',
-      borderRadius: '16px',
-      boxShadow: '0 8px 24px rgba(45, 90, 39, 0.06)',
-    },
-    slideshowImage: {
-      width: '100%',
-      height: '100%',
-      objectFit: 'cover',
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      opacity: 0,
-      transition: 'opacity 0.5s ease-in-out',
-    },
-    slideshowImageActive: {
-      opacity: 1,
-    },
-    slideshowNav: {
-      position: 'absolute',
-      top: '50%',
-      transform: 'translateY(-50%)',
-      background: 'rgba(45, 90, 39, 0.5)',
-      borderRadius: '50%',
-      padding: '8px',
-      cursor: 'pointer',
-      color: 'white',
-      zIndex: 1,
-    },
-    slideshowNavLeft: {
-      left: '10px',
-    },
-    slideshowNavRight: {
-      right: '10px',
     },
     contactSection: {
       position: 'relative',
@@ -590,17 +485,6 @@ const VRKPatientCareFacilitiesPage = () => {
     },
   };
 
-  const handleSlideChange = (facilityIndex, direction) => {
-    const images = facilitiesData[facilityIndex].images;
-    setCurrentSlide((prev) => {
-      const current = prev[facilityIndex] || 0;
-      let next = direction === 'next' ? current + 1 : current - 1;
-      if (next >= images.length) next = 0;
-      if (next < 0) next = images.length - 1;
-      return { ...prev, [facilityIndex]: next };
-    });
-  };
-
   return (
     <div style={styles.modernContainer}>
       {/* Hero Section */}
@@ -635,7 +519,7 @@ const VRKPatientCareFacilitiesPage = () => {
               <h2 style={styles.sectionTitle}>Our Patient Care Approach</h2>
               <div style={styles.decorativeLine}></div>
               <p style={styles.sectionSubtitle}>
-                AtVedic Raksha Kendra Ayurveda, we offer comprehensive holistic healthcare to support your healing journey
+                At Vedic Raksha Kendra Ayurveda, we offer comprehensive holistic healthcare to support your healing journey
               </p>
             </div>
             <div style={styles.careGrid}>
@@ -693,58 +577,19 @@ const VRKPatientCareFacilitiesPage = () => {
                       transitionDelay: `${index * 0.2}s`,
                     } : {}),
                   }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-8px)';
+                    e.currentTarget.style.boxShadow = '0 16px 40px rgba(45, 90, 39, 0.12)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = '0 12px 32px rgba(45, 90, 39, 0.08)';
+                  }}
                 >
                   <div style={styles.facilityCardInner}>
-                    <div style={styles.facilityContent}>
-                      <div style={styles.facilityHeader}>
-                        <div style={styles.facilityIcon}>{facility.icon}</div>
-                        <div>
-                          <h3 style={styles.facilityTitle}>{facility.name}</h3>
-                        </div>
-                      </div>
-                      <p style={styles.facilityDescription}>{facility.description}</p>
-                    </div>
-                    <div style={styles.facilityGallery}>
-                      <div style={styles.galleryCards}>
-                        {facility.images.slice(0, 4).map((image, imgIndex) => (
-                          <div
-                            key={imgIndex}
-                            style={styles.galleryCard}
-                            onMouseEnter={(e) => {
-                              e.currentTarget.style.transform = 'translateY(-4px)';
-                              e.currentTarget.style.boxShadow = '0 16px 40px rgba(45, 90, 39, 0.12)';
-                            }}
-                            onMouseLeave={(e) => {
-                              e.currentTarget.style.transform = 'translateY(0)';
-                              e.currentTarget.style.boxShadow = '0 8px 24px rgba(45, 90, 39, 0.06)';
-                            }}
-                          >
-                            {image.replace('.jpg', '').replace(/_/g, ' ')}
-                          </div>
-                        ))}
-                      </div>
-                      <div style={styles.slideshowContainer}>
-                        {facility.images.map((image, imgIndex) => (
-                          <div
-                            key={imgIndex}
-                            style={{
-                              ...styles.slideshowImage,
-                              ...(currentSlide[index] === imgIndex ? styles.slideshowImageActive : {}),
-                            }}
-                          >
-                            {image.replace('.jpg', '').replace(/_/g, ' ')}
-                          </div>
-                        ))}
-                        <ChevronLeft
-                          style={{ ...styles.slideshowNav, ...styles.slideshowNavLeft }}
-                          onClick={() => handleSlideChange(index, 'prev')}
-                        />
-                        <ChevronRight
-                          style={{ ...styles.slideshowNav, ...styles.slideshowNavRight }}
-                          onClick={() => handleSlideChange(index, 'next')}
-                        />
-                      </div>
-                    </div>
+                    <div style={styles.facilityIcon}>{facility.icon}</div>
+                    <h3 style={styles.facilityTitle}>{facility.name}</h3>
+                    <p style={styles.facilityDescription}>{facility.description}</p>
                   </div>
                 </div>
               ))}

@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import { DollarSign, Phone, Mail } from 'lucide-react';
+import yoga_therapy from '../assets/yoga_therapy.png';
+import meditation from '../assets/meditation.png';
+import herbal_tea from '../assets/herbal_tea.png';
+import aromatherapy from '../assets/aromatherapy.png';
 
 const VRKAyurvedaComplementaryPage = () => {
   const [activeSection] = useState('complementary');
@@ -8,22 +12,21 @@ const VRKAyurvedaComplementaryPage = () => {
     {
       name: 'Yoga Therapy',
       benefits: 'Enhances flexibility, reduces stress, and promotes mental balance through guided poses.',
-      image: '/src/assets/yoga.jpg'
-    },
+      image:yoga_therapy    },
     {
       name: 'Meditation',
       benefits: 'Improves focus, reduces anxiety, and fosters emotional well-being with mindful practice.',
-      image: '/src/assets/meditation.jpg'
+      image: meditation
     },
     {
       name: 'Herbal Tea Therapy',
       benefits: 'Supports digestion, boosts immunity, and promotes relaxation with curated herbal blends.',
-      image: '/src/assets/herbal_tea.jpg'
+      image: herbal_tea
     },
     {
       name: 'Aromatherapy',
       benefits: 'Relieves stress and enhances mood using essential oils for holistic relaxation.',
-      image: '/src/assets/aromatherapy.jpg'
+      image: aromatherapy
     }
   ];
 

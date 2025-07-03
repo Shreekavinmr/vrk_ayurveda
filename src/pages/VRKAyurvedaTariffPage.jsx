@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
 import { DollarSign, Phone, Mail } from 'lucide-react';
+import dormetry from '../assets/dometry.png';
+import acc_ac from '../assets/acc_ac.jpg';
+import acc_nonac from '../assets/acc_nonac.jpg';
+import acc_ent from '../assets/acc_ent.jpg';
+import acc_dining from '../assets/acc_dining.jpg';
+import acc_suite from '../assets/acc_suite.png';
 
 const VRKAyurvedaTariffPage = () => {
   const [activeSection] = useState('tariff');
@@ -8,29 +14,29 @@ const VRKAyurvedaTariffPage = () => {
     { type: 'Standard A/C', rate: '₹2000/day', occupancy: 'Single/Twin' },
     { type: 'Standard Non-A/C', rate: '₹1500/day', occupancy: 'Single/Twin' },
     { type: 'Suite Room', rate: '₹2500/day', occupancy: 'Single/Twin/Family' },
-    { type: 'Dormitory', rate: 'Varies', occupancy: '4/6 members' },
+    { type: 'Dormitory', rate: 'Varies', occupancy: '6/10 members' },
   ];
 
   const roomDetails = [
   {
     type: 'Standard A/C',
     description: 'These air-conditioned rooms are located on the ground floor with a view of the garden. Each room is equipped with two individual wooden cots, a cupboard, television, and an attached bath with shower and toilet. Ideal for single or twin occupancy, offering comfort and quiet in a traditional setting.',
-    images: ['Temple_Room_1.jpg', 'Temple_Room_2.jpg', 'Temple_Room_Garden_View.jpg']
+    images: [acc_ac,acc_dining,acc_ent]
   },
   {
     type: 'Standard Non-A/C',
     description: 'Non-air-conditioned rooms set in a peaceful corridor layout with access to the lush garden. Features include two wooden cots, a cupboard, a television, and an attached bathroom. Suitable for guests who prefer natural ventilation in a calm and serene environment.',
-    images: ['Temple_Room_1.jpg', 'Temple_Room_2.jpg']
+    images: [acc_nonac,acc_dining,acc_ent]
   },
   {
     type: 'Suite Room',
     description: 'Spacious, air-conditioned premium rooms such as the Deluxe and Valley Rooms. These come with a wooden king-size or double cot, wardrobe, chairs, attached modern bathroom, and a private sit-out or scenic view. Suitable for couples or families who prefer enhanced privacy and comfort.',
-    images: ['Deluxe_Cottage_1.jpg', 'Valley_Room_2.jpg', 'Deluxe_Cottage_Sitout.jpg']
+    images: [acc_suite ,acc_dining,acc_ac]
   },
   {
     type: 'Dormitory',
     description: 'The Dormitory offers shared accommodation with five individual wooden cots, wardrobes, television, and access to clean, attached baths and toilets. Best suited for group stays or budget-friendly bookings.',
-    images: ['Dormitory_Room_1.jpg', 'Dormitory_Room_2.jpg']
+    images: [dormetry]
   }
 ];
 
@@ -238,7 +244,6 @@ const VRKAyurvedaTariffPage = () => {
       border: '2px solid rgba(45, 90, 39, 0.1)',
       transition: 'all 0.3s ease',
       textAlign: 'center',
-      padding: '1rem'
     },
     paymentContainer: {
       maxWidth: '900px',
@@ -462,23 +467,29 @@ const VRKAyurvedaTariffPage = () => {
                 ...(window.innerWidth <= 768 ? { gridTemplateColumns: '1fr' } : {})
               }}>
                 <div style={styles.imageGallery}>
-                  {room.images.map((image, imgIndex) => (
-                    <div 
-                      key={imgIndex} 
-                      style={styles.imagePlaceholder}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.transform = 'scale(1.02)';
-                        e.currentTarget.style.boxShadow = '0 8px 24px rgba(45, 90, 39, 0.15)';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.transform = 'scale(1)';
-                        e.currentTarget.style.boxShadow = 'none';
-                      }}
-                    >
-                      {image.replace('.jpg', '').replace(/_/g, ' ')}
-                    </div>
-                  ))}
-                </div>
+  {room.images.map((image, imgIndex) => (
+    <img
+      key={imgIndex}
+      src={image}
+      alt={`${room.type} ${imgIndex + 1}`}
+      style={{
+        ...styles.imagePlaceholder,
+        objectFit: 'cover', // Ensure the image covers the container
+        width: '100%',
+        maxWidth: '300px',
+        height: '200px',
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.transform = 'scale(1.02)';
+        e.currentTarget.style.boxShadow = '0 8px 24px rgba(45, 90, 39, 0.15)';
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.transform = 'scale(1)';
+        e.currentTarget.style.boxShadow = 'none';
+      }}
+    />
+  ))}
+</div>
                 <div>
                   <p style={styles.roomDescription}>{room.description}</p>
                 </div>
