@@ -4,7 +4,7 @@ import { HeartPulse, Phone, Mail, ChevronDown, Sparkles, Award, Users, Clock, Ch
 const VRKAyurvedaTherapiesPage = () => {
   const [activeSection] = useState('therapies');
   const [visibleElements, setVisibleElements] = useState({});
-  const [currentSlide, setCurrentSlide] = useState({});
+  const [currentSlide, setCurrentSlide] = useState({ 0: 0, 1: 0, 2: 0, 3: 0 });
 
   // Intersection Observer for scroll animations
   useEffect(() => {
@@ -34,7 +34,7 @@ const VRKAyurvedaTherapiesPage = () => {
       setCurrentSlide((prev) => {
         const newSlides = { ...prev };
         therapiesData.forEach((therapy, index) => {
-          const images = therapy.images; // Use all images for slideshow
+          const images = therapy.images;
           newSlides[index] = ((prev[index] || 0) + 1) % (images.length || 1);
         });
         return newSlides;
@@ -44,84 +44,102 @@ const VRKAyurvedaTherapiesPage = () => {
   }, []);
 
   const therapiesData = [
-  {
-    name: 'Therapeutic Yoga',
-    description:
-      'Therapeutic Yoga is a gentle, customized practice focused on healing specific physical or mental conditions through yoga postures, breathing, and mindfulness. It blends classical asanas with modern rehabilitation principles.',
-    benefits: [
-      'Alleviates chronic pain and tension',
-      'Improves posture and spinal health',
-      'Supports emotional well-being',
-      'Enhances recovery from injury or illness',
-    ],
-    images: [
-      'Therapeutic_Yoga_Pose.jpg',
-      'Therapeutic_Yoga_Session.jpg',
-      'Therapeutic_Yoga_Props.jpg',
-      'Therapeutic_Yoga_Teacher.jpg',
-    ],
-    icon: '🧘‍♀️',
-    duration: '45-60 mins',
-  },
-  {
-    name: 'Pranayama',
-    description:
-      'Pranayama is the practice of breath control that balances energy flow, calms the mind, and improves lung capacity. It forms the foundation for mental clarity and physical health in yoga.',
-    benefits: [
-      'Enhances respiratory strength',
-      'Reduces anxiety and stress',
-      'Improves focus and mindfulness',
-      'Regulates nervous system function',
-    ],
-    images: [
-      'Pranayama_Breathing.jpg',
-      'Pranayama_Yoga.jpg',
-      'Pranayama_Session.jpg',
-      'Pranayama_Teacher.jpg',
-    ],
-    icon: '🌬️',
-    duration: '20-30 mins',
-  },
-  {
-    name: 'Mudras',
-    description:
-      'Mudras are symbolic hand gestures used during meditation, pranayama, or asana practice. Each mudra directs energy flow in the body and is associated with specific physical and mental benefits.',
-    benefits: [
-      'Balances internal energy (prana)',
-      'Aids in emotional regulation',
-      'Supports healing of specific ailments',
-      'Deepens meditation practice',
-    ],
-    images: [
-      'Mudra_Gyan.jpg',
-      'Mudra_Hand_Positions.jpg',
-      'Mudra_Meditation.jpg',
-      'Mudra_Session.jpg',
-    ],
-    icon: '🤲',
-    duration: '10-20 mins',
-  },
-  {
-    name: 'Bandhas',
-    description:
-      'Bandhas are energy locks or muscular contractions practiced during asanas and pranayama to control and direct prana (life force). They are powerful tools for internal cleansing and energy activation.',
-    benefits: [
-      'Tones abdominal and pelvic organs',
-      'Stimulates energy flow',
-      'Enhances focus and awareness',
-      'Improves core stability and balance',
-    ],
-    images: [
-      'Bandha_Uddiyana.jpg',
-      'Bandha_Jalandhara.jpg',
-      'Bandha_Moola.jpg',
-      'Bandha_Practice.jpg',
-    ],
-    icon: '🔒',
-    duration: '15-30 mins',
-  },
-];
-
+    {
+      name: 'Therapeutic Yoga',
+      description:
+        'Therapeutic Yoga is a gentle, customized practice focused on healing specific physical or mental conditions through yoga postures, breathing, and mindfulness. It blends classical asanas with modern rehabilitation principles.',
+      benefits: [
+        'Alleviates chronic pain and tension',
+        'Improves posture and spinal health',
+        'Supports emotional well-being',
+        'Enhances recovery from injury or illness',
+      ],
+      images: [
+        '/src/assets/therapies/yogatherapies/Therapeutic_Yoga_Pose.png',
+        '/src/assets/therapies/yogatherapies/Therapeutic_Yoga_Props.png',
+        '/src/assets/therapies/yogatherapies/Therapeutic_Yoga_Session.png',
+        '/src/assets/therapies/yogatherapies/Therapeutic_Yoga_Teacher.png',
+      ],
+      imageDescriptions: [
+        'Gentle yoga poses for healing',
+        'Using props for support',
+        'Guided group session',
+        'Expert instructor guidance',
+      ],
+      icon: '🧘‍♀️',
+      duration: '45-60 mins',
+    },
+    {
+      name: 'Pranayama',
+      description:
+        'Pranayama is the practice of breath control that balances energy flow, calms the mind, and improves lung capacity. It forms the foundation for mental clarity and physical health in yoga.',
+      benefits: [
+        'Enhances respiratory strength',
+        'Reduces anxiety and stress',
+        'Improves focus and mindfulness',
+        'Regulates nervous system function',
+      ],
+      images: [
+        '/src/assets/therapies/yogatherapies/pranayama1.png',
+        '/src/assets/therapies/yogatherapies/pranayama2.png',
+        '/src/assets/therapies/yogatherapies/pranayama3.png',
+      ],
+      imageDescriptions: [
+        'Controlled breathing techniques',
+        'Breath-focused yoga practice',
+        'Group pranayama session',
+      ],
+      icon: '🌬️',
+      duration: '20-30 mins',
+    },
+    {
+      name: 'Mudras',
+      description:
+        'Mudras are symbolic hand gestures used during meditation, pranayama, or asana practice. Each mudra directs energy flow in the body and is associated with specific physical and mental benefits.',
+      benefits: [
+        'Balances internal energy (prana)',
+        'Aids in emotional regulation',
+        'Supports healing of specific ailments',
+        'Deepens meditation practice',
+      ],
+      images: [
+        '/src/assets/therapies/yogatherapies/mudra1.png',
+        '/src/assets/therapies/yogatherapies/mudra2.png',
+        '/src/assets/therapies/yogatherapies/mudra3.png',
+      ],
+      imageDescriptions: [
+        'Gyan mudra for wisdom',
+        'Various hand gestures',
+        'Mudras in meditation',
+        'Guided mudra practice',
+      ],
+      icon: '🤲',
+      duration: '10-20 mins',
+    },
+    {
+      name: 'Bandhas',
+      description:
+        'Bandhas are energy locks or muscular contractions practiced during asanas and pranayama to control and direct prana (life force). They are powerful tools for internal cleansing and energy activation.',
+      benefits: [
+        'Tones abdominal and pelvic organs',
+        'Stimulates energy flow',
+        'Enhances focus and awareness',
+        'Improves core stability and balance',
+      ],
+      images: [
+        '/src/assets/therapies/yogatherapies/bhandhas1.png',
+        '/src/assets/therapies/yogatherapies/bhandhas2.png',
+      ],
+      imageDescriptions: [
+        'Uddiyana bandha technique',
+        'Jalandhara bandha practice',
+        'Moola bandha engagement',
+        'Guided bandha session',
+      ],
+      icon: '🔒',
+      duration: '15-30 mins',
+    },
+  ];
 
   const therapyApproach = [
     {
@@ -431,7 +449,7 @@ const VRKAyurvedaTherapiesPage = () => {
       border: '1px solid rgba(45, 90, 39, 0.08)',
       transition: 'all 0.3s ease',
       fontSize: '0.9rem',
-      color: '#6c757d',
+      color: 'rgba(45, 90, 39, 0.9)',
       fontWeight: '500',
       cursor: 'pointer',
     },
@@ -442,16 +460,21 @@ const VRKAyurvedaTherapiesPage = () => {
       overflow: 'hidden',
       borderRadius: '16px',
       boxShadow: '0 8px 24px rgba(45, 90, 39, 0.06)',
+      background: 'white',
     },
     slideshowImage: {
       width: '100%',
       height: '100%',
-      objectFit: 'cover',
+      objectFit: 'contain',
       position: 'absolute',
       top: 0,
       left: 0,
       opacity: 0,
       transition: 'opacity 0.5s ease-in-out',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      background: 'white',
     },
     slideshowImageActive: {
       opacity: 1,
@@ -753,10 +776,10 @@ const VRKAyurvedaTherapiesPage = () => {
                                   e.currentTarget.style.boxShadow = '0 8px 24px rgba(45, 90, 39, 0.06)';
                                 }}
                               >
-                                {therapy.images[imgIndex]?.replace('.jpg', '').replace(/_/g, ' ') || title}
+                                {title}
                               </div>
                             ))
-                          : therapy.images.slice(0, 4).map((image, imgIndex) => (
+                          : therapy.imageDescriptions.slice(0, 4).map((description, imgIndex) => (
                               <div
                                 key={imgIndex}
                                 style={styles.galleryCard}
@@ -769,7 +792,7 @@ const VRKAyurvedaTherapiesPage = () => {
                                   e.currentTarget.style.boxShadow = '0 8px 24px rgba(45, 90, 39, 0.06)';
                                 }}
                               >
-                                {image.replace('.jpg', '').replace(/_/g, ' ')}
+                                {description}
                               </div>
                             ))}
                       </div>
@@ -777,15 +800,15 @@ const VRKAyurvedaTherapiesPage = () => {
                       {/* Bottom: Slideshow for all images */}
                       <div style={styles.slideshowContainer}>
                         {therapy.images.map((image, imgIndex) => (
-                          <div
+                          <img
                             key={imgIndex}
+                            src={image}
+                            alt={therapy.imageDescriptions[imgIndex]}
                             style={{
                               ...styles.slideshowImage,
                               ...(currentSlide[index] === imgIndex ? styles.slideshowImageActive : {}),
                             }}
-                          >
-                            {image.replace('.jpg', '').replace(/_/g, ' ')}
-                          </div>
+                          />
                         ))}
                         <ChevronLeft
                           style={{ ...styles.slideshowNav, ...styles.slideshowNavLeft }}

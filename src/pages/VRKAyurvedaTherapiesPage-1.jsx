@@ -4,7 +4,7 @@ import { HeartPulse, Phone, Mail, ChevronDown, Sparkles, Award, Users, Clock, Ch
 const VRKAyurvedaTherapiesPage = () => {
   const [activeSection] = useState('therapies');
   const [visibleElements, setVisibleElements] = useState({});
-  const [currentSlide, setCurrentSlide] = useState({});
+  const [currentSlide, setCurrentSlide] = useState({ 0: 0, 1: 0, 2: 0 });
 
   // Intersection Observer for scroll animations
   useEffect(() => {
@@ -34,7 +34,7 @@ const VRKAyurvedaTherapiesPage = () => {
       setCurrentSlide((prev) => {
         const newSlides = { ...prev };
         therapiesData.forEach((therapy, index) => {
-          const images = therapy.images; // Use all images for slideshow
+          const images = therapy.images;
           newSlides[index] = ((prev[index] || 0) + 1) % (images.length || 1);
         });
         return newSlides;
@@ -44,84 +44,97 @@ const VRKAyurvedaTherapiesPage = () => {
   }, []);
 
   const therapiesData = [
-  {
-    name: 'Mud Therapy',
-    description:
-      'Mud therapy uses natural mineral-rich mud to draw out toxins, reduce inflammation, and cool the body. It is commonly applied to the abdomen, eyes, or full body and is known for its soothing and rejuvenating properties.',
-    benefits: [
-      'Detoxifies the skin and body',
-      'Reduces inflammation and stress',
-      'Improves digestion and eye health',
-      'Balances body temperature',
-    ],
-    images: [
-      'Mud_Therapy_Body.jpg',
-      'Mud_Therapy_Eye.jpg',
-      'Mud_Therapy_Pack.jpg',
-      'Mud_Therapy_Session.jpg',
-    ],
-    icon: '🪨',
-    duration: '30-60 mins',
-  },
-  {
-    name: 'Banana Leaf Therapy',
-    description:
-      'In Banana Leaf Therapy, the body is wrapped in warm banana leaves after applying herbal oils or decoctions. It helps detoxify, soothe skin conditions, and improve circulation by promoting natural sweating.',
-    benefits: [
-      'Promotes natural detoxification',
-      'Improves skin tone and texture',
-      'Relieves muscle stiffness',
-      'Stimulates blood circulation',
-    ],
-    images: [
-      'Banana_Leaf_Wrap.jpg',
-      'Banana_Leaf_Treatment.jpg',
-      'Banana_Leaf_Setup.jpg',
-      'Banana_Leaf_Oil_Application.jpg',
-    ],
-    icon: '🍃',
-    duration: '45-60 mins',
-  },
-  {
-    name: 'Diet Monitoring & Control',
-    description:
-      'Diet is a core pillar of naturopathy. Therapists monitor and guide you through a tailored natural diet plan based on your body type and health condition to promote healing from within.',
-    benefits: [
-      'Boosts metabolism and energy',
-      'Corrects nutritional imbalances',
-      'Aids in weight management',
-      'Supports long-term wellness',
-    ],
-    images: [
-      'Diet_Consultation.jpg',
-      'Healthy_Meal_Plan.jpg',
-      'Nutrition_Guidance.jpg',
-      'Diet_Control_Session.jpg',
-    ],
-    icon: '🥗',
-    duration: 'Ongoing / Daily Guidance',
-  },
-  // {
-  //   name: 'Hydrotherapy',
-  //   description:
-  //     'Hydrotherapy uses water in various forms (steam, cold packs, jets, or immersion) to stimulate circulation, relieve pain, and support detoxification. It includes treatments like hip baths, steam baths, and spinal sprays.',
-  //   benefits: [
-  //     'Improves blood circulation',
-  //     'Relieves pain and stress',
-  //     'Detoxifies through sweat',
-  //     'Boosts immune function',
-  //   ],
-  //   images: [
-  //     'Hydrotherapy_HipBath.jpg',
-  //     'Hydrotherapy_Steam.jpg',
-  //     'Hydrotherapy_JetSpray.jpg',
-  //     'Hydrotherapy_Session.jpg',
-  //   ],
-  //   icon: '💧',
-  //   duration: '20-45 mins',
-  // },
-];
-
+    {
+      name: 'Mud Therapy',
+      description:
+        'Mud therapy uses natural mineral-rich mud to draw out toxins, reduce inflammation, and cool the body. It is commonly applied to the abdomen, eyes, or full body and is known for its soothing and rejuvenating properties.',
+      benefits: [
+        'Detoxifies the skin and body',
+        'Reduces inflammation and stress',
+        'Improves digestion and eye health',
+        'Balances body temperature',
+      ],
+      images: [
+        '/src/assets/therapies/naturopathy/mud1.png',
+        '/src/assets/therapies/naturopathy/mud2.png',
+        '/src/assets/therapies/naturopathy/mud3.png',
+      ],
+      imageDescriptions: [
+        'Full-body mud application',
+        'Mud therapy for eyes',
+        'Mud pack preparation',
+        'Guided mud therapy session',
+      ],
+      icon: '🪨',
+      duration: '30-60 mins',
+    },
+    {
+      name: 'Banana Leaf Therapy',
+      description:
+        'In Banana Leaf Therapy, the body is wrapped in warm banana leaves after applying herbal oils or decoctions. It helps detoxify, soothe skin conditions, and improve circulation by promoting natural sweating.',
+      benefits: [
+        'Promotes natural detoxification',
+        'Improves skin tone and texture',
+        'Relieves muscle stiffness',
+        'Stimulates blood circulation',
+      ],
+      images: [
+        '/src/assets/therapies/naturopathy/banana.png',
+        '/src/assets/therapies/naturopathy/banana2.png',
+      ],
+      imageDescriptions: [
+        'Banana leaf body wrap',
+        'Therapeutic leaf treatment',
+        'Treatment setup',
+        'Herbal oil application',
+      ],
+      icon: '🍃',
+      duration: '45-60 mins',
+    },
+    {
+      name: 'Diet Monitoring & Control',
+      description:
+        'Diet is a core pillar of naturopathy. Therapists monitor and guide you through a tailored natural diet plan based on your body type and health condition to promote healing from within.',
+      benefits: [
+        'Boosts metabolism and energy',
+        'Corrects nutritional imbalances',
+        'Aids in weight management',
+        'Supports long-term wellness',
+      ],
+      images: [
+        '/src/assets/therapies/naturopathy/diet.png',
+        '/src/assets/therapies/naturopathy/diet2.png',
+        '/src/assets/therapies/naturopathy/diet3.png',
+      ],
+      imageDescriptions: [
+        'Personalized diet consultation',
+        'Healthy meal planning',
+        'Nutrition guidance session',
+        'Diet monitoring support',
+      ],
+      icon: '🥗',
+      duration: 'Ongoing / Daily Guidance',
+    },
+    // {
+    //   name: 'Hydrotherapy',
+    //   description:
+    //     'Hydrotherapy uses water in various forms (steam, cold packs, jets, or immersion) to stimulate circulation, relieve pain, and support detoxification. It includes treatments like hip baths, steam baths, and spinal sprays.',
+    //   benefits: [
+    //     'Improves blood circulation',
+    //     'Relieves pain and stress',
+    //     'Detoxifies through sweat',
+    //     'Boosts immune function',
+    //   ],
+    //   images: [
+    //     'Hydrotherapy_HipBath.jpg',
+    //     'Hydrotherapy_Steam.jpg',
+    //     'Hydrotherapy_JetSpray.jpg',
+    //     'Hydrotherapy_Session.jpg',
+    //   ],
+    //   icon: '💧',
+    //   duration: '20-45 mins',
+    // },
+  ];
 
   const therapyApproach = [
     {
@@ -442,16 +455,21 @@ const VRKAyurvedaTherapiesPage = () => {
       overflow: 'hidden',
       borderRadius: '16px',
       boxShadow: '0 8px 24px rgba(45, 90, 39, 0.06)',
+      background: 'white',
     },
     slideshowImage: {
       width: '100%',
       height: '100%',
-      objectFit: 'cover',
+      objectFit: 'contain',
       position: 'absolute',
       top: 0,
       left: 0,
       opacity: 0,
       transition: 'opacity 0.5s ease-in-out',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      background: 'white',
     },
     slideshowImageActive: {
       opacity: 1,
@@ -664,7 +682,7 @@ const VRKAyurvedaTherapiesPage = () => {
         <div style={styles.heroContent}>
           <h1 style={styles.heroTitle}>
             Ayurvedic Naturopathy Therapies
-            <span style={styles.heroAccent}> Vedic Raksha Kendra Ayurveda hospital</span>
+            <span style={styles.heroAccent}>Vedic Raksha Kendra Ayurveda hospital</span>
           </h1>
           <p style={styles.heroDescription}>
             Experience our authentic Ayurvedic Naturopathy therapies designed for holistic healing and rejuvenation
@@ -734,58 +752,36 @@ const VRKAyurvedaTherapiesPage = () => {
                     <div style={styles.therapyGallery}>
                       {/* Top: Cards for specific therapies */}
                       <div style={styles.galleryCards}>
-                        {therapy.name === 'Panchakarma'
-                          ? [
-                              'Panchakarma Vamana',
-                              'Panchakarma Virechana',
-                              'Panchakarma Nasya',
-                              'Panchakarma Vasti',
-                            ].map((title, imgIndex) => (
-                              <div
-                                key={imgIndex}
-                                style={styles.galleryCard}
-                                onMouseEnter={(e) => {
-                                  e.currentTarget.style.transform = 'translateY(-4px)';
-                                  e.currentTarget.style.boxShadow = '0 16px 40px rgba(45, 90, 39, 0.12)';
-                                }}
-                                onMouseLeave={(e) => {
-                                  e.currentTarget.style.transform = 'translateY(0)';
-                                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(45, 90, 39, 0.06)';
-                                }}
-                              >
-                                {therapy.images[imgIndex]?.replace('.jpg', '').replace(/_/g, ' ') || title}
-                              </div>
-                            ))
-                          : therapy.images.slice(0, 4).map((image, imgIndex) => (
-                              <div
-                                key={imgIndex}
-                                style={styles.galleryCard}
-                                onMouseEnter={(e) => {
-                                  e.currentTarget.style.transform = 'translateY(-4px)';
-                                  e.currentTarget.style.boxShadow = '0 16px 40px rgba(45, 90, 39, 0.12)';
-                                }}
-                                onMouseLeave={(e) => {
-                                  e.currentTarget.style.transform = 'translateY(0)';
-                                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(45, 90, 39, 0.06)';
-                                }}
-                              >
-                                {image.replace('.jpg', '').replace(/_/g, ' ')}
-                              </div>
-                            ))}
+                        {therapy.imageDescriptions.slice(0, 4).map((description, imgIndex) => (
+                          <div
+                            key={imgIndex}
+                            style={styles.galleryCard}
+                            onMouseEnter={(e) => {
+                              e.currentTarget.style.transform = 'translateY(-4px)';
+                              e.currentTarget.style.boxShadow = '0 16px 40px rgba(45, 90, 39, 0.12)';
+                            }}
+                            onMouseLeave={(e) => {
+                              e.currentTarget.style.transform = 'translateY(0)';
+                              e.currentTarget.style.boxShadow = '0 8px 24px rgba(45, 90, 39, 0.06)';
+                            }}
+                          >
+                            {description}
+                          </div>
+                        ))}
                       </div>
 
                       {/* Bottom: Slideshow for all images */}
                       <div style={styles.slideshowContainer}>
                         {therapy.images.map((image, imgIndex) => (
-                          <div
+                          <img
                             key={imgIndex}
+                            src={image}
+                            alt={therapy.imageDescriptions[imgIndex] || `Image ${imgIndex + 1}`}
                             style={{
                               ...styles.slideshowImage,
                               ...(currentSlide[index] === imgIndex ? styles.slideshowImageActive : {}),
                             }}
-                          >
-                            {image.replace('.jpg', '').replace(/_/g, ' ')}
-                          </div>
+                          />
                         ))}
                         <ChevronLeft
                           style={{ ...styles.slideshowNav, ...styles.slideshowNavLeft }}

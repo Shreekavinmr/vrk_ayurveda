@@ -1,15 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { HeartPulse, Phone, Mail, ChevronDown, Sparkles, Award, Users, Clock, ChevronLeft, ChevronRight } from 'lucide-react';
-import panchakarma1 from '../assets/panchakarma1.png';
-import panchakarma2 from '../assets/panchakarma2.png';
-import panchakarma3 from '../assets/panchakarma3.png';
-import panchakarma4 from '../assets/panchakarma4.png';
-import panchakarma5 from '../assets/panchakarma5.png';
 
 const VRKAyurvedaTherapiesPage = () => {
   const [activeSection] = useState('therapies');
   const [visibleElements, setVisibleElements] = useState({});
-  const [currentSlide, setCurrentSlide] = useState({});
+  const [currentSlide, setCurrentSlide] = useState({ 0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0, 10: 0 });
 
   // Intersection Observer for scroll animations
   useEffect(() => {
@@ -39,7 +34,7 @@ const VRKAyurvedaTherapiesPage = () => {
       setCurrentSlide((prev) => {
         const newSlides = { ...prev };
         therapiesData.forEach((therapy, index) => {
-          const images = therapy.images; // Use all images for slideshow
+          const images = therapy.images;
           newSlides[index] = ((prev[index] || 0) + 1) % (images.length || 1);
         });
         return newSlides;
@@ -49,204 +44,265 @@ const VRKAyurvedaTherapiesPage = () => {
   }, []);
 
   const therapiesData = [
-  {
-    name: 'Panchakarma',
-    description: 'Panchakarma is a set of five detoxifying therapies designed to cleanse the body of toxins, restore balance, and rejuvenate. It includes Vamana (therapeutic emesis), Virechana (purgation), Nasya (nasal administration), Vasti (enema), and Raktamokshana (bloodletting). These therapies are tailored to individual needs to promote holistic healing.',
-    benefits: [
-      'Eliminates toxins from the body',
-      'Improves digestion and metabolism',
-      'Enhances immunity and vitality',
-      'Balances doshas (Vata, Pitta, Kapha)',
-    ],
-    images: [
-      panchakarma1
-    ],
-    icon: '🧘',
-    duration: '7-21 days',
-  },
-  {
-    name: 'Abhyanga',
-    description: 'Abhyanga is a full-body warm oil massage using medicated herbal oils specific to your dosha. It promotes relaxation, improves circulation, and nourishes the skin and tissues. This therapy is often combined with steam therapy (Swedana) for deeper detoxification.',
-    benefits: [
-      'Relieves stress and muscle tension',
-      'Improves blood circulation',
-      'Nourishes skin and joints',
-      'Promotes better sleep',
-    ],
-    images: [
-      'Abhyanga_Massage.jpg',
-      'Abhyanga_Oil_Application.jpg',
-      'Abhyanga_Steam.jpg',
-      'Abhyanga_Therapist.jpg',
-      'Abhyanga_Setup.jpg',
-    ],
-    icon: '💆',
-    duration: '60-90 mins',
-  },
-  {
-    name: 'Shirodhara',
-    description: 'Shirodhara involves a continuous stream of warm medicated oil or herbal decoction poured onto the forehead. This deeply relaxing therapy calms the mind, reduces stress, and is highly effective for neurological and psychological conditions.',
-    benefits: [
-      'Reduces anxiety and stress',
-      'Improves mental clarity and focus',
-      'Treats insomnia and headaches',
-      'Balances the nervous system',
-    ],
-    images: [
-      'Shirodhara_Oil_Flow.jpg',
-      'Shirodhara_Setup.jpg',
-      'Shirodhara_Forehead.jpg',
-      'Shirodhara_Relaxation.jpg',
-    ],
-    icon: '🧠',
-    duration: '45-60 mins',
-  },
-  {
-    name: 'Pizhichil',
-    description: 'Pizhichil is a luxurious therapy where warm medicated oil is poured over the body while simultaneously massaging. Known as the "king of Ayurvedic therapies," it is ideal for musculoskeletal disorders and rejuvenation.',
-    benefits: [
-      'Relieves joint and muscle pain',
-      'Enhances flexibility and mobility',
-      'Promotes detoxification',
-      'Rejuvenates the body',
-    ],
-    images: [
-      'Pizhichil_Oil_Pouring.jpg',
-      'Pizhichil_Massage.jpg',
-      'Pizhichil_Setup.jpg',
-      'Pizhichil_Therapist.jpg',
-      'Pizhichil_Relaxation.jpg',
-    ],
-    icon: '👑',
-    duration: '75-90 mins',
-  },
-  {
-    name: 'Kizhi',
-    description: 'Kizhi involves the application of warm herbal poultices (boluses) filled with medicated powders, herbs, or rice, massaged over the body. It is effective for pain relief, inflammation, and improving circulation.',
-    benefits: [
-      'Reduces inflammation and swelling',
-      'Alleviates chronic pain',
-      'Improves joint mobility',
-      'Enhances blood flow',
-    ],
-    images: [
-      'Kizhi_Herbal_Poultice.jpg',
-      'Kizhi_Application.jpg',
-      'Kizhi_Preparation.jpg',
-      'Kizhi_Massage.jpg',
-    ],
-    icon: '🌿',
-    duration: '45-60 mins',
-  },
-  {
-    name: 'Nasya',
-    description: 'Nasya involves the administration of medicated oils or herbal preparations through the nasal passages. It is highly effective for respiratory issues, sinusitis, and neurological disorders.',
-    benefits: [
-      'Clears nasal and sinus passages',
-      'Relieves headaches and migraines',
-      'Improves mental clarity',
-      'Supports respiratory health',
-    ],
-    images: [
-      'Nasya_Application.jpg',
-      'Nasya_Oil_Drop.jpg',
-      'Nasya_Setup.jpg',
-      'Nasya_Therapist.jpg',
-    ],
-    icon: '💨',
-    duration: '20-30 mins',
-  },
-  {
-    name: 'Tharpanam',
-    description: 'Tharpanam is an Ayurvedic eye treatment where medicated ghee is poured into a dough ring around the eyes. This therapy nourishes and strengthens the eyes, improving vision and relieving eye-related disorders.',
-    benefits: [
-      'Improves vision and eye health',
-      'Reduces eye strain and dryness',
-      'Relieves eye inflammation',
-      'Promotes relaxation of eye muscles',
-    ],
-    images: [
-      'Tharpanam_Eye_Treatment.jpg',
-      'Tharpanam_Ghee_Application.jpg',
-      'Tharpanam_Setup.jpg',
-      'Tharpanam_Therapist.jpg',
-    ],
-    icon: '👁️',
-    duration: '30-45 mins',
-  },
-  {
-    name: 'Virechanam',
-    description: 'Virechanam, a key Panchakarma therapy, involves therapeutic purgation to eliminate toxins through the bowels. It is particularly effective for balancing Pitta dosha and treating digestive and skin disorders.',
-    benefits: [
-      'Detoxifies the liver and intestines',
-      'Improves digestion and metabolism',
-      'Treats skin conditions',
-      'Balances Pitta dosha',
-    ],
-    images: [
-      'Virechanam_Purgation.jpg',
-      'Virechanam_Herbal_Preparation.jpg',
-      'Virechanam_Setup.jpg',
-      'Virechanam_Therapist.jpg',
-    ],
-    icon: '🫁',
-    duration: '1-3 days',
-  },
-  {
-    name: 'Kati Vasti',
-    description: 'Kati Vasti involves retaining warm medicated oil in a dough ring placed on the lower back. This therapy is highly effective for relieving lower back pain, sciatica, and spinal disorders.',
-    benefits: [
-      'Relieves lower back pain',
-      'Reduces sciatica symptoms',
-      'Improves spinal health',
-      'Enhances circulation in the lower back',
-    ],
-    images: [
-      'Kati_Vasti_Oil_Retention.jpg',
-      'Kati_Vasti_Setup.jpg',
-      'Kati_Vasti_Application.jpg',
-      'Kati_Vasti_Therapist.jpg',
-    ],
-    icon: '🩺',
-    duration: '30-45 mins',
-  },
-  {
-    name: 'Janu Vasti',
-    description: 'Janu Vasti is a treatment where warm medicated oil is retained in a dough ring around the knee joints. It is effective for knee pain, arthritis, and joint stiffness, promoting mobility and strength.',
-    benefits: [
-      'Relieves knee pain and stiffness',
-      'Improves joint mobility',
-      'Reduces arthritis symptoms',
-      'Nourishes knee tissues',
-    ],
-    images: [
-      'Janu_Vasti_Oil_Retention.jpg',
-      'Janu_Vasti_Setup.jpg',
-      'Janu_Vasti_Application.jpg',
-      'Janu_Vasti_Therapist.jpg',
-    ],
-    icon: '🦵',
-    duration: '30-45 mins',
-  },
-  {
-    name: 'Jalauka Avacharnam',
-    description: 'Jalauka Avacharnam, or leech therapy, is a form of Raktamokshana (bloodletting) using medicinal leeches to remove impure blood. It is effective for skin disorders, pain, and improving blood circulation.',
-    benefits: [
-      'Treats skin disorders and ulcers',
-      'Reduces localized pain and swelling',
-      'Improves blood circulation',
-      'Detoxifies the blood',
-    ],
-    images: [
-      'Jalauka_Avacharnam_Leech_Therapy.jpg',
-      'Jalauka_Avacharnam_Application.jpg',
-      'Jalauka_Avacharnam_Setup.jpg',
-      'Jalauka_Avacharnam_Therapist.jpg',
-    ],
-    icon: '🩺',
-    duration: '30-60 mins',
-  },
-];
+    {
+      name: 'Panchakarma',
+      description: 'Panchakarma is a set of five detoxifying therapies designed to cleanse the body of toxins, restore balance, and rejuvenate. It includes Vamana (therapeutic emesis), Virechana (purgation), Nasya (nasal administration), Vasti (enema), and Raktamokshana (bloodletting). These therapies are tailored to individual needs to promote holistic healing.',
+      benefits: [
+        'Eliminates toxins from the body',
+        'Improves digestion and metabolism',
+        'Enhances immunity and vitality',
+        'Balances doshas (Vata, Pitta, Kapha)',
+      ],
+      images: [
+        '/src/assets/therapies/panchakarna/panchakarma1.png',
+        '/src/assets/therapies/panchakarna/panchakarma2.png',
+        '/src/assets/therapies/panchakarna/panchakarma3.png',
+        '/src/assets/therapies/panchakarna/panchakarma4.png',
+        '/src/assets/therapies/panchakarna/panchakarma5.png',
+      ],
+      imageDescriptions: [
+        'Panchakarma Vamana therapy',
+        'Panchakarma Virechana therapy',
+        'Panchakarma Nasya therapy',
+        'Panchakarma Vasti therapy',
+        'Panchakarma Raktamokshana therapy',
+      ],
+      icon: '🧘',
+      duration: '7-21 days',
+    },
+    {
+      name: 'Abhyanga',
+      description: 'Abhyanga is a full-body warm oil massage using medicated herbal oils specific to your dosha. It promotes relaxation, improves circulation, and nourishes the skin and tissues. This therapy is often combined with steam therapy (Swedana) for deeper detoxification.',
+      benefits: [
+        'Relieves stress and muscle tension',
+        'Improves blood circulation',
+        'Nourishes skin and joints',
+        'Promotes better sleep',
+      ],
+      images: [
+        
+        '/src/assets/therapies/panchakarna/abhyanga1.png',
+        '/src/assets/therapies/panchakarna/abhyanga2.png',
+        '/src/assets/therapies/panchakarna/abhyanga3.png',
+        '/src/assets/therapies/panchakarna/abhyanga4.png',
+      ],
+      imageDescriptions: [
+        'Full-body oil massage',
+        'Herbal oil application',
+        'Steam therapy session',
+        'Therapist performing Abhyanga',
+        'Abhyanga treatment setup',
+      ],
+      icon: '💆',
+      duration: '60-90 mins',
+    },
+    {
+      name: 'Shirodhara',
+      description: 'Shirodhara involves a continuous stream of warm medicated oil or herbal decoction poured onto the forehead. This deeply relaxing therapy calms the mind, reduces stress, and is highly effective for neurological and psychological conditions.',
+      benefits: [
+        'Reduces anxiety and stress',
+        'Improves mental clarity and focus',
+        'Treats insomnia and headaches',
+        'Balances the nervous system',
+      ],
+      images: [
+        '/src/assets/therapies/panchakarna/shrirodhara1.png',
+        '/src/assets/therapies/panchakarna/shrirodhara2.png',
+        '/src/assets/therapies/panchakarna/shrirodhara3.png',
+      ],
+      imageDescriptions: [
+        'Oil flow in Shirodhara',
+        'Shirodhara treatment setup',
+        'Forehead oil application',
+        'Relaxation during Shirodhara',
+      ],
+      icon: '🧠',
+      duration: '45-60 mins',
+    },
+    {
+      name: 'Pizhichil',
+      description: 'Pizhichil is a luxurious therapy where warm medicated oil is poured over the body while simultaneously massaging. Known as the "king of Ayurvedic therapies," it is ideal for musculoskeletal disorders and rejuvenation.',
+      benefits: [
+        'Relieves joint and muscle pain',
+        'Enhances flexibility and mobility',
+        'Promotes detoxification',
+        'Rejuvenates the body',
+      ],
+      images: [
+        '/src/assets/therapies/panchakarna/pzhichil1.png',
+        '/src/assets/therapies/panchakarna/pzhichil2.png',
+        '/src/assets/therapies/panchakarna/pzhichil3.png',
+      ],
+      imageDescriptions: [
+        'Oil pouring in Pizhichil',
+        'Massage during Pizhichil',
+        'Pizhichil treatment setup',
+        'Therapist performing Pizhichil',
+        'Relaxation during Pizhichil',
+      ],
+      icon: '👑',
+      duration: '75-90 mins',
+    },
+    {
+      name: 'Kizhi',
+      description: 'Kizhi involves the application of warm herbal poultices (boluses) filled with medicated powders, herbs, or rice, massaged over the body. It is effective for pain relief, inflammation, and improving circulation.',
+      benefits: [
+        'Reduces inflammation and swelling',
+        'Alleviates chronic pain',
+        'Improves joint mobility',
+        'Enhances blood flow',
+      ],
+      images: [
+        '/src/assets/therapies/panchakarna/kizhi1.png',
+        '/src/assets/therapies/panchakarna/kizhi2.png',
+        '/src/assets/therapies/panchakarna/kizhi3.png',
+        '/src/assets/therapies/panchakarna/kizhi4.png',
+      ],
+      imageDescriptions: [
+        'Herbal poultice preparation',
+        'Kizhi application on body',
+        'Kizhi treatment setup',
+        'Massage with herbal boluses',
+      ],
+      icon: '🌿',
+      duration: '45-60 mins',
+    },
+    {
+      name: 'Nasya',
+      description: 'Nasya involves the administration of medicated oils or herbal preparations through the nasal passages. It is highly effective for respiratory issues, sinusitis, and neurological disorders.',
+      benefits: [
+        'Clears nasal and sinus passages',
+        'Relieves headaches and migraines',
+        'Improves mental clarity',
+        'Supports respiratory health',
+      ],
+      images: [
+        '/src/assets/therapies/panchakarna/nasya1.png',
+        '/src/assets/therapies/panchakarna/nasya2.png',
+        '/src/assets/therapies/panchakarna/nasya3.png',
+      ],
+      imageDescriptions: [
+        'Nasal oil application',
+        'Nasya oil drop administration',
+        'Nasya treatment setup',
+        'Therapist performing Nasya',
+      ],
+      icon: '💨',
+      duration: '20-30 mins',
+    },
+    {
+      name: 'Tharpanam',
+      description: 'Tharpanam is an Ayurvedic eye treatment where medicated ghee is poured into a dough ring around the eyes. This therapy nourishes and strengthens the eyes, improving vision and relieving eye-related disorders.',
+      benefits: [
+        'Improves vision and eye health',
+        'Reduces eye strain and dryness',
+        'Relieves eye inflammation',
+        'Promotes relaxation of eye muscles',
+      ],
+      images: [
+        '/src/assets/therapies/panchakarna/tharpanam1.png',
+        '/src/assets/therapies/panchakarna/tharpanam2.png',
+      ],
+      imageDescriptions: [
+        'Eye treatment with ghee',
+        'Ghee application in Tharpanam',
+        'Tharpanam treatment setup',
+        'Therapist performing Tharpanam',
+      ],
+      icon: '👁️',
+      duration: '30-45 mins',
+    },
+    {
+      name: 'Virechanam',
+      description: 'Virechanam, a key Panchakarma therapy, involves therapeutic purgation to eliminate toxins through the bowels. It is particularly effective for balancing Pitta dosha and treating digestive and skin disorders.',
+      benefits: [
+        'Detoxifies the liver and intestines',
+        'Improves digestion and metabolism',
+        'Treats skin conditions',
+        'Balances Pitta dosha',
+      ],
+      images: [
+        '/src/assets/therapies/panchakarna/verachanam1.png',
+        '/src/assets/therapies/panchakarna/virechanam2.png',
+      ],
+      imageDescriptions: [
+        'Therapeutic purgation process',
+        'Herbal preparation for Virechanam',
+        'Virechanam treatment setup',
+        'Therapist guiding Virechanam',
+      ],
+      icon: '🫁',
+      duration: '1-3 days',
+    },
+    {
+      name: 'Kati Vasti',
+      description: 'Kati Vasti involves retaining warm medicated oil in a dough ring placed on the lower back. This therapy is highly effective for relieving lower back pain, sciatica, and spinal disorders.',
+      benefits: [
+        'Relieves lower back pain',
+        'Reduces sciatica symptoms',
+        'Improves spinal health',
+        'Enhances circulation in the lower back',
+      ],
+      images: [
+        '/src/assets/therapies/panchakarna/kativasti1.png',
+        '/src/assets/therapies/panchakarna/kativasti2.png',
+        '/src/assets/therapies/panchakarna/kativasti3.png',
+      ],
+      imageDescriptions: [
+        'Oil retention on lower back',
+        'Kati Vasti treatment setup',
+        'Oil application in Kati Vasti',
+        'Therapist performing Kati Vasti',
+      ],
+      icon: '🩺',
+      duration: '30-45 mins',
+    },
+    {
+      name: 'Janu Vasti',
+      description: 'Janu Vasti is a treatment where warm medicated oil is retained in a dough ring around the knee joints. It is effective for knee pain, arthritis, and joint stiffness, promoting mobility and strength.',
+      benefits: [
+        'Relieves knee pain and stiffness',
+        'Improves joint mobility',
+        'Reduces arthritis symptoms',
+        'Nourishes knee tissues',
+      ],
+      images: [
+        '/src/assets/therapies/panchakarna/januvasti1.png',
+        '/src/assets/therapies/panchakarna/januvasti2.png',
+        '/src/assets/therapies/panchakarna/januvasti3.png',
+      ],
+      imageDescriptions: [
+        'Oil retention on knee joints',
+        'Janu Vasti treatment setup',
+        'Oil application in Janu Vasti',
+        'Therapist performing Janu Vasti',
+      ],
+      icon: '🦵',
+      duration: '30-45 mins',
+    },
+    {
+      name: 'Jalauka Avacharnam',
+      description: 'Jalauka Avacharnam, or leech therapy, is a form of Raktamokshana (bloodletting) using medicinal leeches to remove impure blood. It is effective for skin disorders, pain, and improving blood circulation.',
+      benefits: [
+        'Treats skin disorders and ulcers',
+        'Reduces localized pain and swelling',
+        'Improves blood circulation',
+        'Detoxifies the blood',
+      ],
+      images: [
+        '/src/assets/therapies/panchakarna/lt1.png',
+        '/src/assets/therapies/panchakarna/lt2.png',
+      ],
+      imageDescriptions: [
+        'Medicinal leech therapy',
+        'Leech application process',
+        'Jalauka treatment setup',
+        'Therapist performing leech therapy',
+      ],
+      icon: '🩺',
+      duration: '30-60 mins',
+    },
+  ];
 
   const therapyApproach = [
     {
@@ -567,16 +623,21 @@ const VRKAyurvedaTherapiesPage = () => {
       overflow: 'hidden',
       borderRadius: '16px',
       boxShadow: '0 8px 24px rgba(45, 90, 39, 0.06)',
+      background: 'white',
     },
     slideshowImage: {
       width: '100%',
       height: '100%',
-      objectFit: 'cover',
+      objectFit: 'contain',
       position: 'absolute',
       top: 0,
       left: 0,
       opacity: 0,
       transition: 'opacity 0.5s ease-in-out',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      background: 'white',
     },
     slideshowImageActive: {
       opacity: 1,
@@ -859,67 +920,49 @@ const VRKAyurvedaTherapiesPage = () => {
                     <div style={styles.therapyGallery}>
                       {/* Top: Cards for specific therapies */}
                       <div style={styles.galleryCards}>
-                        {therapy.name === 'Panchakarma'
-                          ? [
-                              'Panchakarma Vamana',
-                              'Panchakarma Virechana',
-                              'Panchakarma Nasya',
-                              'Panchakarma Vasti',
-                            ].map((title, imgIndex) => (
-                              <div
-                                key={imgIndex}
-                                style={styles.galleryCard}
-                                onMouseEnter={(e) => {
-                                  e.currentTarget.style.transform = 'translateY(-4px)';
-                                  e.currentTarget.style.boxShadow = '0 16px 40px rgba(45, 90, 39, 0.12)';
-                                }}
-                                onMouseLeave={(e) => {
-                                  e.currentTarget.style.transform = 'translateY(0)';
-                                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(45, 90, 39, 0.06)';
-                                }}
-                              >
-                                {therapy.images[imgIndex]?.replace('.jpg', '').replace(/_/g, ' ') || title}
-                              </div>
-                            ))
-                          : therapy.images.slice(0, 4).map((image, imgIndex) => (
-                              <div
-                                key={imgIndex}
-                                style={styles.galleryCard}
-                                onMouseEnter={(e) => {
-                                  e.currentTarget.style.transform = 'translateY(-4px)';
-                                  e.currentTarget.style.boxShadow = '0 16px 40px rgba(45, 90, 39, 0.12)';
-                                }}
-                                onMouseLeave={(e) => {
-                                  e.currentTarget.style.transform = 'translateY(0)';
-                                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(45, 90, 39, 0.06)';
-                                }}
-                              >
-                                {image.replace('.jpg', '').replace(/_/g, ' ')}
-                              </div>
-                            ))}
+                        {therapy.imageDescriptions.slice(0, 4).map((description, imgIndex) => (
+                          <div
+                            key={imgIndex}
+                            style={styles.galleryCard}
+                            onMouseEnter={(e) => {
+                              e.currentTarget.style.transform = 'translateY(-4px)';
+                              e.currentTarget.style.boxShadow = '0 16px 40px rgba(45, 90, 39, 0.12)';
+                            }}
+                            onMouseLeave={(e) => {
+                              e.currentTarget.style.transform = 'translateY(0)';
+                              e.currentTarget.style.boxShadow = '0 8px 24px rgba(45, 90, 39, 0.06)';
+                            }}
+                          >
+                            {description}
+                          </div>
+                        ))}
                       </div>
 
                       {/* Bottom: Slideshow for all images */}
                       <div style={styles.slideshowContainer}>
                         {therapy.images.map((image, imgIndex) => (
-                          <div
+                          <img
                             key={imgIndex}
+                            src={image}
+                            alt={therapy.imageDescriptions[imgIndex] || `Image ${imgIndex + 1}`}
                             style={{
                               ...styles.slideshowImage,
                               ...(currentSlide[index] === imgIndex ? styles.slideshowImageActive : {}),
                             }}
-                          >
-                            {image.replace('.jpg', '').replace(/_/g, ' ')}
-                          </div>
+                          />
                         ))}
-                        <ChevronLeft
-                          style={{ ...styles.slideshowNav, ...styles.slideshowNavLeft }}
-                          onClick={() => handleSlideChange(index, 'prev')}
-                        />
-                        <ChevronRight
-                          style={{ ...styles.slideshowNav, ...styles.slideshowNavRight }}
-                          onClick={() => handleSlideChange(index, 'next')}
-                        />
+                        {therapy.images.length > 1 && (
+                          <>
+                            <ChevronLeft
+                              style={{ ...styles.slideshowNav, ...styles.slideshowNavLeft }}
+                              onClick={() => handleSlideChange(index, 'prev')}
+                            />
+                            <ChevronRight
+                              style={{ ...styles.slideshowNav, ...styles.slideshowNavRight }}
+                              onClick={() => handleSlideChange(index, 'next')}
+                            />
+                          </>
+                        )}
                       </div>
                     </div>
                   </div>

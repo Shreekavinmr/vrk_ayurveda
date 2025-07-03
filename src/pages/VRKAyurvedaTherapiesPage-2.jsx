@@ -4,7 +4,7 @@ import { HeartPulse, Phone, Mail, ChevronDown, Sparkles, Award, Users, Clock, Ch
 const VRKAyurvedaTherapiesPage = () => {
   const [activeSection] = useState('therapies');
   const [visibleElements, setVisibleElements] = useState({});
-  const [currentSlide, setCurrentSlide] = useState({});
+  const [currentSlide, setCurrentSlide] = useState({ 0: 0, 1: 0, 2: 0 });
 
   // Intersection Observer for scroll animations
   useEffect(() => {
@@ -34,7 +34,7 @@ const VRKAyurvedaTherapiesPage = () => {
       setCurrentSlide((prev) => {
         const newSlides = { ...prev };
         therapiesData.forEach((therapy, index) => {
-          const images = therapy.images; // Use all images for slideshow
+          const images = therapy.images;
           newSlides[index] = ((prev[index] || 0) + 1) % (images.length || 1);
         });
         return newSlides;
@@ -44,84 +44,97 @@ const VRKAyurvedaTherapiesPage = () => {
   }, []);
 
   const therapiesData = [
-  {
-    name: 'Exercise Therapy',
-    description:
-      'Exercise therapy involves a structured program of physical activities tailored to restore function, improve mobility, and relieve pain. It plays a vital role in rehabilitation and prevention of musculoskeletal and neurological conditions.',
-    benefits: [
-      'Improves strength and flexibility',
-      'Enhances joint mobility and balance',
-      'Speeds up recovery after injury or surgery',
-      'Prevents recurrence of chronic pain',
-    ],
-    images: [
-      'Exercise_Therapy_Stretching.jpg',
-      'Exercise_Therapy_Rehab.jpg',
-      'Exercise_Therapy_Session.jpg',
-      'Exercise_Therapy_Equipment.jpg',
-    ],
-    icon: '🏋️',
-    duration: '30-60 mins',
-  },
-  {
-    name: 'Electrotherapy',
-    description:
-      'Electrotherapy uses low-frequency electrical currents to stimulate muscles and nerves, reduce pain, and accelerate healing. Common modalities include TENS, IFT, and ultrasound therapy.',
-    benefits: [
-      'Reduces acute and chronic pain',
-      'Promotes muscle relaxation',
-      'Accelerates tissue healing',
-      'Improves nerve function',
-    ],
-    images: [
-      'Electrotherapy_TENS.jpg',
-      'Electrotherapy_IFT.jpg',
-      'Electrotherapy_Ultrasound.jpg',
-      'Electrotherapy_Setup.jpg',
-    ],
-    icon: '🔌',
-    duration: '20-30 mins',
-  },
-  {
-    name: 'Hydrotherapy',
-    description:
-      'Hydrotherapy in physiotherapy uses water resistance and buoyancy to aid movement, reduce pain, and strengthen muscles. It is highly effective for rehabilitation, especially in arthritis and post-surgical cases.',
-    benefits: [
-      'Reduces joint stress during movement',
-      'Improves muscle tone and endurance',
-      'Enhances range of motion',
-      'Provides low-impact rehabilitation',
-    ],
-    images: [
-      'Hydrotherapy_Pool.jpg',
-      'Hydrotherapy_Session.jpg',
-      'Hydrotherapy_Exercise.jpg',
-      'Hydrotherapy_Equipment.jpg',
-    ],
-    icon: '💧',
-    duration: '30-45 mins',
-  },
-  // {
-  //   name: 'Manual Therapy',
-  //   description:
-  //     'Manual therapy includes hands-on techniques such as joint mobilization, manipulation, and soft tissue massage to reduce pain and restore mobility. It is a core component in physiotherapy treatment plans.',
-  //   benefits: [
-  //     'Alleviates muscle and joint stiffness',
-  //     'Restores normal movement patterns',
-  //     'Reduces pain and inflammation',
-  //     'Improves posture and alignment',
-  //   ],
-  //   images: [
-  //     'Manual_Therapy_Back.jpg',
-  //     'Manual_Therapy_Massage.jpg',
-  //     'Manual_Therapy_Spine.jpg',
-  //     'Manual_Therapy_Session.jpg',
-  //   ],
-  //   icon: '🤲',
-  //   duration: '30-60 mins',
-  // },
-];
-
+    {
+      name: 'Exercise Therapy',
+      description:
+        'Exercise therapy involves a structured program of physical activities tailored to restore function, improve mobility, and relieve pain. It plays a vital role in rehabilitation and prevention of musculoskeletal and neurological conditions.',
+      benefits: [
+        'Improves strength and flexibility',
+        'Enhances joint mobility and balance',
+        'Speeds up recovery after injury or surgery',
+        'Prevents recurrence of chronic pain',
+      ],
+      images: [
+        '/src/assets/therapies/physiotherapy/exetherapy1.png',
+        '/src/assets/therapies/physiotherapy/exetherapy2.png',
+        '/src/assets/therapies/physiotherapy/exetherapy3.png',
+      ],
+      imageDescriptions: [
+        'Targeted stretching exercises',
+        'Rehabilitation movements',
+        'Guided therapy session',
+        'Specialized equipment use',
+      ],
+      icon: '🏋️',
+      duration: '30-60 mins',
+    },
+    {
+      name: 'Electrotherapy',
+      description:
+        'Electrotherapy uses low-frequency electrical currents to stimulate muscles and nerves, reduce pain, and accelerate healing. Common modalities include TENS, IFT, and ultrasound therapy.',
+      benefits: [
+        'Reduces acute and chronic pain',
+        'Promotes muscle relaxation',
+        'Accelerates tissue healing',
+        'Improves nerve function',
+      ],
+      images: [
+        '/src/assets/therapies/physiotherapy/electrotherapy.png',
+        '/src/assets/therapies/physiotherapy/electrotherapy1.png',
+      ],
+      imageDescriptions: [
+        'TENS for pain relief',
+        'IFT for muscle stimulation',
+        'Ultrasound therapy application',
+        'Electrotherapy equipment setup',
+      ],
+      icon: '🔌',
+      duration: '20-30 mins',
+    },
+    {
+      name: 'Hydrotherapy',
+      description:
+        'Hydrotherapy in physiotherapy uses water resistance and buoyancy to aid movement, reduce pain, and strengthen muscles. It is highly effective for rehabilitation, especially in arthritis and post-surgical cases.',
+      benefits: [
+        'Reduces joint stress during movement',
+        'Improves muscle tone and endurance',
+        'Enhances range of motion',
+        'Provides low-impact rehabilitation',
+      ],
+      images: [
+        
+        '/src/assets/therapies/physiotherapy/hydrotherapy.png',
+        '/src/assets/therapies/physiotherapy/hydrotherapy1.png',
+      ],
+      imageDescriptions: [
+        'Therapeutic pool exercises',
+        'Guided hydrotherapy session',
+        'Water-based movement therapy',
+        'Specialized hydrotherapy tools',
+      ],
+      icon: '💧',
+      duration: '30-45 mins',
+    },
+    // {
+    //   name: 'Manual Therapy',
+    //   description:
+    //     'Manual therapy includes hands-on techniques such as joint mobilization, manipulation, and soft tissue massage to reduce pain and restore mobility. It is a core component in physiotherapy treatment plans.',
+    //   benefits: [
+    //     'Alleviates muscle and joint stiffness',
+    //     'Restores normal movement patterns',
+    //     'Reduces pain and inflammation',
+    //     'Improves posture and alignment',
+    //   ],
+    //   images: [
+    //     'Manual_Therapy_Back.jpg',
+    //     'Manual_Therapy_Massage.jpg',
+    //     'Manual_Therapy_Spine.jpg',
+    //     'Manual_Therapy_Session.jpg',
+    //   ],
+    //   icon: '🤲',
+    //   duration: '30-60 mins',
+    // },
+  ];
 
   const therapyApproach = [
     {
@@ -442,16 +455,21 @@ const VRKAyurvedaTherapiesPage = () => {
       overflow: 'hidden',
       borderRadius: '16px',
       boxShadow: '0 8px 24px rgba(45, 90, 39, 0.06)',
+      background: 'white',
     },
     slideshowImage: {
       width: '100%',
       height: '100%',
-      objectFit: 'cover',
+      objectFit: 'contain',
       position: 'absolute',
       top: 0,
       left: 0,
       opacity: 0,
       transition: 'opacity 0.5s ease-in-out',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      background: 'white',
     },
     slideshowImageActive: {
       opacity: 1,
@@ -734,58 +752,36 @@ const VRKAyurvedaTherapiesPage = () => {
                     <div style={styles.therapyGallery}>
                       {/* Top: Cards for specific therapies */}
                       <div style={styles.galleryCards}>
-                        {therapy.name === 'Panchakarma'
-                          ? [
-                              'Panchakarma Vamana',
-                              'Panchakarma Virechana',
-                              'Panchakarma Nasya',
-                              'Panchakarma Vasti',
-                            ].map((title, imgIndex) => (
-                              <div
-                                key={imgIndex}
-                                style={styles.galleryCard}
-                                onMouseEnter={(e) => {
-                                  e.currentTarget.style.transform = 'translateY(-4px)';
-                                  e.currentTarget.style.boxShadow = '0 16px 40px rgba(45, 90, 39, 0.12)';
-                                }}
-                                onMouseLeave={(e) => {
-                                  e.currentTarget.style.transform = 'translateY(0)';
-                                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(45, 90, 39, 0.06)';
-                                }}
-                              >
-                                {therapy.images[imgIndex]?.replace('.jpg', '').replace(/_/g, ' ') || title}
-                              </div>
-                            ))
-                          : therapy.images.slice(0, 4).map((image, imgIndex) => (
-                              <div
-                                key={imgIndex}
-                                style={styles.galleryCard}
-                                onMouseEnter={(e) => {
-                                  e.currentTarget.style.transform = 'translateY(-4px)';
-                                  e.currentTarget.style.boxShadow = '0 16px 40px rgba(45, 90, 39, 0.12)';
-                                }}
-                                onMouseLeave={(e) => {
-                                  e.currentTarget.style.transform = 'translateY(0)';
-                                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(45, 90, 39, 0.06)';
-                                }}
-                              >
-                                {image.replace('.jpg', '').replace(/_/g, ' ')}
-                              </div>
-                            ))}
+                        {therapy.imageDescriptions.slice(0, 4).map((description, imgIndex) => (
+                          <div
+                            key={imgIndex}
+                            style={styles.galleryCard}
+                            onMouseEnter={(e) => {
+                              e.currentTarget.style.transform = 'translateY(-4px)';
+                              e.currentTarget.style.boxShadow = '0 16px 40px rgba(45, 90, 39, 0.12)';
+                            }}
+                            onMouseLeave={(e) => {
+                              e.currentTarget.style.transform = 'translateY(0)';
+                              e.currentTarget.style.boxShadow = '0 8px 24px rgba(45, 90, 39, 0.06)';
+                            }}
+                          >
+                            {description}
+                          </div>
+                        ))}
                       </div>
 
                       {/* Bottom: Slideshow for all images */}
                       <div style={styles.slideshowContainer}>
                         {therapy.images.map((image, imgIndex) => (
-                          <div
+                          <img
                             key={imgIndex}
+                            src={image}
+                            alt={therapy.imageDescriptions[imgIndex] || `Image ${imgIndex + 1}`}
                             style={{
                               ...styles.slideshowImage,
                               ...(currentSlide[index] === imgIndex ? styles.slideshowImageActive : {}),
                             }}
-                          >
-                            {image.replace('.jpg', '').replace(/_/g, ' ')}
-                          </div>
+                          />
                         ))}
                         <ChevronLeft
                           style={{ ...styles.slideshowNav, ...styles.slideshowNavLeft }}
