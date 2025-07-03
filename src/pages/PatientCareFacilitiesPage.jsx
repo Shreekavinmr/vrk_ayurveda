@@ -167,7 +167,7 @@ const VRKPatientCareFacilitiesPage = () => {
     heroTitle: {
       marginTop: '5rem',
       fontSize: '4rem',
-      fontWeight: '800',
+      fontWeight: '700',
       marginBottom: '1.5rem',
       lineHeight: '1.1',
       letterSpacing: '-0.02em',
@@ -227,7 +227,7 @@ const VRKPatientCareFacilitiesPage = () => {
     },
     sectionTitle: {
       fontSize: '3rem',
-      fontWeight: '800',
+      fontWeight: '700',
       color: '#2d5a27',
       marginBottom: '16px',
       lineHeight: '1.2',
@@ -285,7 +285,7 @@ const VRKPatientCareFacilitiesPage = () => {
     },
     statNumber: {
       fontSize: '3rem',
-      fontWeight: '800',
+      fontWeight: '700',
       marginBottom: '8px',
       background: 'linear-gradient(45deg, #ffffff, #90ee90)',
       WebkitBackgroundClip: 'text',
