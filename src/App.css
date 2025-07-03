@@ -3,12 +3,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Lato', sans-serif; /* Apply Lato globally to ensure consistency */
+  font-family: 'Inter', 'Open Sans', 'Lato', sans-serif;
 }
 
 body {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Inter', 'Open Sans', 'Lato', sans-serif;
   background-color: #ffffff;
   color: #6b7280;
 }
