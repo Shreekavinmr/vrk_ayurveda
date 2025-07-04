@@ -55,10 +55,8 @@ const VRKAyurvedaTherapiesPage = () => {
       ],
       images: [
         '/src/assets/therapies/panchakarna/panchakarma1.png',
-        '/src/assets/therapies/panchakarna/panchakarma2.png',
         '/src/assets/therapies/panchakarna/panchakarma3.png',
         '/src/assets/therapies/panchakarna/panchakarma4.png',
-        '/src/assets/therapies/panchakarna/panchakarma5.png',
       ],
       imageDescriptions: [
         'Panchakarma Vamana therapy',

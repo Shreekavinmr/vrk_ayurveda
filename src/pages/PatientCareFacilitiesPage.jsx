@@ -4,6 +4,7 @@ import { HeartPulse, Phone, Mail, ChevronLeft, ChevronRight, Sparkles, Award, Us
 const VRKPatientCareFacilitiesPage = () => {
   const [activeSection] = useState('patient-care');
   const [visibleElements, setVisibleElements] = useState({});
+  const [isMobile, setIsMobile] = useState(false);
 
   // Intersection Observer for scroll animations
   useEffect(() => {
@@ -25,6 +26,18 @@ const VRKPatientCareFacilitiesPage = () => {
     elements.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
+  }, []);
+
+  // Check if mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
   const patientCareData = [
@@ -116,6 +129,10 @@ const VRKPatientCareFacilitiesPage = () => {
       overflow: 'hidden',
       color: 'white',
     },
+    heroSectionMobile: {
+      height: '50vh',
+      minHeight: '550px',
+    },
     heroBackground: {
       position: 'absolute',
       top: 0,
@@ -126,6 +143,10 @@ const VRKPatientCareFacilitiesPage = () => {
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       zIndex: -2,
+    },
+    heroBackgroundMobile: {
+      backgroundSize: 'cover',
+      backgroundPosition: 'center center',
     },
     heroContent: {
       maxWidth: '1400px',
@@ -149,6 +170,10 @@ const VRKPatientCareFacilitiesPage = () => {
       letterSpacing: '-0.02em',
       maxWidth: '800px',
       color: '#2d5a27',
+    },
+    heroTitleMobile: {
+      fontSize: '2.5rem',
+      marginTop: '2rem',
     },
     heroAccent: {
       background: 'linear-gradient(45deg, #daa520, #90ee90)',
@@ -364,7 +389,7 @@ const VRKPatientCareFacilitiesPage = () => {
     },
     facilityDescription: {
       fontSize: '1.1rem',
-      color: '#5a6c57',
+      color:  '#5a6c57',
       lineHeight: '1.7',
     },
     contactSection: {
@@ -488,12 +513,21 @@ const VRKPatientCareFacilitiesPage = () => {
   return (
     <div style={styles.modernContainer}>
       {/* Hero Section */}
-      <section style={styles.heroSection}>
-        <div style={styles.heroBackground}></div>
+      <section style={{
+        ...styles.heroSection,
+        ...(isMobile ? styles.heroSectionMobile : {})
+      }}>
+        <div style={{
+          ...styles.heroBackground,
+          ...(isMobile ? styles.heroBackgroundMobile : {})
+        }}></div>
         <div style={styles.heroContent}>
-          <h1 style={styles.heroTitle}>
+          <h1 style={{
+            ...styles.heroTitle,
+            ...(isMobile ? styles.heroTitleMobile : {})
+          }}>
             Patient Care Facilities
-            <span style={styles.heroAccent}>Vedic Raksha Kendra Ayurveda </span>
+            <span style={styles.heroAccent}>Vedic Raksha Kendra Ayurveda</span>
           </h1>
           <p style={styles.heroDescription}>
             Comprehensive holistic healthcare designed to heal, rejuvenate, and nurture

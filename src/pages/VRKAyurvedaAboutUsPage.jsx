@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { HeartPulse, Phone, Mail, Sparkles, Award, Users, Leaf,Scale,Quote,UserCircle,BookOpenCheck } from 'lucide-react';
+import { HeartPulse, Phone, Mail, Sparkles, Award, Users, Leaf, Scale, Quote, UserCircle, BookOpenCheck } from 'lucide-react';
 
 const VRKAyurvedaAboutUsPage = () => {
   const [visibleElements, setVisibleElements] = useState({});
+  const [isMobile, setIsMobile] = useState(false);
 
   // Intersection Observer for scroll animations
   useEffect(() => {
@@ -26,41 +27,53 @@ const VRKAyurvedaAboutUsPage = () => {
     return () => observer.disconnect();
   }, []);
 
+  // Check if mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   const aboutData = {
     history: 'Established in 2008, Vedic Raksha Kendra Ayurveda hospital was born from a vision to revive and share the ancient healing wisdom of Ayurveda. Founded by Dr. V. R. Krishnan in Kerala, the heartland of Ayurveda, the hospital has grown into a trusted sanctuary for holistic wellness, serving over 500 patients with personalized care.',
     mission: 'Our mission is to empower individuals to achieve optimal health and balance through authentic Ayurvedic practices, integrating traditional wisdom with modern care.',
     coreValues: [
-  {
-    title: 'Authenticity',
-    description: 'Upholding the purity of traditional Ayurvedic practices with high-quality, in-house herbal preparations.',
-    icon: Award
-  },
-  {
-    title: 'Compassion',
-    description: 'Providing care with empathy, respect, and a deep commitment to patient well-being.',
-    icon: HeartPulse
-  },
-  {
-    title: 'Holistic Healing',
-    description: 'Addressing the body, mind, and spirit for comprehensive wellness.',
-    icon: Sparkles
-  },
-  {
-    title: 'Community',
-    description: 'Fostering a supportive environment for patients and practitioners alike.',
-    icon: Users
-  },
-  {
-    title: 'Philosophy',
-    description: 'Health is harmony. We balance the doshas through personalized Ayurvedic treatments and conscious living.',
-    icon: Scale
-  },
-  {
-    title: 'Sustainability',
-    description: 'Embracing eco-friendly practices and ethical sourcing to heal both people and the planet.',
-    icon: Leaf
-  }
-],
+      {
+        title: 'Authenticity',
+        description: 'Upholding the purity of traditional Ayurvedic practices with high-quality, in-house herbal preparations.',
+        icon: Award
+      },
+      {
+        title: 'Compassion',
+        description: 'Providing care with empathy, respect, and a deep commitment to patient well-being.',
+        icon: HeartPulse
+      },
+      {
+        title: 'Holistic Healing',
+        description: 'Addressing the body, mind, and spirit for comprehensive wellness.',
+        icon: Sparkles
+      },
+      {
+        title: 'Community',
+        description: 'Fostering a supportive environment for patients and practitioners alike.',
+        icon: Users
+      },
+      {
+        title: 'Philosophy',
+        description: 'Health is harmony. We balance the doshas through personalized Ayurvedic treatments and conscious living.',
+        icon: Scale
+      },
+      {
+        title: 'Sustainability',
+        description: 'Embracing eco-friendly practices and ethical sourcing to heal both people and the planet.',
+        icon: Leaf
+      }
+    ],
     team: [
       {
         name: 'Dr. V. R. Krishnan',
@@ -83,6 +96,24 @@ const VRKAyurvedaAboutUsPage = () => {
     ],
   };
 
+  const features = [
+    {
+      icon: UserCircle,
+      title: 'A Healer’s Journey',
+      desc: 'From early roots in Ayurveda to decades of dedicated practice, our founder’s story is one of purpose.'
+    },
+    {
+      icon: BookOpenCheck,
+      title: 'Wisdom in Practice',
+      desc: 'Every treatment is informed by deep knowledge, personal intuition, and a love for holistic healing.'
+    },
+    {
+      icon: Quote,
+      title: 'Words that Inspire',
+      desc: '“Healing is not a process of fixing — it’s a return to balance.” — Founder, Vedic Raksha Kendra Ayurveda hospital'
+    }
+  ];
+
   const styles = {
     modernContainer: {
       minHeight: '100vh',
@@ -96,6 +127,10 @@ const VRKAyurvedaAboutUsPage = () => {
       overflow: 'hidden',
       color: 'white',
     },
+    heroSectionMobile: {
+      height: '50vh',
+      minHeight: '550px',
+    },
     heroBackground: {
       position: 'absolute',
       top: 0,
@@ -106,6 +141,10 @@ const VRKAyurvedaAboutUsPage = () => {
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       zIndex: -2,
+    },
+    heroBackgroundMobile: {
+      backgroundSize: 'cover',
+      backgroundPosition: 'center center',
     },
     heroContent: {
       maxWidth: '1400px',
@@ -129,6 +168,10 @@ const VRKAyurvedaAboutUsPage = () => {
       letterSpacing: '-0.02em',
       maxWidth: '800px',
       color: '#2d5a27',
+    },
+    heroTitleMobile: {
+      fontSize: '2.5rem',
+      marginTop: '2rem',
     },
     heroAccent: {
       background: 'linear-gradient(45deg, #daa520, #90ee90)',
@@ -320,9 +363,6 @@ const VRKAyurvedaAboutUsPage = () => {
       width: '4px',
       background: 'linear-gradient(180deg, #90ee90, #6b8e23)',
       transform: 'translateX(-50%)',
-      '@media (max-width: 768px)': {
-        left: '20px',
-      },
     },
     timelineItem: {
       display: 'grid',
@@ -330,9 +370,6 @@ const VRKAyurvedaAboutUsPage = () => {
       gap: '40px',
       marginBottom: '40px',
       position: 'relative',
-      '@media (max-width: 768px)': {
-        gridTemplateColumns: '1fr',
-      },
     },
     timelineYear: {
       fontSize: '1.8rem',
@@ -340,11 +377,6 @@ const VRKAyurvedaAboutUsPage = () => {
       color: '#90ee90',
       textAlign: 'right',
       paddingRight: '40px',
-      '@media (max-width: 768px)': {
-        textAlign: 'left',
-        paddingRight: 0,
-        marginBottom: '16px',
-      },
     },
     timelineEvent: {
       fontSize: '1.1rem',
@@ -352,9 +384,6 @@ const VRKAyurvedaAboutUsPage = () => {
       lineHeight: '1.6',
       paddingLeft: '40px',
       position: 'relative',
-      '@media (max-width: 768px)': {
-        paddingLeft: '40px',
-      },
     },
     timelineDot: {
       position: 'absolute',
@@ -367,9 +396,6 @@ const VRKAyurvedaAboutUsPage = () => {
       border: '3px solid #90ee90',
       borderRadius: '50%',
       zIndex: 1,
-      '@media (max-width: 768px)': {
-        left: '20px',
-      },
     },
     teamSection: {
       background: 'white',
@@ -542,50 +568,42 @@ const VRKAyurvedaAboutUsPage = () => {
       fontSize: '1.2rem',
     },
   };
-  const features = [
-  {
-    icon: UserCircle,
-    title: 'A Healer’s Journey',
-    desc: 'From early roots in Ayurveda to decades of dedicated practice, our founder’s story is one of purpose.'
-  },
-  {
-    icon: BookOpenCheck,
-    title: 'Wisdom in Practice',
-    desc: 'Every treatment is informed by deep knowledge, personal intuition, and a love for holistic healing.'
-  },
-  {
-    icon: Quote,
-    title: 'Words that Inspire',
-    desc: '“Healing is not a process of fixing — it’s a return to balance.” — Founder, Vedic Raksha Kendra Ayurveda hospital'
-  }
-];
-
-
 
   return (
     <div style={styles.modernContainer}>
       {/* Hero Section */}
-      <section style={styles.heroSection}>
-        <div style={styles.heroBackground}></div>
+      <section style={{
+        ...styles.heroSection,
+        ...(isMobile ? styles.heroSectionMobile : {})
+      }}>
+        <div style={{
+          ...styles.heroBackground,
+          ...(isMobile ? styles.heroBackgroundMobile : {})
+        }}></div>
         <div style={styles.heroContent}>
-          <h1 style={styles.heroTitle}>
+          <h1 style={{
+            ...styles.heroTitle,
+            ...(isMobile ? styles.heroTitleMobile : {})
+          }}>
             About Us
             <span style={styles.heroAccent}> Vedic Raksha Kendra Ayurveda hospital</span>
           </h1>
           <p style={styles.heroDescription}>
             Discover our story, mission, and commitment to holistic healing
           </p>
-          <div style={styles.heroFeatures}>
-            {features.map((feature, index) => (
-              <div key={index} style={styles.heroFeature}>
-                <feature.icon style={styles.featureIcon} />
-                <div>
-                  <h3 style={{ fontSize: '1.1rem', fontWeight: '600', marginBottom: '0.25rem' }}>{feature.title}</h3>
-                  <p style={{ fontSize: '0.9rem', opacity: 0.8, margin: 0 }}>{feature.desc}</p>
+          {!isMobile && (
+            <div style={styles.heroFeatures}>
+              {features.map((feature, index) => (
+                <div key={index} style={styles.heroFeature}>
+                  <feature.icon style={styles.featureIcon} />
+                  <div>
+                    <h3 style={{ fontSize: '1.1rem', fontWeight: '600', marginBottom: '0.25rem' }}>{feature.title}</h3>
+                    <p style={{ fontSize: '0.9rem', opacity: 0.8, margin: 0 }}>{feature.desc}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
