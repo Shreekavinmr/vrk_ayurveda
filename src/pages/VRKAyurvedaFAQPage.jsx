@@ -1,9 +1,22 @@
-import React, { useState } from 'react';
-import { FileText, Phone, Mail, Plus, Minus,HelpCircle,MessageCircle,BookOpen} from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { FileText, Phone, Mail, Plus, Minus, HelpCircle, MessageCircle, BookOpen } from 'lucide-react';
 
 const VRKAyurvedaFAQPage = () => {
   const [activeSection] = useState('faq'); // Fixed to FAQ section
   const [openFaqIndex, setOpenFaqIndex] = useState(null); // Track open FAQ item
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const faqItems = [
     {
@@ -83,6 +96,16 @@ const VRKAyurvedaFAQPage = () => {
     }
   ];
 
+    const sections = [
+    { id: 'faq', label: 'Frequently Asked Questions', icon: FileText, data: faqItems }
+  ];
+  
+  const features = [
+    { icon: HelpCircle, title: 'Common Questions', desc: 'Find answers to frequently asked questions about our services.' },
+    { icon: MessageCircle, title: 'Customer Support', desc: 'Still need help? Reach out to our support team anytime.' },
+    { icon: BookOpen, title: 'Detailed Guides', desc: 'Explore step-by-step information to understand our treatments better.' }
+  ];
+
   const styles = {
     modernContainer: {
       minHeight: '100vh',
@@ -96,16 +119,24 @@ const VRKAyurvedaFAQPage = () => {
       overflow: 'hidden',
       color: 'white'
     },
+    heroSectionMobile: {
+      height: '50vh',
+      minHeight: '550px',
+    },
     heroBackground: {
       position: 'absolute',
       top: 0,
       left: 0,
       right: 0,
       bottom: 0,
-      background: 'url("/assets/VRK_Ayurveda.png")',
+      background: 'url("../assets/VRK_Ayurveda.png")',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       zIndex: -2
+    },
+    heroBackgroundMobile: {
+      backgroundSize: 'cover',
+      backgroundPosition: 'center center',
     },
     heroContent: {
       maxWidth: '1400px',
@@ -133,6 +164,10 @@ const VRKAyurvedaFAQPage = () => {
       letterSpacing: '-0.02em',
       maxWidth: '800px',
       color: '#2d5a27',
+    },
+    heroTitleMobile: {
+      fontSize: '2.5rem',
+      marginTop: '2rem',
     },
     heroAccent: {
       background: 'linear-gradient(45deg, #daa520, #90ee90)',
@@ -281,7 +316,7 @@ const VRKAyurvedaFAQPage = () => {
       alignItems: 'center',
       justifyContent: 'center',
       color: 'white',
-      backgroundImage: 'url("/assets/hero_home.png")',
+      backgroundImage: 'url("../assets/hero_home.png")',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       backgroundAttachment: 'fixed',
@@ -316,7 +351,7 @@ const VRKAyurvedaFAQPage = () => {
     },
     contactDescription: {
       fontSize: '1.2rem',
-      opacity: '0.9',
+      opacity: 0.9,
       lineHeight: '1.6'
     },
     contactActions: {
@@ -390,43 +425,45 @@ const VRKAyurvedaFAQPage = () => {
     }
   };
 
-  const sections = [
-    { id: 'faq', label: 'Frequently Asked Questions', icon: FileText, data: faqItems }
-  ];
-
   const handleFaqToggle = (index) => {
     setOpenFaqIndex(openFaqIndex === index ? null : index);
   };
-    const features = [
-  { icon: HelpCircle, title: 'Common Questions', desc: 'Find answers to frequently asked questions about our services.' },
-  { icon: MessageCircle, title: 'Customer Support', desc: 'Still need help? Reach out to our support team anytime.' },
-  { icon: BookOpen, title: 'Detailed Guides', desc: 'Explore step-by-step information to understand our treatments better.' }
-];
 
   return (
     <div style={styles.modernContainer}>
       {/* Hero Section */}
-      <section style={styles.heroSection}>
-        <div style={styles.heroBackground}></div>
+      <section style={{
+        ...styles.heroSection,
+        ...(isMobile ? styles.heroSectionMobile : {})
+      }}>
+        <div style={{
+          ...styles.heroBackground,
+          ...(isMobile ? styles.heroBackgroundMobile : {})
+        }}></div>
         <div style={styles.heroContent}>
-          <h1 style={styles.heroTitle}>
+          <h1 style={{
+            ...styles.heroTitle,
+            ...(isMobile ? styles.heroTitleMobile : {})
+          }}>
             Frequently Asked Questions
             <span style={styles.heroAccent}> Vedic Raksha Kendra Ayurveda hospital</span>
           </h1>
           <p style={styles.heroDescription}>
             Get answers to common queries about your stay and treatments at our holistic healing center
           </p>
-          <div style={styles.heroFeatures}>
-            {features.map((feature, index) => (
-              <div key={index} style={styles.heroFeature}>
-                <feature.icon style={styles.featureIcon} />
-                <div>
-                  <h3 style={{ fontSize: '1.1rem', fontWeight: '600', marginBottom: '0.25rem' }}>{feature.title}</h3>
-                  <p style={{ fontSize: '0.9rem', opacity: 0.8, margin: 0 }}>{feature.desc}</p>
+          {!isMobile && (
+            <div style={styles.heroFeatures}>
+              {features.map((feature, index) => (
+                <div key={index} style={styles.heroFeature}>
+                  <feature.icon style={styles.featureIcon} />
+                  <div>
+                    <h3 style={{ fontSize: '1.1rem', fontWeight: '600', marginBottom: '0.25rem' }}>{feature.title}</h3>
+                    <p style={{ fontSize: '0.9rem', opacity: 0.8, margin: 0 }}>{feature.desc}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
@@ -543,3 +580,5 @@ const VRKAyurvedaFAQPage = () => {
 };
 
 export default VRKAyurvedaFAQPage;
+
+  

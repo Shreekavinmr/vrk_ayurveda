@@ -55,9 +55,9 @@ const VRKAyurvedaTherapiesPage = () => {
         'Balances body temperature',
       ],
       images: [
-        '/src/assets/therapies/naturopathy/mud1.png',
-        '/src/assets/therapies/naturopathy/mud2.png',
-        '/src/assets/therapies/naturopathy/mud3.png',
+        '/assets/therapies/naturopathy/mud1.png',
+        '/assets/therapies/naturopathy/mud2.png',
+        '/assets/therapies/naturopathy/mud3.png',
       ],
       imageDescriptions: [
         'Full-body mud application',
@@ -79,8 +79,8 @@ const VRKAyurvedaTherapiesPage = () => {
         'Stimulates blood circulation',
       ],
       images: [
-        '/src/assets/therapies/naturopathy/banana.png',
-        '/src/assets/therapies/naturopathy/banana2.png',
+        '/assets/therapies/naturopathy/banana.png',
+        '/assets/therapies/naturopathy/banana2.png',
       ],
       imageDescriptions: [
         'Banana leaf body wrap',
@@ -102,9 +102,9 @@ const VRKAyurvedaTherapiesPage = () => {
         'Supports long-term wellness',
       ],
       images: [
-        '/src/assets/therapies/naturopathy/diet.png',
-        '/src/assets/therapies/naturopathy/diet2.png',
-        '/src/assets/therapies/naturopathy/diet3.png',
+        '/assets/therapies/naturopathy/diet.png',
+        '/assets/therapies/naturopathy/diet2.png',
+        '/assets/therapies/naturopathy/diet3.png',
       ],
       imageDescriptions: [
         'Personalized diet consultation',
@@ -180,7 +180,7 @@ const VRKAyurvedaTherapiesPage = () => {
       left: 0,
       right: 0,
       bottom: 0,
-      background: 'url("/src/assets/VRK_Ayurveda.png")',
+      background: 'url("/assets/VRK_Ayurveda.png")',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       zIndex: -2,
@@ -552,7 +552,7 @@ const VRKAyurvedaTherapiesPage = () => {
       alignItems: 'center',
       justifyContent: 'center',
       color: 'white',
-      backgroundImage: 'url("/src/assets/hero_home.png")',
+      backgroundImage: 'url("/assets/hero_home.png")',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       backgroundAttachment: 'fixed',

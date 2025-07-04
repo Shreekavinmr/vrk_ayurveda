@@ -1,11 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { DollarSign, Phone, Mail } from 'lucide-react';
 
 const VRKAyurvedaTreatmentPage = () => {
   const [activeSection] = useState('treatments');
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
+  const [isMobile, setIsMobile] = useState(false);
   const treatmentsPerPage = 10;
+
+  // Check if mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const treatmentsData = [
     { name: 'Abhyanga', duration: '60 min', benefits: 'Full-body oil massage for relaxation and detoxification', price: '₹1500' },
@@ -87,16 +100,24 @@ const VRKAyurvedaTreatmentPage = () => {
       overflow: 'hidden',
       color: 'white'
     },
+    heroSectionMobile: {
+      height: '50vh',
+      minHeight: '550px',
+    },
     heroBackground: {
       position: 'absolute',
       top: 0,
       left: 0,
       right: 0,
       bottom: 0,
-      background: 'url("/assets/VRK_Ayurveda.png")',
+      background: 'url("../assets/VRK_Ayurveda.png")',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       zIndex: -2
+    },
+    heroBackgroundMobile: {
+      backgroundSize: 'cover',
+      backgroundPosition: 'center center',
     },
     heroContent: {
       maxWidth: '1400px',
@@ -120,6 +141,10 @@ const VRKAyurvedaTreatmentPage = () => {
       letterSpacing: '-0.02em',
       maxWidth: '800px',
       color: '#2d5a27'
+    },
+    heroTitleMobile: {
+      fontSize: '2.5rem',
+      marginTop: '2rem',
     },
     heroAccent: {
       background: 'linear-gradient(45deg, #daa520, #90ee90)',
@@ -295,7 +320,7 @@ const VRKAyurvedaTreatmentPage = () => {
       alignItems: 'center',
       justifyContent: 'center',
       color: 'white',
-      backgroundImage: 'url("/assets/hero_home.png")',
+      backgroundImage: 'url("../assets/hero_home.png")',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       backgroundAttachment: 'fixed',
@@ -413,10 +438,19 @@ const VRKAyurvedaTreatmentPage = () => {
   return (
     <div style={styles.modernContainer}>
       {/* Hero Section */}
-      <section style={styles.heroSection}>
-        <div style={styles.heroBackground}></div>
+      <section style={{
+        ...styles.heroSection,
+        ...(isMobile ? styles.heroSectionMobile : {})
+      }}>
+        <div style={{
+          ...styles.heroBackground,
+          ...(isMobile ? styles.heroBackgroundMobile : {})
+        }}></div>
         <div style={styles.heroContent}>
-          <h1 style={styles.heroTitle}>
+          <h1 style={{
+            ...styles.heroTitle,
+            ...(isMobile ? styles.heroTitleMobile : {})
+          }}>
             Our Treatments
             <span style={styles.heroAccent}>Vedic Raksha Kendra Ayurveda hospital</span>
           </h1>

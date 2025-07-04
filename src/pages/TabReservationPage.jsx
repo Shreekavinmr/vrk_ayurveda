@@ -1,8 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Calendar, Users, FileText, Clock, AlertCircle, CheckCircle, Phone, Mail, CreditCard, UserCheck, Stethoscope, MapPin, Award, Shield } from 'lucide-react';
 
 const ModernHospitalUI = () => {
   const [activeSection, setActiveSection] = useState('eligibility');
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const eligibilityCriteria = [
     { icon: '🧠', text: 'Persons suffering from extreme psychological conditions', status: 'not-eligible' },
@@ -55,16 +68,24 @@ const ModernHospitalUI = () => {
       overflow: 'hidden',
       color: 'white'
     },
+    heroSectionMobile: {
+      height: '50vh',
+      minHeight: '550px',
+    },
     heroBackground: {
       position: 'absolute',
       top: 0,
       left: 0,
       right: 0,
       bottom: 0,
-      background: 'url("/assets/VRK_Ayurveda.png")',
+      background: 'url("../assets/VRK_Ayurveda.png")',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       zIndex: -2
+    },
+    heroBackgroundMobile: {
+      backgroundSize: 'cover',
+      backgroundPosition: 'center center',
     },
     heroContent: {
       maxWidth: '1400px',
@@ -92,6 +113,10 @@ const ModernHospitalUI = () => {
       letterSpacing: '-0.02em',
       maxWidth: '800px',
       color: '#2d5a27',
+    },
+    heroTitleMobile: {
+      fontSize: '2.5rem',
+      marginTop: '2rem',
     },
     heroAccent: {
       background: 'linear-gradient(45deg, #daa520, #90ee90)',
@@ -284,7 +309,7 @@ const ModernHospitalUI = () => {
       alignItems: 'center',
       justifyContent: 'center',
       color: 'white',
-      backgroundImage: 'url("/assets/hero_home.png")',
+      backgroundImage: 'url("../assets/hero_home.png")',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       backgroundAttachment: 'fixed',
@@ -396,27 +421,38 @@ const ModernHospitalUI = () => {
   return (
     <div style={styles.modernContainer}>
       {/* Hero Section */}
-      <section style={styles.heroSection}>
-        <div style={styles.heroBackground}></div>
+      <section style={{
+        ...styles.heroSection,
+        ...(isMobile ? styles.heroSectionMobile : {})
+      }}>
+        <div style={{
+          ...styles.heroBackground,
+          ...(isMobile ? styles.heroBackgroundMobile : {})
+        }}></div>
         <div style={styles.heroContent}>
-          <h1 style={styles.heroTitle}>
+          <h1 style={{
+            ...styles.heroTitle,
+            ...(isMobile ? styles.heroTitleMobile : {})
+          }}>
             Experience Natural Healing
             <span style={styles.heroAccent}> & Wellness</span>
           </h1>
           <p style={styles.heroDescription}>
             Discover holistic treatment in our serene environment where traditional healing meets modern care
           </p>
-          <div style={styles.heroFeatures}>
-            {features.map((feature, index) => (
-              <div key={index} style={styles.heroFeature}>
-                <feature.icon style={styles.featureIcon} />
-                <div>
-                  <h3 style={{ fontSize: '1.1rem', fontWeight: '600', marginBottom: '0.25rem' }}>{feature.title}</h3>
-                  <p style={{ fontSize: '0.9rem', opacity: 0.8, margin: 0 }}>{feature.desc}</p>
+          {!isMobile && (
+            <div style={styles.heroFeatures}>
+              {features.map((feature, index) => (
+                <div key={index} style={styles.heroFeature}>
+                  <feature.icon style={styles.featureIcon} />
+                  <div>
+                    <h3 style={{ fontSize: '1.1rem', fontWeight: '600', marginBottom: '0.25rem' }}>{feature.title}</h3>
+                    <p style={{ fontSize: '0.9rem', opacity: 0.8, margin: 0 }}>{feature.desc}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

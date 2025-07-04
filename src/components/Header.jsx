@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ChevronDown ,ArrowRight } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import '../styles/Header.css';
 import logo from '/assets/logo.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSubmenu, setActiveSubmenu] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,16 +25,23 @@ export const Header = () => {
   }, [scrolled]);
 
   const toggleSubmenu = (index) => {
-  setActiveSubmenu(prev => prev === index ? null : index);
-};
+    setActiveSubmenu(prev => prev === index ? null : index);
+  };
 
-const openSubmenu = (index) => {
-  setActiveSubmenu(index);
-};
+  const openSubmenu = (index) => {
+    setActiveSubmenu(index);
+  };
 
-const closeSubmenu = () => {
-  setActiveSubmenu(null);
-};
+  const closeSubmenu = () => {
+    setActiveSubmenu(null);
+  };
+
+  const handleNavigation = (link) => {
+    window.scrollTo(0, 0); // Scroll to top
+    setMobileMenuOpen(false); // Close mobile menu
+    setActiveSubmenu(null); // Close any open submenus
+    navigate(link); // Navigate to the link
+  };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -77,7 +85,7 @@ const closeSubmenu = () => {
         { title: 'Physiotherapy', link: '/therapies/Physiotherapy' },
         { title: 'Yoga Therapy', link: '/therapies/yoga-therapy' },
       ]
-     },
+    },
     { title: 'Disease Treated', link: '/disease-treated' },
     { 
       title: 'Tarriff', 
@@ -92,7 +100,7 @@ const closeSubmenu = () => {
       title: 'Reservation', 
       link: '/reservation',
       submenu: [
-        { title: 'Admission Cancellation', link: '/reservation/admission-cancellation' },
+        { title: 'Admission', link: '/reservation/admission-cancellation' },
         { title: 'Rules & Regulations', link: '/reservation/rules' },
         { title: 'FAQS', link: '/reservation/faqs' },
       ]
@@ -104,7 +112,7 @@ const closeSubmenu = () => {
     <header className={`site-header ${scrolled ? 'scrolled' : ''} ${mobileMenuOpen ? 'menu-open' : ''}`}>
       <div className="header-container">
         <div className="logo-container">
-          <a to="/" className="logo">
+          <a onClick={() => handleNavigation('/')} className="logo">
             <div className="logo-image">
               <img src={logo} alt="VRK Logo" className="company-logo" />
             </div>
@@ -119,18 +127,22 @@ const closeSubmenu = () => {
           <ul className="nav-list">
             {navItems.map((item, index) => (
               <li key={index} className={`nav-item ${item.submenu ? 'has-submenu' : ''}`}
-              onMouseEnter={item.submenu ? () => openSubmenu(index) : undefined}
-  onMouseLeave={item.submenu ? () => closeSubmenu() : undefined}
+                onMouseEnter={item.submenu ? () => openSubmenu(index) : undefined}
+                onMouseLeave={item.submenu ? () => closeSubmenu() : undefined}
               >
                 <Link 
                   to={item.link} 
                   className="nav-link"
-                  onClick={item.submenu ? (e) => {
-                    e.preventDefault();
-                    toggleSubmenu(index);
-                  } : undefined}
+                  onClick={(e) => {
+                    if (item.submenu) {
+                      e.preventDefault();
+                      toggleSubmenu(index);
+                    } else {
+                      handleNavigation(item.link);
+                    }
+                  }}
                   onMouseEnter={item.submenu ? () => openSubmenu(index) : undefined}
-onMouseLeave={item.submenu ? () => closeSubmenu() : undefined}
+                  onMouseLeave={item.submenu ? () => closeSubmenu() : undefined}
                 >
                   {item.title}
                   {item.submenu && (
@@ -144,9 +156,13 @@ onMouseLeave={item.submenu ? () => closeSubmenu() : undefined}
                   >
                     {item.submenu.map((subItem, subIndex) => (
                       <li key={subIndex} className="submenu-item">
-                        <Link  to={subItem.link} className="submenu-link">
+                        <Link 
+                          to={subItem.link} 
+                          className="submenu-link"
+                          onClick={() => handleNavigation(subItem.link)}
+                        >
                           {subItem.title}
-                        </Link >
+                        </Link>
                       </li>
                     ))}
                   </ul>
@@ -168,25 +184,33 @@ onMouseLeave={item.submenu ? () => closeSubmenu() : undefined}
                   <Link  
                     to={item.link} 
                     className="mobile-nav-link"
-                    onClick={item.submenu ? (e) => {
-                      e.preventDefault();
-                      toggleSubmenu(index);
-                    } : undefined}
+                    onClick={(e) => {
+                      if (item.submenu) {
+                        e.preventDefault();
+                        toggleSubmenu(index);
+                      } else {
+                        handleNavigation(item.link);
+                      }
+                    }}
                   >
                     {item.title}
                     {item.submenu && (
                       <ChevronDown className={`mobile-submenu-icon ${activeSubmenu === index ? 'active' : ''}`} size={20} />
                     )}
-                  </Link >
+                  </Link>
                 </li>
                 
                 {item.submenu && (
                   <ul className={`mobile-submenu ${activeSubmenu === index ? 'active' : ''}`}>
                     {item.submenu.map((subItem, subIndex) => (
                       <li key={subIndex} className="mobile-submenu-item">
-                        <Link  to={subItem.link} className="mobile-submenu-link">
+                        <Link 
+                          to={subItem.link} 
+                          className="mobile-submenu-link"
+                          onClick={() => handleNavigation(subItem.link)}
+                        >
                           {subItem.title}
-                        </Link >
+                        </Link>
                       </li>
                     ))}
                   </ul>

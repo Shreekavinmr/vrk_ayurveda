@@ -1,8 +1,21 @@
-import React, { useState } from 'react';
-import { Clock, Users, Shield, Phone, Utensils, Ban, Eye, CreditCard, Home, AlertTriangle, CheckCircle, Wifi, Gift, Moon, Calendar, UserX, Mail,HelpCircle,MessageCircle,BookOpen } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Clock, Users, Shield, Phone, Utensils, Ban, Eye, CreditCard, Home, AlertTriangle, CheckCircle, Wifi, Gift, Moon, Calendar, UserX, Mail, HelpCircle, MessageCircle, BookOpen } from 'lucide-react';
 
 const HospitalRulesPage = () => {
   const [activeSection, setActiveSection] = useState('general');
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const generalRules = [
     { icon: Clock, title: 'Operating Hours', desc: 'Hospital functions daily from 9:00 AM to 5:00 PM, including Sundays' },
@@ -64,6 +77,12 @@ const HospitalRulesPage = () => {
     { icon: '📄', text: 'Aadhar Card photocopy' }
   ];
 
+  const features = [
+    { icon: HelpCircle, title: 'Common Questions', desc: 'Find answers to frequently asked questions about our services.' },
+    { icon: MessageCircle, title: 'Customer Support', desc: 'Still need help? Reach out to our support team anytime.' },
+    { icon: BookOpen, title: 'Detailed Guides', desc: 'Explore step-by-step information to understand our treatments better.' }
+  ];
+
   const styles = {
     modernContainer: {
       minHeight: '100vh',
@@ -77,16 +96,24 @@ const HospitalRulesPage = () => {
       overflow: 'hidden',
       color: 'white'
     },
+    heroSectionMobile: {
+      height: '50vh',
+      minHeight: '550px',
+    },
     heroBackground: {
       position: 'absolute',
       top: 0,
       left: 0,
       right: 0,
       bottom: 0,
-      background: 'url("/assets/VRK_Ayurveda.png")',
+      background: 'url("../assets/VRK_Ayurveda.png")',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       zIndex: -2
+    },
+    heroBackgroundMobile: {
+      backgroundSize: 'cover',
+      backgroundPosition: 'center center',
     },
     heroContent: {
       maxWidth: '1400px',
@@ -114,6 +141,10 @@ const HospitalRulesPage = () => {
       letterSpacing: '-0.02em',
       maxWidth: '800px',
       color: '#2d5a27',
+    },
+    heroTitleMobile: {
+      fontSize: '2.5rem',
+      marginTop: '2rem',
     },
     heroAccent: {
       background: 'linear-gradient(45deg, #daa520, #90ee90)',
@@ -199,10 +230,10 @@ const HospitalRulesPage = () => {
       background: '#f8fdf6',
     },
     contentContainer: {
-    maxWidth: '1200px',
-    margin: '0 auto',
-    padding: '0 2rem', 
-  },
+      maxWidth: '1200px',
+      margin: '0 auto',
+      padding: '0 2rem',
+    },
     contentSection: {
       animation: 'fadeIn 0.5s ease-in-out'
     },
@@ -295,7 +326,7 @@ const HospitalRulesPage = () => {
       alignItems: 'center',
       justifyContent: 'center',
       color: 'white',
-      backgroundImage: 'url("/assets/hero_home.png")',
+      backgroundImage: 'url("../assets/hero_home.png")',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       backgroundAttachment: 'fixed',
@@ -415,198 +446,203 @@ const HospitalRulesPage = () => {
     { id: 'packing', label: 'What to Bring', icon: Gift, data: packingList }
   ];
 
-  const features = [
-  { icon: HelpCircle, title: 'Common Questions', desc: 'Find answers to frequently asked questions about our services.' },
-  { icon: MessageCircle, title: 'Customer Support', desc: 'Still need help? Reach out to our support team anytime.' },
-  { icon: BookOpen, title: 'Detailed Guides', desc: 'Explore step-by-step information to understand our treatments better.' }
-];
-
   return (
-  <div style={styles.modernContainer}>
-    {/* Hero Section */}
-    <section style={styles.heroSection}>
-      <div style={styles.heroBackground}></div>
-      <div style={styles.heroContent}>
-        <h1 style={styles.heroTitle}>
-          Hospital Rules &
-          <span style={styles.heroAccent}> Regulations</span>
-        </h1>
-        <p style={styles.heroDescription}>
-          Please review and follow all guidelines to ensure a peaceful and effective healing environment for everyone
-        </p>
-        <div style={styles.heroFeatures}>
-            {features.map((feature, index) => (
-              <div key={index} style={styles.heroFeature}>
-                <feature.icon style={styles.featureIcon} />
-                <div>
-                  <h3 style={{ fontSize: '1.1rem', fontWeight: '600', marginBottom: '0.25rem' }}>{feature.title}</h3>
-                  <p style={{ fontSize: '0.9rem', opacity: 0.8, margin: 0 }}>{feature.desc}</p>
+    <div style={styles.modernContainer}>
+      {/* Hero Section */}
+      <section style={{
+        ...styles.heroSection,
+        ...(isMobile ? styles.heroSectionMobile : {})
+      }}>
+        <div style={{
+          ...styles.heroBackground,
+          ...(isMobile ? styles.heroBackgroundMobile : {})
+        }}></div>
+        <div style={styles.heroContent}>
+          <h1 style={{
+            ...styles.heroTitle,
+            ...(isMobile ? styles.heroTitleMobile : {})
+          }}>
+            Hospital Rules &
+            <span style={styles.heroAccent}> Regulations</span>
+          </h1>
+          <p style={styles.heroDescription}>
+            Please review and follow all guidelines to ensure a peaceful and effective healing environment for everyone
+          </p>
+          {!isMobile && (
+            <div style={styles.heroFeatures}>
+              {features.map((feature, index) => (
+                <div key={index} style={styles.heroFeature}>
+                  <feature.icon style={styles.featureIcon} />
+                  <div>
+                    <h3 style={{ fontSize: '1.1rem', fontWeight: '600', marginBottom: '0.25rem' }}>{feature.title}</h3>
+                    <p style={{ fontSize: '0.9rem', opacity: 0.8, margin: 0 }}>{feature.desc}</p>
+                  </div>
                 </div>
-              </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Navigation */}
+      <nav style={styles.navSection}>
+        <div style={styles.navContainer}>
+          <div style={styles.navTabs}>
+            {sections.map(({ id, label, icon: Icon }) => (
+              <button
+                key={id}
+                onClick={() => setActiveSection(id)}
+                style={{
+                  ...styles.navTab,
+                  ...(activeSection === id ? styles.navTabActive : {})
+                }}
+                onMouseEnter={(e) => {
+                  if (activeSection !== id) {
+                    e.target.style.background = 'rgba(109, 142, 35, 0.1)';
+                    e.target.style.color = '#1a3d1a';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (activeSection !== id) {
+                    e.target.style.background = 'none';
+                    e.target.style.color = '#2d5a27';
+                  }
+                }}
+              >
+                <Icon style={styles.tabIcon} />
+                <span>{label}</span>
+              </button>
             ))}
           </div>
-      </div>
-    </section>
+        </div>
+      </nav>
 
-    {/* Navigation */}
-    <nav style={styles.navSection}>
-      <div style={styles.navContainer}>
-        <div style={styles.navTabs}>
-          {sections.map(({ id, label, icon: Icon }) => (
-            <button
-              key={id}
-              onClick={() => setActiveSection(id)}
-              style={{
-                ...styles.navTab,
-                ...(activeSection === id ? styles.navTabActive : {})
-              }}
-              onMouseEnter={(e) => {
-                if (activeSection !== id) {
-                  e.target.style.background = 'rgba(109, 142, 35, 0.1)';
-                  e.target.style.color = '#1a3d1a';
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (activeSection !== id) {
-                  e.target.style.background = 'none';
-                  e.target.style.color = '#2d5a27';
-                }
-              }}
-            >
-              <Icon style={styles.tabIcon} />
-              <span>{label}</span>
-            </button>
+      {/* Content Sections */}
+      <main style={styles.mainContent}>
+        <div style={styles.contentContainer}>
+          {sections.map(({ id, label, data }) => (
+            activeSection === id && (
+              <section key={id} style={styles.contentSection}>
+                <div style={styles.sectionHeader}>
+                  <h2 style={styles.sectionTitle}>{label}</h2>
+                  <p style={styles.sectionDescription}>
+                    {id === 'packing' 
+                      ? 'Essential items to bring during admission'
+                      : 'Important guidelines to follow during your stay'
+                    }
+                  </p>
+                </div>
+                
+                {id === 'packing' ? (
+                  <div style={styles.packingGrid}>
+                    {data.map((item, index) => (
+                      <div key={index} style={styles.packingCard}
+                           onMouseEnter={(e) => {
+                             e.currentTarget.style.boxShadow = '0 4px 16px rgba(45, 90, 39, 0.15)';
+                             e.currentTarget.style.transform = 'translateY(-2px)';
+                           }}
+                           onMouseLeave={(e) => {
+                             e.currentTarget.style.boxShadow = '0 2px 8px rgba(45, 90, 39, 0.1)';
+                             e.currentTarget.style.transform = 'translateY(0)';
+                           }}>
+                        <div style={styles.packingIcon}>{item.icon}</div>
+                        <p style={styles.packingText}>{item.text}</p>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div style={styles.rulesGrid}>
+                    {data.map((rule, index) => (
+                      <div key={index} style={styles.ruleCard}
+                           onMouseEnter={(e) => {
+                             e.currentTarget.style.boxShadow = '0 8px 24px rgba(45, 90, 39, 0.15)';
+                             e.currentTarget.style.transform = 'translateY(-2px)';
+                           }}
+                           onMouseLeave={(e) => {
+                             e.currentTarget.style.boxShadow = '0 4px 12px rgba(45, 90, 39, 0.15)';
+                             e.currentTarget.style.transform = 'translateY(0)';
+                           }}>
+                        <div style={styles.cardIcon}>
+                          <rule.icon />
+                        </div>
+                        <div style={styles.cardContent}>
+                          <h3 style={styles.cardTitle}>{rule.title}</h3>
+                          <p style={styles.cardDescription}>{rule.desc}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </section>
+            )
           ))}
         </div>
-      </div>
-    </nav>
+      </main>
 
-    {/* Content Sections */}
-    <main style={styles.mainContent}>
-      <div style={styles.contentContainer}>
-        {sections.map(({ id, label, data }) => (
-          activeSection === id && (
-            <section key={id} style={styles.contentSection}>
-              <div style={styles.sectionHeader}>
-                <h2 style={styles.sectionTitle}>{label}</h2>
-                <p style={styles.sectionDescription}>
-                  {id === 'packing' 
-                    ? 'Essential items to bring during admission'
-                    : 'Important guidelines to follow during your stay'
-                  }
-                </p>
-              </div>
-              
-              {id === 'packing' ? (
-                <div style={styles.packingGrid}>
-                  {data.map((item, index) => (
-                    <div key={index} style={styles.packingCard}
-                         onMouseEnter={(e) => {
-                           e.currentTarget.style.boxShadow = '0 4px 16px rgba(45, 90, 39, 0.15)';
-                           e.currentTarget.style.transform = 'translateY(-2px)';
-                         }}
-                         onMouseLeave={(e) => {
-                           e.currentTarget.style.boxShadow = '0 2px 8px rgba(45, 90, 39, 0.1)';
-                           e.currentTarget.style.transform = 'translateY(0)';
-                         }}>
-                      <div style={styles.packingIcon}>{item.icon}</div>
-                      <p style={styles.packingText}>{item.text}</p>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <div style={styles.rulesGrid}>
-                  {data.map((rule, index) => (
-                    <div key={index} style={styles.ruleCard}
-                         onMouseEnter={(e) => {
-                           e.currentTarget.style.boxShadow = '0 8px 24px rgba(45, 90, 39, 0.15)';
-                           e.currentTarget.style.transform = 'translateY(-2px)';
-                         }}
-                         onMouseLeave={(e) => {
-                           e.currentTarget.style.boxShadow = '0 4px 12px rgba(45, 90, 39, 0.15)';
-                           e.currentTarget.style.transform = 'translateY(0)';
-                         }}>
-                      <div style={styles.cardIcon}>
-                        <rule.icon />
-                      </div>
-                      <div style={styles.cardContent}>
-                        <h3 style={styles.cardTitle}>{rule.title}</h3>
-                        <p style={styles.cardDescription}>{rule.desc}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </section>
-          )
-        ))}
-      </div>
-    </main>
-
-    {/* Contact Section */}
-    <section style={styles.contactSection}>
-      <div style={styles.contactOverlay}></div>
-      <div style={styles.contactContent}>
-        <div style={styles.contactHeader}>
-          <h2 style={styles.contactTitle}>Questions About Our Policies?</h2>
-          <p style={styles.contactDescription}>
-            Contact us to discuss any questions or clarifications regarding our rules and regulations
-          </p>
-        </div>
-        <div style={styles.contactActions}>
-          <a href="tel:+919080108558" style={{...styles.contactBtn, ...styles.contactBtnPrimary}}
-             onMouseEnter={(e) => {
-               e.target.style.background = '#f8f9fa';
-               e.target.style.transform = 'translateY(-2px)';
-               e.target.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.15)';
-             }}
-             onMouseLeave={(e) => {
-               e.target.style.background = 'white';
-               e.target.style.transform = 'translateY(0)';
-               e.target.style.boxShadow = 'none';
-             }}>
-            <Phone style={styles.btnIcon} />
-            <span>Call Now</span>
-          </a>
-          <a href="mailto:v.sglobal2025@gmail.com" style={{...styles.contactBtn, ...styles.contactBtnSecondary}}
-             onMouseEnter={(e) => {
-               e.target.style.background = 'rgba(255, 255, 255, 0.1)';
-               e.target.style.borderColor = 'white';
-             }}
-             onMouseLeave={(e) => {
-               e.target.style.background = 'transparent';
-               e.target.style.borderColor = 'rgba(255, 255, 255, 0.3)';
-             }}>
-            <Mail style={styles.btnIcon} />
-            <span>Send Email</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    {/* Footer Section */}
-    <section style={styles.footerSection}>
-      <div style={styles.footerContent}>
-        <h3 style={styles.footerTitle}>Vedic Raksha Kendra Ayurveda hospital</h3>
-        <p style={styles.footerText}>Your partner in natural healing and holistic wellness</p>
-        <div style={styles.footerInfo}>
-          <div style={styles.footerInfoCard}>
-            <h4 style={styles.footerInfoTitle}>Contact Information</h4>
-            <p style={{ margin: '0.5rem 0', color: '#6c757d' }}>Phone: +91 90801 08558</p>
-            <p style={{ margin: '0.5rem 0', color: '#6c757d' }}>Email: v.sglobal2025@gmail.com</p>
+      {/* Contact Section */}
+      <section style={styles.contactSection}>
+        <div style={styles.contactOverlay}></div>
+        <div style={styles.contactContent}>
+          <div style={styles.contactHeader}>
+            <h2 style={styles.contactTitle}>Questions About Our Policies?</h2>
+            <p style={styles.contactDescription}>
+              Contact us to discuss any questions or clarifications regarding our rules and regulations
+            </p>
           </div>
-          <div style={styles.footerInfoCard}>
-            <h4 style={styles.footerInfoTitle}>Treatment Approach</h4>
-            <p style={{ margin: 0, color: '#6c757d' }}>Natural healing methods combined with modern medical care for comprehensive wellness</p>
-          </div>
-          <div style={styles.footerInfoCard}>
-            <h4 style={styles.footerInfoTitle}>Reservation Required</h4>
-            <p style={{ margin: 0, color: '#6c757d' }}>Prior consultation and advance booking mandatory for all treatments</p>
+          <div style={styles.contactActions}>
+            <a href="tel:+919080108558" style={{...styles.contactBtn, ...styles.contactBtnPrimary}}
+               onMouseEnter={(e) => {
+                 e.target.style.background = '#f8f9fa';
+                 e.target.style.transform = 'translateY(-2px)';
+                 e.target.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.15)';
+               }}
+               onMouseLeave={(e) => {
+                 e.target.style.background = 'white';
+                 e.target.style.transform = 'translateY(0)';
+                 e.target.style.boxShadow = 'none';
+               }}>
+              <Phone style={styles.btnIcon} />
+              <span>Call Now</span>
+            </a>
+            <a href="mailto:v.sglobal2025@gmail.com" style={{...styles.contactBtn, ...styles.contactBtnSecondary}}
+               onMouseEnter={(e) => {
+                 e.target.style.background = 'rgba(255, 255, 255, 0.1)';
+                 e.target.style.borderColor = 'white';
+               }}
+               onMouseLeave={(e) => {
+                 e.target.style.background = 'transparent';
+                 e.target.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+               }}>
+              <Mail style={styles.btnIcon} />
+              <span>Send Email</span>
+            </a>
           </div>
         </div>
-      </div>
-    </section>
-  </div>
+      </section>
+
+      {/* Footer Section */}
+      <section style={styles.footerSection}>
+        <div style={styles.footerContent}>
+          <h3 style={styles.footerTitle}>Vedic Raksha Kendra Ayurveda hospital</h3>
+          <p style={styles.footerText}>Your partner in natural healing and holistic wellness</p>
+          <div style={styles.footerInfo}>
+            <div style={styles.footerInfoCard}>
+              <h4 style={styles.footerInfoTitle}>Contact Information</h4>
+              <p style={{ margin: '0.5rem 0', color: '#6c757d' }}>Phone: +91 90801 08558</p>
+              <p style={{ margin: '0.5rem 0', color: '#6c757d' }}>Email: v.sglobal2025@gmail.com</p>
+            </div>
+            <div style={styles.footerInfoCard}>
+              <h4 style={styles.footerInfoTitle}>Treatment Approach</h4>
+              <p style={{ margin: 0, color: '#6c757d' }}>Natural healing methods combined with modern medical care for comprehensive wellness</p>
+            </div>
+            <div style={styles.footerInfoCard}>
+              <h4 style={styles.footerInfoTitle}>Reservation Required</h4>
+              <p style={{ margin: 0, color: '#6c757d' }}>Prior consultation and advance booking mandatory for all treatments</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 };
 

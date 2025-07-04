@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { DollarSign, Phone, Mail } from 'lucide-react';
 import dormetry from '/assets/dometry.png';
 import acc_ac from '/assets/acc_ac.jpg';
@@ -9,6 +9,19 @@ import acc_suite from '/assets/acc_suite.png';
 
 const VRKAyurvedaTariffPage = () => {
   const [activeSection] = useState('tariff');
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const tariffData = [
     { type: 'Standard A/C', rate: '₹2000/day', occupancy: 'Single/Twin' },
@@ -18,28 +31,27 @@ const VRKAyurvedaTariffPage = () => {
   ];
 
   const roomDetails = [
-  {
-    type: 'Standard A/C',
-    description: 'These air-conditioned rooms are located on the ground floor with a view of the garden. Each room is equipped with two individual wooden cots, a cupboard, television, and an attached bath with shower and toilet. Ideal for single or twin occupancy, offering comfort and quiet in a traditional setting.',
-    images: [acc_ac,acc_dining,acc_ent]
-  },
-  {
-    type: 'Standard Non-A/C',
-    description: 'Non-air-conditioned rooms set in a peaceful corridor layout with access to the lush garden. Features include two wooden cots, a cupboard, a television, and an attached bathroom. Suitable for guests who prefer natural ventilation in a calm and serene environment.',
-    images: [acc_nonac,acc_dining,acc_ent]
-  },
-  {
-    type: 'Suite Room',
-    description: 'Spacious, air-conditioned premium rooms such as the Deluxe and Valley Rooms. These come with a wooden king-size or double cot, wardrobe, chairs, attached modern bathroom, and a private sit-out or scenic view. Suitable for couples or families who prefer enhanced privacy and comfort.',
-    images: [acc_suite ,acc_dining,acc_ac]
-  },
-  {
-    type: 'Dormitory',
-    description: 'The Dormitory offers shared accommodation with five individual wooden cots, wardrobes, television, and access to clean, attached baths and toilets. Best suited for group stays or budget-friendly bookings.',
-    images: [dormetry]
-  }
-];
-
+    {
+      type: 'Standard A/C',
+      description: 'These air-conditioned rooms are located on the ground floor with a view of the garden. Each room is equipped with two individual wooden cots, a cupboard, television, and an attached bath with shower and toilet. Ideal for single or twin occupancy, offering comfort and quiet in a traditional setting.',
+      images: [acc_ac, acc_dining, acc_ent]
+    },
+    {
+      type: 'Standard Non-A/C',
+      description: 'Non-air-conditioned rooms set in a peaceful corridor layout with access to the lush garden. Features include two wooden cots, a cupboard, a television, and an attached bathroom. Suitable for guests who prefer natural ventilation in a calm and serene environment.',
+      images: [acc_nonac, acc_dining, acc_ent]
+    },
+    {
+      type: 'Suite Room',
+      description: 'Spacious, air-conditioned premium rooms such as the Deluxe and Valley Rooms. These come with a wooden king-size or double cot, wardrobe, chairs, attached modern bathroom, and a private sit-out or scenic view. Suitable for couples or families who prefer enhanced privacy and comfort.',
+      images: [acc_suite, acc_dining, acc_ac]
+    },
+    {
+      type: 'Dormitory',
+      description: 'The Dormitory offers shared accommodation with five individual wooden cots, wardrobes, television, and access to clean, attached baths and toilets. Best suited for group stays or budget-friendly bookings.',
+      images: [dormetry]
+    }
+  ];
 
   const paymentDetails = [
     'An advance amount will be collected during the time of admission as per the chosen type of accommodation only from those who have not made a reservation deposit.',
@@ -61,16 +73,24 @@ const VRKAyurvedaTariffPage = () => {
       overflow: 'hidden',
       color: 'white'
     },
+    heroSectionMobile: {
+      height: '50vh',
+      minHeight: '550px',
+    },
     heroBackground: {
       position: 'absolute',
       top: 0,
       left: 0,
       right: 0,
       bottom: 0,
-      background: 'url("/assets/VRK_Ayurveda.png")',
+      background: 'url("../assets/VRK_Ayurveda.png")',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       zIndex: -2
+    },
+    heroBackgroundMobile: {
+      backgroundSize: 'cover',
+      backgroundPosition: 'center center',
     },
     heroContent: {
       maxWidth: '1400px',
@@ -99,6 +119,10 @@ const VRKAyurvedaTariffPage = () => {
       maxWidth: '800px',
       color: '#2d5a27'
     },
+    heroTitleMobile: {
+      fontSize: '2.5rem',
+      marginTop: '2rem',
+    },
     heroAccent: {
       background: 'linear-gradient(45deg, #daa520, #90ee90)',
       WebkitBackgroundClip: 'text',
@@ -113,7 +137,6 @@ const VRKAyurvedaTariffPage = () => {
       lineHeight: '1.6',
       color: '#1a3d1a'
     },
-    
     mainContent: {
       background: '#f0f8e8',
       padding: '3rem 0'
@@ -197,8 +220,8 @@ const VRKAyurvedaTariffPage = () => {
     },
     roomSection: {
       padding: '4rem 0',
-      margin: 0, // Remove margin to ensure no gaps
-      background: '#ffffff' // Pure white background
+      margin: 0,
+      background: '#ffffff'
     },
     roomContent: {
       maxWidth: '1200px',
@@ -285,7 +308,7 @@ const VRKAyurvedaTariffPage = () => {
       alignItems: 'center',
       justifyContent: 'center',
       color: 'white',
-      backgroundImage: 'url("/assets/hero_home.png")',
+      backgroundImage: 'url("../assets/hero_home.png")',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       backgroundAttachment: 'fixed',
@@ -296,7 +319,7 @@ const VRKAyurvedaTariffPage = () => {
       top: 0,
       left: 0,
       right: 0,
-      bottom: '0',
+      bottom: 0,
       opacity: 0.4,
       background: 'linear-gradient(135deg, rgba(45, 90, 39, 0.5) 0%, rgba(107, 142, 35, 0.85) 100%)',
       zIndex: 1
@@ -403,10 +426,19 @@ const VRKAyurvedaTariffPage = () => {
   return (
     <div style={styles.modernContainer}>
       {/* Hero Section */}
-      <section style={styles.heroSection}>
-        <div style={styles.heroBackground}></div>
+      <section style={{
+        ...styles.heroSection,
+        ...(isMobile ? styles.heroSectionMobile : {})
+      }}>
+        <div style={{
+          ...styles.heroBackground,
+          ...(isMobile ? styles.heroBackgroundMobile : {})
+        }}></div>
         <div style={styles.heroContent}>
-          <h1 style={styles.heroTitle}>
+          <h1 style={{
+            ...styles.heroTitle,
+            ...(isMobile ? styles.heroTitleMobile : {})
+          }}>
             Tariff & Accommodation
             <span style={styles.heroAccent}> Vedic Raksha Kendra Ayurveda hospital</span>
           </h1>
@@ -450,9 +482,6 @@ const VRKAyurvedaTariffPage = () => {
                   </div>
                 ))}
               </div>
-              {/* <div style={styles.tariffNote}>
-                *Room tariffs are inclusive of food, electricity, cleaning, and maintenance charges
-              </div> */}
             </div>
           </section>
         </div>
@@ -464,32 +493,32 @@ const VRKAyurvedaTariffPage = () => {
               <h4 style={styles.roomTitle}>{room.type}</h4>
               <div style={{
                 ...styles.roomLayout,
-                ...(window.innerWidth <= 768 ? { gridTemplateColumns: '1fr' } : {})
+                ...(isMobile ? { gridTemplateColumns: '1fr' } : {})
               }}>
                 <div style={styles.imageGallery}>
-  {room.images.map((image, imgIndex) => (
-    <img
-      key={imgIndex}
-      src={image}
-      alt={`${room.type} ${imgIndex + 1}`}
-      style={{
-        ...styles.imagePlaceholder,
-        objectFit: 'cover', // Ensure the image covers the container
-        width: '100%',
-        maxWidth: '300px',
-        height: '200px',
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.transform = 'scale(1.02)';
-        e.currentTarget.style.boxShadow = '0 8px 24px rgba(45, 90, 39, 0.15)';
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.transform = 'scale(1)';
-        e.currentTarget.style.boxShadow = 'none';
-      }}
-    />
-  ))}
-</div>
+                  {room.images.map((image, imgIndex) => (
+                    <img
+                      key={imgIndex}
+                      src={image}
+                      alt={`${room.type} ${imgIndex + 1}`}
+                      style={{
+                        ...styles.imagePlaceholder,
+                        objectFit: 'cover',
+                        width: '100%',
+                        maxWidth: '300px',
+                        height: '200px',
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.transform = 'scale(1.02)';
+                        e.currentTarget.style.boxShadow = '0 8px 24px rgba(45, 90, 39, 0.15)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = 'scale(1)';
+                        e.currentTarget.style.boxShadow = 'none';
+                      }}
+                    />
+                  ))}
+                </div>
                 <div>
                   <p style={styles.roomDescription}>{room.description}</p>
                 </div>
