@@ -61,7 +61,7 @@ const ModernHospitalUI = () => {
       left: 0,
       right: 0,
       bottom: 0,
-      background: 'url("/src/assets/VRK_Ayurveda.png")',
+      background: 'url("/assets/VRK_Ayurveda.png")',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       zIndex: -2
@@ -284,7 +284,7 @@ const ModernHospitalUI = () => {
       alignItems: 'center',
       justifyContent: 'center',
       color: 'white',
-      backgroundImage: 'url("/src/assets/hero_home.png")',
+      backgroundImage: 'url("/assets/hero_home.png")',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       backgroundAttachment: 'fixed',

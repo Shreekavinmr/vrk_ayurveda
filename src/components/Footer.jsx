@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Mail, Phone, MapPin, ArrowUpRight, Clock, Heart } from 'lucide-react';
 import '../styles/Footer.css';
-import logo from '../assets/logo.png';
+import logo from '/assets/logo.png';
 
 const Footer = () => {
   const footerRef = useRef(null);

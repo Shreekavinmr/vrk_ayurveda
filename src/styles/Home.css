@@ -62,7 +62,7 @@
 /* Hero Section */
 .hero-section {
   position: relative;
-  background: url('../assets/VRK_Ayurveda.png') no-repeat center center/cover;
+  background: url('/assets/VRK_Ayurveda.png') no-repeat center center/cover;
   min-height: 100vh;
   padding-top: 6rem;
   overflow: hidden;
@@ -257,7 +257,7 @@
 /* Stats Section */
 .stats-section {
   padding: 7rem 0;
-  background: url('../assets/stats.png') no-repeat center center;
+  background: url('/assets/stats.png') no-repeat center center;
   background-size: cover; /* This ensures the image covers the section fully */
   background-attachment: fixed; /* Optional: creates a parallax effect when scrolling */
   color: var(--light-text);
@@ -601,7 +601,7 @@
   align-items: center;
   justify-content: center;
   color: white;
-  background-image: url('../assets/hero_home.png');
+  background-image: url('/assets/hero_home.png');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;

@@ -55,10 +55,10 @@ const VRKAyurvedaTherapiesPage = () => {
         'Enhances recovery from injury or illness',
       ],
       images: [
-        '/src/assets/therapies/yogatherapies/Therapeutic_Yoga_Pose.png',
-        '/src/assets/therapies/yogatherapies/Therapeutic_Yoga_Props.png',
-        '/src/assets/therapies/yogatherapies/Therapeutic_Yoga_Session.png',
-        '/src/assets/therapies/yogatherapies/Therapeutic_Yoga_Teacher.png',
+        '/assets/therapies/yogatherapies/Therapeutic_Yoga_Pose.png',
+        '/assets/therapies/yogatherapies/Therapeutic_Yoga_Props.png',
+        '/assets/therapies/yogatherapies/Therapeutic_Yoga_Session.png',
+        '/assets/therapies/yogatherapies/Therapeutic_Yoga_Teacher.png',
       ],
       imageDescriptions: [
         'Gentle yoga poses for healing',
@@ -80,9 +80,9 @@ const VRKAyurvedaTherapiesPage = () => {
         'Regulates nervous system function',
       ],
       images: [
-        '/src/assets/therapies/yogatherapies/pranayama1.png',
-        '/src/assets/therapies/yogatherapies/pranayama2.png',
-        '/src/assets/therapies/yogatherapies/pranayama3.png',
+        '/assets/therapies/yogatherapies/pranayama1.png',
+        '/assets/therapies/yogatherapies/pranayama2.png',
+        '/assets/therapies/yogatherapies/pranayama3.png',
       ],
       imageDescriptions: [
         'Controlled breathing techniques',
@@ -103,9 +103,9 @@ const VRKAyurvedaTherapiesPage = () => {
         'Deepens meditation practice',
       ],
       images: [
-        '/src/assets/therapies/yogatherapies/mudra1.png',
-        '/src/assets/therapies/yogatherapies/mudra2.png',
-        '/src/assets/therapies/yogatherapies/mudra3.png',
+        '/assets/therapies/yogatherapies/mudra1.png',
+        '/assets/therapies/yogatherapies/mudra2.png',
+        '/assets/therapies/yogatherapies/mudra3.png',
       ],
       imageDescriptions: [
         'Gyan mudra for wisdom',
@@ -127,8 +127,8 @@ const VRKAyurvedaTherapiesPage = () => {
         'Improves core stability and balance',
       ],
       images: [
-        '/src/assets/therapies/yogatherapies/bhandhas1.png',
-        '/src/assets/therapies/yogatherapies/bhandhas2.png',
+        '/assets/therapies/yogatherapies/bhandhas1.png',
+        '/assets/therapies/yogatherapies/bhandhas2.png',
       ],
       imageDescriptions: [
         'Uddiyana bandha technique',
@@ -185,7 +185,7 @@ const VRKAyurvedaTherapiesPage = () => {
       left: 0,
       right: 0,
       bottom: 0,
-      background: 'url("/src/assets/VRK_Ayurveda.png")',
+      background: 'url("/assets/VRK_Ayurveda.png")',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       zIndex: -2,
@@ -557,7 +557,7 @@ const VRKAyurvedaTherapiesPage = () => {
       alignItems: 'center',
       justifyContent: 'center',
       color: 'white',
-      backgroundImage: 'url("/src/assets/hero_home.png")',
+      backgroundImage: 'url("/assets/hero_home.png")',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       backgroundAttachment: 'fixed',

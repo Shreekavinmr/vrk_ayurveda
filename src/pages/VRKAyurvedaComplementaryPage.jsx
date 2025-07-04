@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { DollarSign, Phone, Mail } from 'lucide-react';
-import yoga_therapy from '../assets/yoga_therapy.png';
-import meditation from '../assets/meditation.png';
-import herbal_tea from '../assets/herbal_tea.png';
-import aromatherapy from '../assets/aromatherapy.png';
+import yoga_therapy from '/assets/yoga_therapy.png';
+import meditation from '/assets/meditation.png';
+import herbal_tea from '/assets/herbal_tea.png';
+import aromatherapy from '/assets/aromatherapy.png';
 
 const VRKAyurvedaComplementaryPage = () => {
   const [activeSection] = useState('complementary');
@@ -49,7 +49,7 @@ const VRKAyurvedaComplementaryPage = () => {
       left: 0,
       right: 0,
       bottom: 0,
-      background: 'url("/src/assets/VRK_Ayurveda.png")',
+      background: 'url("/assets/VRK_Ayurveda.png")',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       zIndex: -2
@@ -166,7 +166,7 @@ const VRKAyurvedaComplementaryPage = () => {
       alignItems: 'center',
       justifyContent: 'center',
       color: 'white',
-      backgroundImage: 'url("/src/assets/hero_home.png")',
+      backgroundImage: 'url("/assets/hero_home.png")',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       backgroundAttachment: 'fixed',

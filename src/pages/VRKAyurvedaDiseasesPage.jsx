@@ -1,8 +1,21 @@
-import React, { useState } from 'react';
-import { Phone, Mail,HeartPulse,Leaf,UserPlus } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Phone, Mail, HeartPulse, Leaf, UserPlus } from 'lucide-react';
 
 const VRKAyurvedaDiseasesTreatedPage = () => {
   const [activeSection] = useState('diseases');
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const diseasesData = [
     {
@@ -80,6 +93,24 @@ const VRKAyurvedaDiseasesTreatedPage = () => {
     'Regular follow-ups and consultations to monitor progress and adjust treatments.'
   ];
 
+  const features = [
+    {
+      icon: HeartPulse,
+      title: 'Holistic Healing',
+      desc: 'Treat the root cause, not just the symptoms—guided by ancient Ayurvedic principles.'
+    },
+    {
+      icon: Leaf,
+      title: 'Natural Therapies',
+      desc: 'Experience safe and effective treatments using herbal remedies and traditional methods.'
+    },
+    {
+      icon: UserPlus,
+      title: 'Personalized Care',
+      desc: 'Every patient receives a tailored plan based on their body constitution and condition.'
+    }
+  ];
+
   const styles = {
     modernContainer: {
       minHeight: '100vh',
@@ -93,16 +124,24 @@ const VRKAyurvedaDiseasesTreatedPage = () => {
       overflow: 'hidden',
       color: 'white'
     },
+    heroSectionMobile: {
+      height: '50vh',
+      minHeight: '550px',
+    },
     heroBackground: {
       position: 'absolute',
       top: 0,
       left: 0,
       right: 0,
       bottom: 0,
-      background: 'url("/src/assets/VRK_Ayurveda.png")',
+      background: 'url("/assets/VRK_Ayurveda.png")',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       zIndex: -2
+    },
+    heroBackgroundMobile: {
+      backgroundSize: 'cover',
+      backgroundPosition: 'center center',
     },
     heroContent: {
       maxWidth: '1400px',
@@ -126,6 +165,10 @@ const VRKAyurvedaDiseasesTreatedPage = () => {
       letterSpacing: '-0.02em',
       maxWidth: '800px',
       color: '#2d5a27'
+    },
+    heroTitleMobile: {
+      fontSize: '2.5rem',
+      marginTop: '2rem',
     },
     heroAccent: {
       background: 'linear-gradient(45deg, #daa520, #90ee90)',
@@ -284,7 +327,7 @@ const VRKAyurvedaDiseasesTreatedPage = () => {
       alignItems: 'center',
       justifyContent: 'center',
       color: 'white',
-      backgroundImage: 'url("/src/assets/hero_home.png")',
+      backgroundImage: 'url("/assets/hero_home.png")',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       backgroundAttachment: 'fixed',
@@ -295,7 +338,7 @@ const VRKAyurvedaDiseasesTreatedPage = () => {
       top: 0,
       left: 0,
       right: 0,
-      bottom: '0',
+      bottom: 0,
       opacity: 0.4,
       background: 'linear-gradient(135deg, rgba(45, 90, 39, 0.5) 0%, rgba(107, 142, 35, 0.85) 100%)',
       zIndex: 1
@@ -394,49 +437,42 @@ const VRKAyurvedaDiseasesTreatedPage = () => {
       fontSize: '1.1rem'
     }
   };
-  const features = [
-  {
-    icon: HeartPulse,
-    title: 'Holistic Healing',
-    desc: 'Treat the root cause, not just the symptoms—guided by ancient Ayurvedic principles.'
-  },
-  {
-    icon: Leaf,
-    title: 'Natural Therapies',
-    desc: 'Experience safe and effective treatments using herbal remedies and traditional methods.'
-  },
-  {
-    icon: UserPlus,
-    title: 'Personalized Care',
-    desc: 'Every patient receives a tailored plan based on their body constitution and condition.'
-  }
-];
-
 
   return (
     <div style={styles.modernContainer}>
       {/* Hero Section */}
-      <section style={styles.heroSection}>
-        <div style={styles.heroBackground}></div>
+      <section style={{
+        ...styles.heroSection,
+        ...(isMobile ? styles.heroSectionMobile : {})
+      }}>
+        <div style={{
+          ...styles.heroBackground,
+          ...(isMobile ? styles.heroBackgroundMobile : {})
+        }}></div>
         <div style={styles.heroContent}>
-          <h1 style={styles.heroTitle}>
+          <h1 style={{
+            ...styles.heroTitle,
+            ...(isMobile ? styles.heroTitleMobile : {})
+          }}>
             Diseases Treated
             <span style={styles.heroAccent}> Vedic Raksha Kendra Ayurveda hospital</span>
           </h1>
           <p style={styles.heroDescription}>
             Discover the range of health conditions we address through holistic Ayurvedic treatments
           </p>
-          <div style={styles.heroFeatures}>
-            {features.map((feature, index) => (
-              <div key={index} style={styles.heroFeature}>
-                <feature.icon style={styles.featureIcon} />
-                <div>
-                  <h3 style={{ fontSize: '1.1rem', fontWeight: '600', marginBottom: '0.25rem' }}>{feature.title}</h3>
-                  <p style={{ fontSize: '0.9rem', opacity: 0.8, margin: 0 }}>{feature.desc}</p>
+          {!isMobile && (
+            <div style={styles.heroFeatures}>
+              {features.map((feature, index) => (
+                <div key={index} style={styles.heroFeature}>
+                  <feature.icon style={styles.featureIcon} />
+                  <div>
+                    <h3 style={{ fontSize: '1.1rem', fontWeight: '600', marginBottom: '0.25rem' }}>{feature.title}</h3>
+                    <p style={{ fontSize: '0.9rem', opacity: 0.8, margin: 0 }}>{feature.desc}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

@@ -1,23 +1,23 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ArrowRight, Star, Quote, CheckCircle, ChevronLeft, ChevronRight, HeartPulse, Users, Award, Clock, Phone, Mail } from 'lucide-react';
 import '../styles/Home.css';
-import img1 from '../assets/image1.png';
-import ourfound from '../assets/ourfound.png';
-import cardTrustLogo from '../assets/card_trust_logo.png';
-import vrkAyurvedaLogo from '../assets/logo.png';
-import massage_treatment from '../assets/home_treatment/massage.png';
-import detox_therapy from '../assets/home_treatment/detox_therapy.png';
-import herbal_medicine from '../assets/home_treatment/herbal_medicine.png';
-import wellness_programs from '../assets/home_treatment/wellness_programs.png';
-import shop1 from '../assets/home_treatment/shop1.jpg';
-import shop2 from '../assets/home_treatment/shop2.jpg';
-import shop3 from '../assets/home_treatment/shop3.jpg';
-import acc1 from '../assets/home_treatment/acc1.jpg';
-import acc2 from '../assets/home_treatment/acc2.jpg';
-import acc3 from '../assets/home_treatment/acc3.jpg';
-import treatmentroom1 from '../assets/home_treatment/treatmentroom1.jpg';
-import treatmentroom2 from '../assets/home_treatment/treatmentroom2.jpg';
-import treatmentroom3 from '../assets/home_treatment/treatmentroom3.jpg';
+import img1 from '/assets/image1.png';
+import ourfound from '/assets/ourfound.png';
+import cardTrustLogo from '/assets/card_trust_logo.png';
+import vrkAyurvedaLogo from '/assets/logo.png';
+import massage_treatment from '/assets/home_treatment/massage.png';
+import detox_therapy from '/assets/home_treatment/detox_therapy.png';
+import herbal_medicine from '/assets/home_treatment/herbal_medicine.png';
+import wellness_programs from '/assets/home_treatment/wellness_programs.png';
+import shop1 from '/assets/home_treatment/shop1.jpg';
+import shop2 from '/assets/home_treatment/shop2.jpg';
+import shop3 from '/assets/home_treatment/shop3.jpg';
+import acc1 from '/assets/home_treatment/acc1.jpg';
+import acc2 from '/assets/home_treatment/acc2.jpg';
+import acc3 from '/assets/home_treatment/acc3.jpg';
+import treatmentroom1 from '/assets/home_treatment/treatmentroom1.jpg';
+import treatmentroom2 from '/assets/home_treatment/treatmentroom2.jpg';
+import treatmentroom3 from '/assets/home_treatment/treatmentroom3.jpg';
 
 
 const StatCounter = ({ number, label, index, icon: Icon }) => {

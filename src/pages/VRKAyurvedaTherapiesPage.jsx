@@ -54,9 +54,9 @@ const VRKAyurvedaTherapiesPage = () => {
         'Balances doshas (Vata, Pitta, Kapha)',
       ],
       images: [
-        '/src/assets/therapies/panchakarna/panchakarma1.png',
-        '/src/assets/therapies/panchakarna/panchakarma3.png',
-        '/src/assets/therapies/panchakarna/panchakarma4.png',
+        '/assets/therapies/panchakarna/panchakarma1.png',
+        '/assets/therapies/panchakarna/panchakarma3.png',
+        '/assets/therapies/panchakarna/panchakarma4.png',
       ],
       imageDescriptions: [
         'Panchakarma Vamana therapy',
@@ -79,10 +79,10 @@ const VRKAyurvedaTherapiesPage = () => {
       ],
       images: [
         
-        '/src/assets/therapies/panchakarna/abhyanga1.png',
-        '/src/assets/therapies/panchakarna/abhyanga2.png',
-        '/src/assets/therapies/panchakarna/abhyanga3.png',
-        '/src/assets/therapies/panchakarna/abhyanga4.png',
+        '/assets/therapies/panchakarna/abhyanga1.png',
+        '/assets/therapies/panchakarna/abhyanga2.png',
+        '/assets/therapies/panchakarna/abhyanga3.png',
+        '/assets/therapies/panchakarna/abhyanga4.png',
       ],
       imageDescriptions: [
         'Full-body oil massage',
@@ -104,9 +104,9 @@ const VRKAyurvedaTherapiesPage = () => {
         'Balances the nervous system',
       ],
       images: [
-        '/src/assets/therapies/panchakarna/shrirodhara1.png',
-        '/src/assets/therapies/panchakarna/shrirodhara2.png',
-        '/src/assets/therapies/panchakarna/shrirodhara3.png',
+        '/assets/therapies/panchakarna/shrirodhara1.png',
+        '/assets/therapies/panchakarna/shrirodhara2.png',
+        '/assets/therapies/panchakarna/shrirodhara3.png',
       ],
       imageDescriptions: [
         'Oil flow in Shirodhara',
@@ -127,9 +127,9 @@ const VRKAyurvedaTherapiesPage = () => {
         'Rejuvenates the body',
       ],
       images: [
-        '/src/assets/therapies/panchakarna/pzhichil1.png',
-        '/src/assets/therapies/panchakarna/pzhichil2.png',
-        '/src/assets/therapies/panchakarna/pzhichil3.png',
+        '/assets/therapies/panchakarna/pzhichil1.png',
+        '/assets/therapies/panchakarna/pzhichil2.png',
+        '/assets/therapies/panchakarna/pzhichil3.png',
       ],
       imageDescriptions: [
         'Oil pouring in Pizhichil',
@@ -151,10 +151,10 @@ const VRKAyurvedaTherapiesPage = () => {
         'Enhances blood flow',
       ],
       images: [
-        '/src/assets/therapies/panchakarna/kizhi1.png',
-        '/src/assets/therapies/panchakarna/kizhi2.png',
-        '/src/assets/therapies/panchakarna/kizhi3.png',
-        '/src/assets/therapies/panchakarna/kizhi4.png',
+        '/assets/therapies/panchakarna/kizhi1.png',
+        '/assets/therapies/panchakarna/kizhi2.png',
+        '/assets/therapies/panchakarna/kizhi3.png',
+        '/assets/therapies/panchakarna/kizhi4.png',
       ],
       imageDescriptions: [
         'Herbal poultice preparation',
@@ -175,9 +175,9 @@ const VRKAyurvedaTherapiesPage = () => {
         'Supports respiratory health',
       ],
       images: [
-        '/src/assets/therapies/panchakarna/nasya1.png',
-        '/src/assets/therapies/panchakarna/nasya2.png',
-        '/src/assets/therapies/panchakarna/nasya3.png',
+        '/assets/therapies/panchakarna/nasya1.png',
+        '/assets/therapies/panchakarna/nasya2.png',
+        '/assets/therapies/panchakarna/nasya3.png',
       ],
       imageDescriptions: [
         'Nasal oil application',
@@ -198,8 +198,8 @@ const VRKAyurvedaTherapiesPage = () => {
         'Promotes relaxation of eye muscles',
       ],
       images: [
-        '/src/assets/therapies/panchakarna/tharpanam1.png',
-        '/src/assets/therapies/panchakarna/tharpanam2.png',
+        '/assets/therapies/panchakarna/tharpanam1.png',
+        '/assets/therapies/panchakarna/tharpanam2.png',
       ],
       imageDescriptions: [
         'Eye treatment with ghee',
@@ -220,8 +220,8 @@ const VRKAyurvedaTherapiesPage = () => {
         'Balances Pitta dosha',
       ],
       images: [
-        '/src/assets/therapies/panchakarna/verachanam1.png',
-        '/src/assets/therapies/panchakarna/virechanam2.png',
+        '/assets/therapies/panchakarna/verachanam1.png',
+        '/assets/therapies/panchakarna/virechanam2.png',
       ],
       imageDescriptions: [
         'Therapeutic purgation process',
@@ -242,9 +242,9 @@ const VRKAyurvedaTherapiesPage = () => {
         'Enhances circulation in the lower back',
       ],
       images: [
-        '/src/assets/therapies/panchakarna/kativasti1.png',
-        '/src/assets/therapies/panchakarna/kativasti2.png',
-        '/src/assets/therapies/panchakarna/kativasti3.png',
+        '/assets/therapies/panchakarna/kativasti1.png',
+        '/assets/therapies/panchakarna/kativasti2.png',
+        '/assets/therapies/panchakarna/kativasti3.png',
       ],
       imageDescriptions: [
         'Oil retention on lower back',
@@ -265,9 +265,9 @@ const VRKAyurvedaTherapiesPage = () => {
         'Nourishes knee tissues',
       ],
       images: [
-        '/src/assets/therapies/panchakarna/januvasti1.png',
-        '/src/assets/therapies/panchakarna/januvasti2.png',
-        '/src/assets/therapies/panchakarna/januvasti3.png',
+        '/assets/therapies/panchakarna/januvasti1.png',
+        '/assets/therapies/panchakarna/januvasti2.png',
+        '/assets/therapies/panchakarna/januvasti3.png',
       ],
       imageDescriptions: [
         'Oil retention on knee joints',
@@ -288,8 +288,8 @@ const VRKAyurvedaTherapiesPage = () => {
         'Detoxifies the blood',
       ],
       images: [
-        '/src/assets/therapies/panchakarna/lt1.png',
-        '/src/assets/therapies/panchakarna/lt2.png',
+        '/assets/therapies/panchakarna/lt1.png',
+        '/assets/therapies/panchakarna/lt2.png',
       ],
       imageDescriptions: [
         'Medicinal leech therapy',
@@ -346,7 +346,7 @@ const VRKAyurvedaTherapiesPage = () => {
       left: 0,
       right: 0,
       bottom: 0,
-      background: 'url("/src/assets/VRK_Ayurveda.png")',
+      background: 'url("/assets/VRK_Ayurveda.png")',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       zIndex: -2,
@@ -718,7 +718,7 @@ const VRKAyurvedaTherapiesPage = () => {
       alignItems: 'center',
       justifyContent: 'center',
       color: 'white',
-      backgroundImage: 'url("/src/assets/hero_home.png")',
+      backgroundImage: 'url("/assets/hero_home.png")',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       backgroundAttachment: 'fixed',

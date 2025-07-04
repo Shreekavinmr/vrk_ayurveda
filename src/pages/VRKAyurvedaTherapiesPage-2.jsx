@@ -55,9 +55,9 @@ const VRKAyurvedaTherapiesPage = () => {
         'Prevents recurrence of chronic pain',
       ],
       images: [
-        '/src/assets/therapies/physiotherapy/exetherapy1.png',
-        '/src/assets/therapies/physiotherapy/exetherapy2.png',
-        '/src/assets/therapies/physiotherapy/exetherapy3.png',
+        '/assets/therapies/physiotherapy/exetherapy1.png',
+        '/assets/therapies/physiotherapy/exetherapy2.png',
+        '/assets/therapies/physiotherapy/exetherapy3.png',
       ],
       imageDescriptions: [
         'Targeted stretching exercises',
@@ -79,8 +79,8 @@ const VRKAyurvedaTherapiesPage = () => {
         'Improves nerve function',
       ],
       images: [
-        '/src/assets/therapies/physiotherapy/electrotherapy.png',
-        '/src/assets/therapies/physiotherapy/electrotherapy1.png',
+        '/assets/therapies/physiotherapy/electrotherapy.png',
+        '/assets/therapies/physiotherapy/electrotherapy1.png',
       ],
       imageDescriptions: [
         'TENS for pain relief',
@@ -103,8 +103,8 @@ const VRKAyurvedaTherapiesPage = () => {
       ],
       images: [
         
-        '/src/assets/therapies/physiotherapy/hydrotherapy.png',
-        '/src/assets/therapies/physiotherapy/hydrotherapy1.png',
+        '/assets/therapies/physiotherapy/hydrotherapy.png',
+        '/assets/therapies/physiotherapy/hydrotherapy1.png',
       ],
       imageDescriptions: [
         'Therapeutic pool exercises',
@@ -180,7 +180,7 @@ const VRKAyurvedaTherapiesPage = () => {
       left: 0,
       right: 0,
       bottom: 0,
-      background: 'url("/src/assets/VRK_Ayurveda.png")',
+      background: 'url("/assets/VRK_Ayurveda.png")',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       zIndex: -2,
@@ -552,7 +552,7 @@ const VRKAyurvedaTherapiesPage = () => {
       alignItems: 'center',
       justifyContent: 'center',
       color: 'white',
-      backgroundImage: 'url("/src/assets/hero_home.png")',
+      backgroundImage: 'url("/assets/hero_home.png")',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       backgroundAttachment: 'fixed',
