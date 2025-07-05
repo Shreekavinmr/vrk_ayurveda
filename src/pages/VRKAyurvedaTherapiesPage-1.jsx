@@ -1,13 +1,38 @@
 import React, { useState, useEffect } from 'react';
-import { HeartPulse, Phone, Mail, ChevronDown, Sparkles, Award, Users, Clock, ChevronLeft, ChevronRight } from 'lucide-react';
+import { HeartPulse, Phone, Mail, Sparkles, Award, Users, Clock, ChevronLeft, ChevronRight } from 'lucide-react';
 
-const VRKAyurvedaTherapiesPage = () => {
+const VRKNaturopathyPage = () => {
   const [activeSection] = useState('therapies');
   const [visibleElements, setVisibleElements] = useState({});
-  const [currentSlide, setCurrentSlide] = useState({ 0: 0, 1: 0, 2: 0 });
+  const [currentSlide, setCurrentSlide] = useState({ 0: 0, 1: 0, 2: 0, 3: 0 });
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // Intersection Observer for scroll animations
   useEffect(() => {
+    // Initialize therapies section as visible on mobile to ensure content loads
+    if (isMobile) {
+      setVisibleElements((prev) => ({
+        ...prev,
+        therapies: true,
+        ...therapiesData.reduce((acc, _, index) => ({
+          ...acc,
+          [`therapy-${index}`]: true,
+        }), {}),
+      }));
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -26,7 +51,7 @@ const VRKAyurvedaTherapiesPage = () => {
     elements.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
-  }, []);
+  }, [isMobile]);
 
   // Slideshow effect
   useEffect(() => {
@@ -39,7 +64,7 @@ const VRKAyurvedaTherapiesPage = () => {
         });
         return newSlides;
       });
-    }, 5000); // Change slide every 5 seconds
+    }, 5000);
     return () => clearInterval(interval);
   }, []);
 
@@ -63,7 +88,6 @@ const VRKAyurvedaTherapiesPage = () => {
         'Full-body mud application',
         'Mud therapy for eyes',
         'Mud pack preparation',
-        'Guided mud therapy session',
       ],
       icon: '🪨',
       duration: '30-60 mins',
@@ -85,8 +109,6 @@ const VRKAyurvedaTherapiesPage = () => {
       imageDescriptions: [
         'Banana leaf body wrap',
         'Therapeutic leaf treatment',
-        'Treatment setup',
-        'Herbal oil application',
       ],
       icon: '🍃',
       duration: '45-60 mins',
@@ -110,30 +132,35 @@ const VRKAyurvedaTherapiesPage = () => {
         'Personalized diet consultation',
         'Healthy meal planning',
         'Nutrition guidance session',
-        'Diet monitoring support',
       ],
       icon: '🥗',
       duration: 'Ongoing / Daily Guidance',
     },
-    // {
-    //   name: 'Hydrotherapy',
-    //   description:
-    //     'Hydrotherapy uses water in various forms (steam, cold packs, jets, or immersion) to stimulate circulation, relieve pain, and support detoxification. It includes treatments like hip baths, steam baths, and spinal sprays.',
-    //   benefits: [
-    //     'Improves blood circulation',
-    //     'Relieves pain and stress',
-    //     'Detoxifies through sweat',
-    //     'Boosts immune function',
-    //   ],
-    //   images: [
-    //     'Hydrotherapy_HipBath.jpg',
-    //     'Hydrotherapy_Steam.jpg',
-    //     'Hydrotherapy_JetSpray.jpg',
-    //     'Hydrotherapy_Session.jpg',
-    //   ],
-    //   icon: '💧',
-    //   duration: '20-45 mins',
-    // },
+    {
+      name: 'Hydrotherapy',
+      description:
+        'Hydrotherapy uses water in various forms (steam, cold packs, jets, or immersion) to stimulate circulation, relieve pain, and support detoxification. It includes treatments like hip baths, steam baths, and spinal sprays.',
+      benefits: [
+        'Improves blood circulation',
+        'Relieves pain and stress',
+        'Detoxifies through sweat',
+        'Boosts immune function',
+      ],
+      images: [
+        '/assets/therapies/naturopathy/Hydrotherapy_HipBath.jpg',
+        '/assets/therapies/naturopathy/Hydrotherapy_Steam.jpg',
+        '/assets/therapies/naturopathy/Hydrotherapy_JetSpray.jpg',
+        '/assets/therapies/naturopathy/Hydrotherapy_Session.jpg',
+      ],
+      imageDescriptions: [
+        'Hip bath therapy',
+        'Steam bath session',
+        'Spinal spray treatment',
+        'Guided hydrotherapy session',
+      ],
+      icon: '💧',
+      duration: '20-45 mins',
+    },
   ];
 
   const therapyApproach = [
@@ -174,6 +201,10 @@ const VRKAyurvedaTherapiesPage = () => {
       overflow: 'hidden',
       color: 'white',
     },
+    heroSectionMobile: {
+      height: '50vh',
+      minHeight: '550px',
+    },
     heroBackground: {
       position: 'absolute',
       top: 0,
@@ -184,6 +215,10 @@ const VRKAyurvedaTherapiesPage = () => {
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       zIndex: -2,
+    },
+    heroBackgroundMobile: {
+      backgroundSize: 'cover',
+      backgroundPosition: 'center center',
     },
     heroContent: {
       maxWidth: '1400px',
@@ -207,6 +242,10 @@ const VRKAyurvedaTherapiesPage = () => {
       letterSpacing: '-0.02em',
       maxWidth: '800px',
       color: '#2d5a27',
+    },
+    heroTitleMobile: {
+      fontSize: '2.5rem',
+      marginTop: '2rem',
     },
     heroAccent: {
       background: 'linear-gradient(45deg, #daa520, #90ee90)',
@@ -319,7 +358,7 @@ const VRKAyurvedaTherapiesPage = () => {
     },
     statNumber: {
       fontSize: '3rem',
-      fontWeight: '800',
+      fontWeight: '700',
       marginBottom: '8px',
       background: 'linear-gradient(45deg, #ffffff, #90ee90)',
       WebkitBackgroundClip: 'text',
@@ -351,19 +390,17 @@ const VRKAyurvedaTherapiesPage = () => {
     },
     therapyCardInner: {
       display: 'flex',
-      alignItems: 'center',
       minHeight: '500px',
-      '@media (max-width: 768px)': {
-        flexDirection: 'column',
-        alignItems: 'stretch',
-      },
+      flexDirection: isMobile ? 'column' : 'row',
+      alignItems: isMobile ? 'stretch' : 'center',
     },
     therapyContent: {
-      padding: '60px 50px',
+      padding: isMobile ? '40px 30px' : '60px 50px',
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
       flex: 1,
+      order: isMobile ? 1 : 1,
     },
     therapyHeader: {
       display: 'flex',
@@ -422,13 +459,14 @@ const VRKAyurvedaTherapiesPage = () => {
       color: '#6b8e23',
     },
     therapyGallery: {
-      padding: '40px',
+      padding: isMobile ? '30px' : '40px',
       display: 'flex',
       flexDirection: 'column',
       gap: '20px',
       background: 'linear-gradient(135deg, #f8fffe 0%, #f0f8e8 100%)',
       flex: 1,
       justifyContent: 'center',
+      order: isMobile ? 2 : 2,
     },
     galleryCards: {
       display: 'grid',
@@ -563,7 +601,7 @@ const VRKAyurvedaTherapiesPage = () => {
       top: 0,
       left: 0,
       right: 0,
-      bottom: '0',
+      bottom: 0,
       opacity: 0.4,
       background: 'linear-gradient(135deg, rgba(45, 90, 39, 0.5) 0%, rgba(107, 142, 35, 0.85) 100%)',
       zIndex: 1,
@@ -677,12 +715,21 @@ const VRKAyurvedaTherapiesPage = () => {
   return (
     <div style={styles.modernContainer}>
       {/* Hero Section */}
-      <section style={styles.heroSection}>
-        <div style={styles.heroBackground}></div>
+      <section style={{
+        ...styles.heroSection,
+        ...(isMobile ? styles.heroSectionMobile : {})
+      }}>
+        <div style={{
+          ...styles.heroBackground,
+          ...(isMobile ? styles.heroBackgroundMobile : {})
+        }}></div>
         <div style={styles.heroContent}>
-          <h1 style={styles.heroTitle}>
+          <h1 style={{
+            ...styles.heroTitle,
+            ...(isMobile ? styles.heroTitleMobile : {})
+          }}>
             Ayurvedic Naturopathy Therapies
-            <span style={styles.heroAccent}>Vedic Raksha Kendra Ayurveda hospital</span>
+            <span style={styles.heroAccent}> Vedic Raksha Kendra Ayurveda hospital</span>
           </h1>
           <p style={styles.heroDescription}>
             Experience our authentic Ayurvedic Naturopathy therapies designed for holistic healing and rejuvenation
@@ -750,27 +797,28 @@ const VRKAyurvedaTherapiesPage = () => {
                     </div>
 
                     <div style={styles.therapyGallery}>
-                      {/* Top: Cards for specific therapies */}
-                      <div style={styles.galleryCards}>
-                        {therapy.imageDescriptions.slice(0, 4).map((description, imgIndex) => (
-                          <div
-                            key={imgIndex}
-                            style={styles.galleryCard}
-                            onMouseEnter={(e) => {
-                              e.currentTarget.style.transform = 'translateY(-4px)';
-                              e.currentTarget.style.boxShadow = '0 16px 40px rgba(45, 90, 39, 0.12)';
-                            }}
-                            onMouseLeave={(e) => {
-                              e.currentTarget.style.transform = 'translateY(0)';
-                              e.currentTarget.style.boxShadow = '0 8px 24px rgba(45, 90, 39, 0.06)';
-                            }}
-                          >
-                            {description}
-                          </div>
-                        ))}
-                      </div>
+                      {/* Only show image descriptions on desktop */}
+                      {!isMobile && (
+                        <div style={styles.galleryCards}>
+                          {therapy.imageDescriptions.map((description, imgIndex) => (
+                            <div
+                              key={imgIndex}
+                              style={styles.galleryCard}
+                              onMouseEnter={(e) => {
+                                e.currentTarget.style.transform = 'translateY(-4px)';
+                                e.currentTarget.style.boxShadow = '0 16px 40px rgba(45, 90, 39, 0.12)';
+                              }}
+                              onMouseLeave={(e) => {
+                                e.currentTarget.style.transform = 'translateY(0)';
+                                e.currentTarget.style.boxShadow = '0 8px 24px rgba(45, 90, 39, 0.06)';
+                              }}
+                            >
+                              {description}
+                            </div>
+                          ))}
+                        </div>
+                      )}
 
-                      {/* Bottom: Slideshow for all images */}
                       <div style={styles.slideshowContainer}>
                         {therapy.images.map((image, imgIndex) => (
                           <img
@@ -783,14 +831,18 @@ const VRKAyurvedaTherapiesPage = () => {
                             }}
                           />
                         ))}
-                        <ChevronLeft
-                          style={{ ...styles.slideshowNav, ...styles.slideshowNavLeft }}
-                          onClick={() => handleSlideChange(index, 'prev')}
-                        />
-                        <ChevronRight
-                          style={{ ...styles.slideshowNav, ...styles.slideshowNavRight }}
-                          onClick={() => handleSlideChange(index, 'next')}
-                        />
+                        {therapy.images.length > 1 && (
+                          <>
+                            <ChevronLeft
+                              style={{ ...styles.slideshowNav, ...styles.slideshowNavLeft }}
+                              onClick={() => handleSlideChange(index, 'prev')}
+                            />
+                            <ChevronRight
+                              style={{ ...styles.slideshowNav, ...styles.slideshowNavRight }}
+                              onClick={() => handleSlideChange(index, 'next')}
+                            />
+                          </>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -913,7 +965,7 @@ const VRKAyurvedaTherapiesPage = () => {
             </div>
             <div style={styles.footerInfoCard}>
               <h4 style={styles.footerInfoTitle}>Consultation Required</h4>
-              <p>
+              <p style={{ margin: 0, color: '#6c757d' }}>
                 Prior consultation mandatory for personalized treatment plans
               </p>
             </div>
@@ -924,4 +976,4 @@ const VRKAyurvedaTherapiesPage = () => {
   );
 };
 
-export default VRKAyurvedaTherapiesPage;
+export default VRKNaturopathyPage;

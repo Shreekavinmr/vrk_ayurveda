@@ -552,21 +552,19 @@ const VRKAyurvedaTherapiesPage = () => {
       opacity: 1,
     },
     therapyCardInner: {
-      display: 'flex',
-      alignItems: 'center',
-      minHeight: '500px',
-      '@media (max-width: 768px)': {
-        flexDirection: 'column',
-        alignItems: 'stretch',
-      },
-    },
+  display: 'flex',
+  minHeight: '500px',
+  flexDirection: isMobile ? 'column' : 'row', // Add this line
+  alignItems: isMobile ? 'stretch' : 'center', // Update this line
+},
     therapyContent: {
-      padding: '60px 50px',
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      flex: 1,
-    },
+  padding: isMobile ? '40px 30px' : '60px 50px', // Adjust padding for mobile
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  flex: 1,
+  order: isMobile ? 1 : 1, // Add this line to put content below images on mobile
+},
     therapyHeader: {
       display: 'flex',
       alignItems: 'center',
@@ -624,14 +622,15 @@ const VRKAyurvedaTherapiesPage = () => {
       color: '#6b8e23',
     },
     therapyGallery: {
-      padding: '40px',
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '20px',
-      background: 'linear-gradient(135deg, #f8fffe 0%, #f0f8e8 100%)',
-      flex: 1,
-      justifyContent: 'center',
-    },
+  padding: isMobile ? '30px' : '40px',
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '20px',
+  background: 'linear-gradient(135deg, #f8fffe 0%, #f0f8e8 100%)',
+  flex: 1,
+  justifyContent: 'center',
+  order: isMobile ? 2 : 2,
+},
     galleryCards: {
       display: 'grid',
       gridTemplateColumns: 'repeat(2, 1fr)',
@@ -961,51 +960,54 @@ const VRKAyurvedaTherapiesPage = () => {
                     </div>
 
                     <div style={styles.therapyGallery}>
-                      <div style={styles.galleryCards}>
-                        {therapy.imageDescriptions.slice(0, 4).map((description, imgIndex) => (
-                          <div
-                            key={imgIndex}
-                            style={styles.galleryCard}
-                            onMouseEnter={(e) => {
-                              e.currentTarget.style.transform = 'translateY(-4px)';
-                              e.currentTarget.style.boxShadow = '0 16px 40px rgba(45, 90, 39, 0.12)';
-                            }}
-                            onMouseLeave={(e) => {
-                              e.currentTarget.style.transform = 'translateY(0)';
-                              e.currentTarget.style.boxShadow = '0 8px 24px rgba(45, 90, 39, 0.06)';
-                            }}
-                          >
-                            {description}
-                          </div>
-                        ))}
-                      </div>
+  {/* Only show image descriptions on desktop */}
+  {!isMobile && (
+    <div style={styles.galleryCards}>
+      {therapy.imageDescriptions.slice(0, 4).map((description, imgIndex) => (
+        <div
+          key={imgIndex}
+          style={styles.galleryCard}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.transform = 'translateY(-4px)';
+            e.currentTarget.style.boxShadow = '0 16px 40px rgba(45, 90, 39, 0.12)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = 'translateY(0)';
+            e.currentTarget.style.boxShadow = '0 8px 24px rgba(45, 90, 39, 0.06)';
+          }}
+        >
+          {description}
+        </div>
+      ))}
+    </div>
+  )}
 
-                      <div style={styles.slideshowContainer}>
-                        {therapy.images.map((image, imgIndex) => (
-                          <img
-                            key={imgIndex}
-                            src={image}
-                            alt={therapy.imageDescriptions[imgIndex] || `Image ${imgIndex + 1}`}
-                            style={{
-                              ...styles.slideshowImage,
-                              ...(currentSlide[index] === imgIndex ? styles.slideshowImageActive : {}),
-                            }}
-                          />
-                        ))}
-                        {therapy.images.length > 1 && (
-                          <>
-                            <ChevronLeft
-                              style={{ ...styles.slideshowNav, ...styles.slideshowNavLeft }}
-                              onClick={() => handleSlideChange(index, 'prev')}
-                            />
-                            <ChevronRight
-                              style={{ ...styles.slideshowNav, ...styles.slideshowNavRight }}
-                              onClick={() => handleSlideChange(index, 'next')}
-                            />
-                          </>
-                        )}
-                      </div>
-                    </div>
+  <div style={styles.slideshowContainer}>
+    {therapy.images.map((image, imgIndex) => (
+      <img
+        key={imgIndex}
+        src={image}
+        alt={therapy.imageDescriptions[imgIndex] || `Image ${imgIndex + 1}`}
+        style={{
+          ...styles.slideshowImage,
+          ...(currentSlide[index] === imgIndex ? styles.slideshowImageActive : {}),
+        }}
+      />
+    ))}
+    {therapy.images.length > 1 && (
+      <>
+        <ChevronLeft
+          style={{ ...styles.slideshowNav, ...styles.slideshowNavLeft }}
+          onClick={() => handleSlideChange(index, 'prev')}
+        />
+        <ChevronRight
+          style={{ ...styles.slideshowNav, ...styles.slideshowNavRight }}
+          onClick={() => handleSlideChange(index, 'next')}
+        />
+      </>
+    )}
+  </div>
+</div>
                   </div>
                 </div>
               ))}
