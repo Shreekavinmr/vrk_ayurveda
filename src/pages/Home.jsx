@@ -12,6 +12,7 @@ import wellness_programs from '/assets/home_treatment/wellness_programs.png';
 import shop1 from '/assets/home_treatment/shop1.jpg';
 import shop2 from '/assets/home_treatment/shop2.jpg';
 import shop3 from '/assets/home_treatment/shop3.jpg';
+import shop4 from '/assets/IMG_9879.jpg';
 import acc1 from '/assets/home_treatment/acc1.jpg';
 import acc2 from '/assets/home_treatment/acc2.jpg';
 import acc3 from '/assets/home_treatment/acc3.jpg';
@@ -102,7 +103,7 @@ const Home = () => {
     {
       name: 'Medical Shop',
       description: 'Authentic Ayurvedic medicines and products',
-      images: [shop1, shop2, shop3],
+      images: [shop1, shop2, shop3, shop4],
     },
   ];
   // Initialize facilitySlideIndex with 0 for each facility

@@ -5,9 +5,34 @@ const VRKAyurvedaTherapiesPage = () => {
   const [activeSection] = useState('therapies');
   const [visibleElements, setVisibleElements] = useState({});
   const [currentSlide, setCurrentSlide] = useState({ 0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0, 10: 0 });
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // Intersection Observer for scroll animations
   useEffect(() => {
+    // Initialize therapies section as visible on mobile to ensure content loads
+    if (isMobile) {
+      setVisibleElements((prev) => ({
+        ...prev,
+        therapies: true,
+        ...therapiesData.reduce((acc, _, index) => ({
+          ...acc,
+          [`therapy-${index}`]: true,
+        }), {}),
+      }));
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -26,7 +51,7 @@ const VRKAyurvedaTherapiesPage = () => {
     elements.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
-  }, []);
+  }, [isMobile]);
 
   // Slideshow effect
   useEffect(() => {
@@ -39,7 +64,7 @@ const VRKAyurvedaTherapiesPage = () => {
         });
         return newSlides;
       });
-    }, 5000); // Change slide every 5 seconds
+    }, 5000);
     return () => clearInterval(interval);
   }, []);
 
@@ -78,7 +103,6 @@ const VRKAyurvedaTherapiesPage = () => {
         'Promotes better sleep',
       ],
       images: [
-        
         '/assets/therapies/panchakarna/abhyanga1.png',
         '/assets/therapies/panchakarna/abhyanga2.png',
         '/assets/therapies/panchakarna/abhyanga3.png',
@@ -234,7 +258,7 @@ const VRKAyurvedaTherapiesPage = () => {
     },
     {
       name: 'Kati Vasti',
-      description: 'Kati Vasti involves retaining warm medicated oil in a dough ring placed on the lower back. This therapy is highly effective for relieving lower back pain, sciatica, and spinal disorders.',
+      description: 'Kati vasti involves retaining warm medicated oil in a dough ring placed on the lower back. This therapy is highly effective for relieving lower back pain, sciatica, and spinal disorders.',
       benefits: [
         'Relieves lower back pain',
         'Reduces sciatica symptoms',
@@ -340,6 +364,10 @@ const VRKAyurvedaTherapiesPage = () => {
       overflow: 'hidden',
       color: 'white',
     },
+    heroSectionMobile: {
+      height: '50vh',
+      minHeight: '550px',
+    },
     heroBackground: {
       position: 'absolute',
       top: 0,
@@ -350,6 +378,10 @@ const VRKAyurvedaTherapiesPage = () => {
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       zIndex: -2,
+    },
+    heroBackgroundMobile: {
+      backgroundSize: 'cover',
+      backgroundPosition: 'center center',
     },
     heroContent: {
       maxWidth: '1400px',
@@ -373,6 +405,10 @@ const VRKAyurvedaTherapiesPage = () => {
       letterSpacing: '-0.02em',
       maxWidth: '800px',
       color: '#2d5a27',
+    },
+    heroTitleMobile: {
+      fontSize: '2.5rem',
+      marginTop: '2rem',
     },
     heroAccent: {
       background: 'linear-gradient(45deg, #daa520, #90ee90)',
@@ -843,12 +879,21 @@ const VRKAyurvedaTherapiesPage = () => {
   return (
     <div style={styles.modernContainer}>
       {/* Hero Section */}
-      <section style={styles.heroSection}>
-        <div style={styles.heroBackground}></div>
+      <section style={{
+        ...styles.heroSection,
+        ...(isMobile ? styles.heroSectionMobile : {})
+      }}>
+        <div style={{
+          ...styles.heroBackground,
+          ...(isMobile ? styles.heroBackgroundMobile : {})
+        }}></div>
         <div style={styles.heroContent}>
-          <h1 style={styles.heroTitle}>
+          <h1 style={{
+            ...styles.heroTitle,
+            ...(isMobile ? styles.heroTitleMobile : {})
+          }}>
             Ayurvedic Therapies
-            <span style={styles.heroAccent}>Vedic Raksha Kendra Ayurveda hospital</span>
+            <span style={styles.heroAccent}> Vedic Raksha Kendra Ayurveda hospital</span>
           </h1>
           <p style={styles.heroDescription}>
             Experience our authentic Ayurvedic therapies designed for holistic healing and rejuvenation
@@ -916,7 +961,6 @@ const VRKAyurvedaTherapiesPage = () => {
                     </div>
 
                     <div style={styles.therapyGallery}>
-                      {/* Top: Cards for specific therapies */}
                       <div style={styles.galleryCards}>
                         {therapy.imageDescriptions.slice(0, 4).map((description, imgIndex) => (
                           <div
@@ -936,7 +980,6 @@ const VRKAyurvedaTherapiesPage = () => {
                         ))}
                       </div>
 
-                      {/* Bottom: Slideshow for all images */}
                       <div style={styles.slideshowContainer}>
                         {therapy.images.map((image, imgIndex) => (
                           <img
@@ -1083,7 +1126,7 @@ const VRKAyurvedaTherapiesPage = () => {
             </div>
             <div style={styles.footerInfoCard}>
               <h4 style={styles.footerInfoTitle}>Consultation Required</h4>
-              <p>
+              <p style={{ margin: 0, color: '#6c757d' }}>
                 Prior consultation mandatory for personalized treatment plans
               </p>
             </div>
