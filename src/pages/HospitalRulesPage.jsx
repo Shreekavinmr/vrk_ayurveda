@@ -590,7 +590,7 @@ const HospitalRulesPage = () => {
             </p>
           </div>
           <div style={styles.contactActions}>
-            <a href="tel:+919080108558" style={{...styles.contactBtn, ...styles.contactBtnPrimary}}
+            <a href="tel:+918838395570" style={{...styles.contactBtn, ...styles.contactBtnPrimary}}
                onMouseEnter={(e) => {
                  e.target.style.background = '#f8f9fa';
                  e.target.style.transform = 'translateY(-2px)';
@@ -604,7 +604,7 @@ const HospitalRulesPage = () => {
               <Phone style={styles.btnIcon} />
               <span>Call Now</span>
             </a>
-            <a href="mailto:v.sglobal2025@gmail.com" style={{...styles.contactBtn, ...styles.contactBtnSecondary}}
+            <a href="mailto:vedicrakshakendra1@gmail.com" style={{...styles.contactBtn, ...styles.contactBtnSecondary}}
                onMouseEnter={(e) => {
                  e.target.style.background = 'rgba(255, 255, 255, 0.1)';
                  e.target.style.borderColor = 'white';

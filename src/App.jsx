@@ -19,10 +19,13 @@ import VRKAyurvedaTherapiesPage3 from './pages/VRKAyurvedaTherapiesPage-3';
 import VRKAyurvedaFromTheFounderPage from './pages/FromTheFounderPage';
 import VRKAyurvedaAboutUsPage from './pages/VRKAyurvedaAboutUsPage';
 import VRKPatientCareFacilitiesPage from './pages/PatientCareFacilitiesPage';
+import ScrollToTop from './components/scrollToTop';
+
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/ContactUs.css';
-import { HelpCircle, MessageCircle, BookOpen } from 'lucide-react';
+import { HelpCircle, MessageCircle, BookOpen, Instagram } from 'lucide-react';
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -30,37 +30,37 @@ const ContactPage = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsLoading(true);
-    setStatus('');
-    const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+  e.preventDefault();
+  setIsLoading(true);
+  setStatus('');
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
-    try {
-      const response = await fetch(`${BACKEND_URL}/api/contact`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...formData,
-          secretKey: 'fghjnwri7653r2rghjebfh',
-        }),
-      });
+  try {
+    const response = await fetch(`${BACKEND_URL}/api/vrk/contactus`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        ...formData,
+        secretKey: 'fghjnwri7653r2rghjebfh',
+      }),
+    });
 
-      const result = await response.json();
-      if (response.ok) {
-        setStatus('Message sent successfully!');
-        setFormData({ name: '', email: '', subject: '', message: '' });
-      } else {
-        setStatus(`Error: ${result.message}`);
-      }
-    } catch (error) {
-      setStatus('Error sending message. Please try again.');
-      console.error('Submission error:', error);
-    } finally {
-      setIsLoading(false);
+    const result = await response.json();
+    if (response.ok) {
+      setStatus('Message sent successfully!');
+      setFormData({ name: '', email: '', subject: '', message: '' });
+    } else {
+      setStatus(`Error: ${result.message}`);
     }
-  };
+  } catch (error) {
+    setStatus('Error sending message. Please try again.');
+    console.error('Submission error:', error);
+  } finally {
+    setIsLoading(false);
+  }
+};
 
   const features = [
     { icon: HelpCircle, title: 'Common Questions', desc: 'Find answers to frequently asked questions about our services.' },
@@ -95,7 +95,7 @@ const ContactPage = () => {
               Get in Touch
             </div>
             <h1 className="hero-title">
-              Contact Vedic Raksha Kendra Ayurveda Hospital
+              Contact Vedic Raksha Kendra Ayurveda Hospital<br/>
               <span className="hero-accent"> Connect with Us</span>
             </h1>
             <p className="hero-description">
@@ -144,9 +144,7 @@ const ContactPage = () => {
               </div>
               <h3>Address</h3>
               <p>
-                1/393/A, Veppampalayam,<br/>
-                Erode, Tamil Nadu – 638012,<br/>
-                India
+                340/G, Ring road, <br/>near Blue Moon Cinema, <br/>Thindal, Tamil Nadu 638112
               </p>
             </div>
             <div className="contact-info-card">
@@ -167,7 +165,7 @@ const ContactPage = () => {
               </div>
               <h3>Phone</h3>
               <p>
-                <a href="tel:+919080108558">+91 9080108558</a>
+                <a href="tel:+918838395570">+91 8838395570</a>
               </p>
             </div>
             <div className="contact-info-card">
@@ -189,7 +187,39 @@ const ContactPage = () => {
               </div>
               <h3>Email</h3>
               <p>
-                <a href="mailto:v.sglobal2025@gmail.com">v.sglobal2025@gmail.com</a>
+                <a href="mailto:v.sglobal2025@gmail.com">vedicrakshakendra1@gmail.com</a>
+              </p>
+            </div>
+            <div className="contact-info-card">
+              <div className="contact-icon">
+                <Instagram size={24} />
+              </div>
+              <h3>Instagram</h3>
+              <p>
+                <a href="https://www.instagram.com/vedic_raksha_kendra/" target="_blank" rel="noopener noreferrer">@vedicrakshakendra</a>
+              </p>
+            </div>
+            <div className="contact-info-card">
+              <div className="contact-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16.5 12"></polyline>
+                </svg>
+              </div>
+              <h3>Operating Hours</h3>
+              <p>
+                Monday - Saturday: 9:00 AM - 6:00 PM<br/>
+                Sunday: Closed
               </p>
             </div>
           </div>
@@ -264,13 +294,13 @@ const ContactPage = () => {
             </div>
             <div className="contact-map">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3912.286471560439!2d77.66603847481323!3d11.313759488869545!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba96e890f84bb29%3A0x4376ef0afaf9e23f!2sErode%20Cancer%20Centre!5e0!3m2!1sen!2sin!4v1747059445246!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3912.322373022471!2d77.66785689999999!3d11.311131199999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba96f1ac3ee2ebd%3A0x452aac1715890793!2sVedic%20Raksha%20kendra!5e0!3m2!1sen!2sin!4v1752283261383!5m2!1sen!2sin"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
                 allowFullScreen=""
                 loading="lazy"
-                title="V&S Global Solutions Location"
+                title="Vedic Raksha Kendra Ayurvedic Hospital"
               ></iframe>
             </div>
           </div>
@@ -287,7 +317,7 @@ const ContactPage = () => {
             </p>
           </div>
           <div className="contact-actions">
-            <a href="tel:+919080108558" className="contact-btn contact-btn-primary">
+            <a href="tel:+918838395570" className="contact-btn contact-btn-primary">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
@@ -304,7 +334,7 @@ const ContactPage = () => {
               </svg>
               <span>Call Now</span>
             </a>
-            <a href="mailto:v.sglobal2025@gmail.com" className="contact-btn contact-btn-secondary">
+            <a href="mailto:vedicrakshakendra1@gmail.com" className="contact-btn contact-btn-secondary">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
@@ -321,6 +351,10 @@ const ContactPage = () => {
                 <polyline points="22,6 12,13 2,6"></polyline>
               </svg>
               <span>Send Email</span>
+            </a>
+            <a href="https://www.instagram.com/vedic_raksha_kendra/" className="contact-btn contact-btn-secondary" target="_blank" rel="noopener noreferrer">
+              <Instagram size={20} className="btn-icon" />
+              <span>Follow on Instagram</span>
             </a>
           </div>
         </div>

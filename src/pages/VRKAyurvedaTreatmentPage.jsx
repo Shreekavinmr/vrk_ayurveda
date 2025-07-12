@@ -451,7 +451,7 @@ const VRKAyurvedaTreatmentPage = () => {
             ...styles.heroTitle,
             ...(isMobile ? styles.heroTitleMobile : {})
           }}>
-            Our Treatments
+            Our Treatments<br/>
             <span style={styles.heroAccent}>Vedic Raksha Kendra Ayurveda hospital</span>
           </h1>
           <p style={styles.heroDescription}>
@@ -593,7 +593,7 @@ const VRKAyurvedaTreatmentPage = () => {
           </div>
           <div style={styles.contactActions}>
             <a
-              href="tel:+919080108558"
+              href="tel:+918838395570"
               style={{ ...styles.contactBtn, ...styles.contactBtnPrimary }}
               onMouseEnter={(e) => {
                 e.target.style.background = '#f8f9fa';
@@ -610,7 +610,7 @@ const VRKAyurvedaTreatmentPage = () => {
               <span>Call Now</span>
             </a>
             <a
-              href="mailto:v.sglobal2025@gmail.com"
+              href="mailto:vedicrakshakendra1@gmail.com"
               style={{ ...styles.contactBtn, ...styles.contactBtnSecondary }}
               onMouseEnter={(e) => {
                 e.target.style.background = 'rgba(255, 255, 255, 0.1)';

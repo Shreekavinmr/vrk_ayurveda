@@ -115,25 +115,24 @@ const Footer = () => {
               <li className="contact-item">
                 <MapPin size={16} />
                 <span>
-                  123 Wellness Street,<br/>
-                  Ayurveda Gardens,<br/>
-                  Hyderabad, Telangana – 500001,<br/>
+                  340/G, Ring Road,<br/>
+                  Near Blue Moon Cinema,<br/>
+                  Thindal, Tamil Nadu – 638112,<br/>
                   India
                 </span>
               </li>
               <li className="contact-item">
                 <Phone size={16} />
-                <a href="tel:+919876543210">+91 98765 43210</a>
+                <a href="tel:+918838395570">+91 88383 95570</a>
               </li>
               <li className="contact-item">
                 <Mail size={16} />
-                <a href="mailto:info@vrkayurveda.com">info@vrkayurveda.com</a>
+                <a href="mailto:vedicrakshakendra1@gmail.com">vedicrakshakendra1@gmail.com</a>
               </li>
               <li className="contact-item">
                 <Clock size={16} />
                 <span>
-                  Mon - Sat: 8:00 AM - 8:00 PM<br/>
-                  Sunday: 9:00 AM - 6:00 PM
+                  Outpatient: 9:00 AM - 6:00 PM<br/>
                 </span>
               </li>
             </ul>
@@ -145,8 +144,8 @@ const Footer = () => {
             © {new Date().getFullYear()} Vedic Raksha Kendra Ayurvedic Hospital. All rights reserved.
           </div>
           <div className="footer-legal">
-            <a href="/privacy-policy" className="legal-link">Privacy Policy</a>
-            <a href="/terms-conditions" className="legal-link">Terms & Conditions</a>
+            {/* <a href="/privacy-policy" className="legal-link">Privacy Policy</a>
+            <a href="/terms-conditions" className="legal-link">Terms & Conditions</a> */}
             <a href="https://www.instagram.com/webnd.digi?igsh=em1ocHowZmJyM2Fj" className="legal-link">Developed By Webnd Digi</a>
           </div>
         </div>

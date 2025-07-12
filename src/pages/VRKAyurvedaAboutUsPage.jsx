@@ -18,14 +18,14 @@ const VRKAyurvedaAboutUsPage = () => {
           }
         });
       },
-      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+      { threshold: isMobile ? 0.05 : 0.1, rootMargin: isMobile ? '0px 0px -30px 0px' : '0px 0px -50px 0px' }
     );
 
     const elements = document.querySelectorAll('[data-animate]');
     elements.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
-  }, []);
+  }, [isMobile]);
 
   // Check if mobile
   useEffect(() => {
@@ -40,12 +40,40 @@ const VRKAyurvedaAboutUsPage = () => {
   }, []);
 
   const aboutData = {
-    history: 'Established in 2008, Vedic Raksha Kendra Ayurveda hospital was born from a vision to revive and share the ancient healing wisdom of Ayurveda. Founded by Dr. V. R. Krishnan in Kerala, the heartland of Ayurveda, the hospital has grown into a trusted sanctuary for holistic wellness, serving over 500 patients with personalized care.',
-    mission: 'Our mission is to empower individuals to achieve optimal health and balance through authentic Ayurvedic practices, integrating traditional wisdom with modern care.',
+    history: 'Established in 2022 by Dr. K. Velavan and Mr. Saravanan G, Vedic Raksha Kendra Ayurvedic Hospital is a center of excellence in holistic healing, rooted in the timeless principles of Ayurveda and Siddha. Located in the heart of Erode, Tamil Nadu, our hospital is committed to nurturing wellness through natural, personalized, and integrative care.',
+    mission: 'Our mission is to empower individuals to achieve optimal health and balance through authentic Ayurvedic and Siddha practices, integrating traditional wisdom with modern care to foster holistic well-being.',
+    whyChooseUs: [
+      {
+        title: 'Founded by Medical Experts',
+        description: 'With decades of experience in both conventional and traditional medicine.',
+        icon: Award
+      },
+      {
+        title: 'Holistic & Ethical',
+        description: 'Focused on long-term well-being and natural healing.',
+        icon: HeartPulse
+      },
+      {
+        title: 'Trusted by the Community',
+        description: 'With deep roots in Erode and a growing patient base from across Tamil Nadu.',
+        icon: Users
+      },
+      {
+        title: 'Patient-Centric Approach',
+        description: 'Treatments tailored to individual needs with personalized attention and care.',
+        icon: Sparkles
+      }
+    ],
+    whatWeOffer: [
+      'Classical Ayurvedic and Siddha Therapies including Panchakarma, Vasti, Kizhi, Nasya, and Marma Chikitsa',
+      'Customized Herbal Formulations for chronic conditions and general health maintenance',
+      'Special Programs for lifestyle disorders such as arthritis, stress, digestive issues, obesity, and hormonal imbalances',
+      'Wellness Workshops covering diet, yoga, detox routines, and natural immunity building'
+    ],
     coreValues: [
       {
         title: 'Authenticity',
-        description: 'Upholding the purity of traditional Ayurvedic practices with high-quality, in-house herbal preparations.',
+        description: 'Upholding the purity of traditional Ayurvedic and Siddha practices with high-quality, in-house herbal preparations.',
         icon: Award
       },
       {
@@ -65,7 +93,7 @@ const VRKAyurvedaAboutUsPage = () => {
       },
       {
         title: 'Philosophy',
-        description: 'Health is harmony. We balance the doshas through personalized Ayurvedic treatments and conscious living.',
+        description: 'Health is harmony. We balance the doshas through personalized treatments and conscious living.',
         icon: Scale
       },
       {
@@ -75,24 +103,36 @@ const VRKAyurvedaAboutUsPage = () => {
       }
     ],
     team: [
+      // {
+      //   name: 'Dr. K. Velavan, MBBS, MDRT',
+      //   role: 'Founder & Managing Director',
+      //   bio: 'With over 32 years of clinical experience in radiation oncology, Dr. K. Velavan is the Managing Director of Erode Cancer Centre. His visionary leadership bridges modern allopathic medicine with traditional Indian healing systems, having conducted numerous cancer awareness programs and trained healthcare professionals in evidence-based, patient-first care models.',
+      //   photo: 'Team_Velavan.jpg',
+      // },
+      // {
+      //   name: 'Mr. Saravanan G.',
+      //   role: 'Co-Founder & Research Head',
+      //   bio: 'A distinguished researcher and healthcare innovator, Mr. Saravanan G. leads research at Erode Cancer Centre and founded V & S Global Solutions. His work integrates rigorous scientific methodologies with traditional wellness protocols, championing evidence-based Ayurveda and Siddha for holistic healing.',
+      //   photo: 'Team_Saravanan.jpg',
+      // },
       {
-        name: 'Dr. V. R. Krishnan',
-        role: 'Founder & Chief Practitioner',
-        bio: 'With over 20 years of experience, Dr. Krishnan specializes in Panchakarma and chronic disease management, trained under Kerala’s Ayurvedic masters.',
-        photo: 'Team_Krishnan.jpg',
+        name: 'Dr. M.P. Saranya, BAMS',
+        role: 'Ayurvedic Physician',
+        bio: 'Dr. M.P. Saranya holds a BAMS degree from Government Ayurveda Medical College and Hospital, Nagercoil, with a strong focus on Panchakarma procedures like Vasthi, Abyangam, and Pizhichal. With expertise in managing lifestyle disorders and chronic diseases, she assists in patient diagnosis, conducts free medical camps, and follows up on patient progress, including post-COVID care under the Govt. Arogya Programme. Her participation in national conferences reflects her commitment to advancing Ayurvedic practices.',
+        photo: 'team1.png',
       },
       {
-        name: 'Dr. Anjali Nair',
-        role: 'Senior Ayurvedic Consultant',
-        bio: 'Dr. Nair brings 15 years of expertise in women’s health and rejuvenation therapies, with a focus on personalized care.',
-        photo: 'Team_Anjali.jpg',
+        name: 'Dr. Mohan Raj K, BAMS',
+        role: 'Ayurvedic Physician',
+        bio: 'Dr. Mohan Raj K, a BAMS graduate from Government Ayurveda Medical College & Hospital, Nagercoil, specializes in Panchakarma treatments and has a passion for formulating effective Ayurvedic medicines. With a strong foundation in clinical practices and a commitment to patient care, he brings innovation and dedication to holistic healing, supported by his skills in computer basics and video editing.',
+        photo: 'team2.png',
       },
       {
-        name: 'Dr. Siddharth Menon',
-        role: 'Therapy Specialist',
-        bio: 'Specializing in Shirodhara and Kizhi, Dr. Menon has 10 years of experience in pain management and detoxification.',
-        photo: 'Team_Siddharth.jpg',
-      },
+        name: 'Saravanan Jagadesan, BPT',
+        role: 'Physiotherapist & Yoga Therapist',
+        bio: 'With 15 years of experience as a physiotherapist, Saravanan Jagadesan specializes in musculoskeletal pain management, neuro and ortho rehabilitation, and post-COVID breathing exercises. He integrates yoga, pranayama, and psychological counseling into his practice, having worked at Apollo Hospitals and other leading institutions. His expertise in manual therapy and electrotherapy modalities enhances the hospital’s integrative care approach.',
+        photo: 'team3.png',
+      }
     ],
   };
 
@@ -100,7 +140,7 @@ const VRKAyurvedaAboutUsPage = () => {
     {
       icon: UserCircle,
       title: 'A Healer’s Journey',
-      desc: 'From early roots in Ayurveda to decades of dedicated practice, our founder’s story is one of purpose.'
+      desc: 'From early roots in Ayurveda and Siddha to decades of dedicated practice, our founders’ story is one of purpose.'
     },
     {
       icon: BookOpenCheck,
@@ -110,7 +150,7 @@ const VRKAyurvedaAboutUsPage = () => {
     {
       icon: Quote,
       title: 'Words that Inspire',
-      desc: '“Healing is not a process of fixing — it’s a return to balance.” — Founder, Vedic Raksha Kendra Ayurveda hospital'
+      desc: '“Healing is not a process of fixing — it’s a return to balance.” — Dr. K. Velavan, Vedic Raksha Kendra Ayurvedic Hospital'
     }
   ];
 
@@ -121,15 +161,12 @@ const VRKAyurvedaAboutUsPage = () => {
     },
     heroSection: {
       position: 'relative',
-      height: '100vh',
+      height: isMobile ? '60vh' : '100vh',
+      minHeight: isMobile ? '550px' : 'auto',
       display: 'flex',
       alignItems: 'center',
       overflow: 'hidden',
       color: 'white',
-    },
-    heroSectionMobile: {
-      height: '50vh',
-      minHeight: '550px',
     },
     heroBackground: {
       position: 'absolute',
@@ -142,36 +179,28 @@ const VRKAyurvedaAboutUsPage = () => {
       backgroundPosition: 'center',
       zIndex: -2,
     },
-    heroBackgroundMobile: {
-      backgroundSize: 'cover',
-      backgroundPosition: 'center center',
-    },
     heroContent: {
-      maxWidth: '1400px',
+      maxWidth: isMobile ? '100%' : '1400px',
       width: '100%',
       margin: '0 auto',
-      padding: '0 2rem',
+      padding: isMobile ? '0 1rem' : '0 2rem',
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
-      alignItems: 'flex-start',
+      alignItems: isMobile ? 'center' : 'flex-start',
       height: '100%',
       zIndex: 1,
-      textAlign: 'left',
+      textAlign: isMobile ? 'center' : 'left',
     },
     heroTitle: {
-      marginTop: '5rem',
-      fontSize: '4rem',
+      marginTop: isMobile ? '2rem' : '5rem',
+      fontSize: isMobile ? '2rem' : '4rem',
       fontWeight: '700',
       marginBottom: '1.5rem',
       lineHeight: '1.1',
       letterSpacing: '-0.02em',
-      maxWidth: '800px',
+      maxWidth: isMobile ? '90%' : '800px',
       color: '#2d5a27',
-    },
-    heroTitleMobile: {
-      fontSize: '2.5rem',
-      marginTop: '2rem',
     },
     heroAccent: {
       background: 'linear-gradient(45deg, #daa520, #90ee90)',
@@ -180,19 +209,19 @@ const VRKAyurvedaAboutUsPage = () => {
       backgroundClip: 'text',
     },
     heroDescription: {
-      fontSize: '1.25rem',
+      fontSize: isMobile ? '1rem' : '1.25rem',
       opacity: 0.9,
       marginBottom: '3rem',
-      maxWidth: '600px',
+      maxWidth: isMobile ? '90%' : '600px',
       lineHeight: '1.6',
       color: '#1a3d1a',
     },
     heroFeatures: {
       display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-      gap: '1.5rem',
+      gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(280px, 1fr))',
+      gap: isMobile ? '1rem' : '1.5rem',
       width: '100%',
-      maxWidth: '901px'
+      maxWidth: isMobile ? '100%' : '901px',
     },
     heroFeature: {
       display: 'flex',
@@ -201,14 +230,14 @@ const VRKAyurvedaAboutUsPage = () => {
       background: 'rgba(255, 255, 255, 0.2)',
       backdropFilter: 'blur(10px)',
       border: '1px solid rgba(255, 255, 255, 0.2)',
-      padding: '1.5rem',
+      padding: isMobile ? '1rem' : '1.5rem',
       borderRadius: '16px',
-      color: '#1a3d1a'
+      color: '#1a3d1a',
     },
     featureIcon: {
-      width: '24px',
-      height: '24px',
-      color: '#daa520'
+      width: isMobile ? '20px' : '24px',
+      height: isMobile ? '20px' : '24px',
+      color: '#daa520',
     },
     mainContent: {
       background: 'linear-gradient(135deg, #f8fffe 0%, #f0f8e8 100%)',
@@ -219,8 +248,8 @@ const VRKAyurvedaAboutUsPage = () => {
       position: 'absolute',
       top: '-50px',
       right: '-50px',
-      width: '200px',
-      height: '200px',
+      width: isMobile ? '150px' : '200px',
+      height: isMobile ? '150px' : '200px',
       background: 'linear-gradient(135deg, rgba(45, 90, 39, 0.05), rgba(107, 142, 35, 0.03))',
       borderRadius: '50%',
       zIndex: 0,
@@ -228,7 +257,7 @@ const VRKAyurvedaAboutUsPage = () => {
     section: {
       position: 'relative',
       zIndex: 1,
-      padding: '80px 0',
+      padding: isMobile ? '40px 0' : '80px 0',
       opacity: 0,
       transform: 'translateY(60px)',
       transition: 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
@@ -238,17 +267,17 @@ const VRKAyurvedaAboutUsPage = () => {
       transform: 'translateY(0)',
     },
     container: {
-      maxWidth: '1200px',
+      maxWidth: isMobile ? '100%' : '1200px',
       margin: '0 auto',
-      padding: '0 2rem',
+      padding: isMobile ? '0 1rem' : '0 2rem',
     },
     sectionHeader: {
       textAlign: 'center',
-      marginBottom: '60px',
+      marginBottom: isMobile ? '40px' : '60px',
       position: 'relative',
     },
     sectionTitle: {
-      fontSize: '3rem',
+      fontSize: isMobile ? '2rem' : '3rem',
       fontWeight: '700',
       color: '#2d5a27',
       marginBottom: '16px',
@@ -256,55 +285,104 @@ const VRKAyurvedaAboutUsPage = () => {
       letterSpacing: '-0.02em',
     },
     sectionSubtitle: {
-      fontSize: '1.25rem',
+      fontSize: isMobile ? '1rem' : '1.25rem',
       color: '#6c757d',
-      maxWidth: '600px',
+      maxWidth: isMobile ? '90%' : '600px',
       margin: '0 auto',
       lineHeight: '1.6',
       fontWeight: '400',
     },
     decorativeLine: {
-      width: '80px',
+      width: isMobile ? '60px' : '80px',
       height: '4px',
       background: 'linear-gradient(90deg, #6b8e23, #90ee90)',
-      margin: '24px auto',
+      margin: isMobile ? '16px auto' : '24px auto',
       borderRadius: '2px',
     },
     historySection: {
       background: 'white',
-      padding: '100px 0',
+      padding: isMobile ? '50px 0' : '100px 0',
     },
     historyContent: {
-      maxWidth: '900px',
+      maxWidth: isMobile ? '100%' : '900px',
       margin: '0 auto',
       textAlign: 'center',
     },
     historyDescription: {
-      fontSize: '1.1rem',
+      fontSize: isMobile ? '0.9rem' : '1.1rem',
       color: '#5a6c57',
       lineHeight: '1.7',
       marginBottom: '32px',
     },
     missionDescription: {
-      fontSize: '1.2rem',
+      fontSize: isMobile ? '1rem' : '1.2rem',
       fontStyle: 'italic',
       color: '#6b8e23',
-      maxWidth: '700px',
+      maxWidth: isMobile ? '90%' : '700px',
       margin: '0 auto',
+    },
+    whyChooseUsSection: {
+      background: 'linear-gradient(135deg, #f8fffe 0%, #f0f8e8 100%)',
+      padding: isMobile ? '40px 0' : '80px 0',
+    },
+    whyChooseUsGrid: {
+      display: 'grid',
+      gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(280px, 1fr))',
+      gap: isMobile ? '20px' : '40px',
+      marginTop: isMobile ? '30px' : '60px',
+    },
+    whyChooseUsCard: {
+      background: 'white',
+      padding: isMobile ? '20px' : '40px 30px',
+      borderRadius: '20px',
+      textAlign: 'center',
+      border: '2px solid rgba(45, 90, 39, 0.05)',
+      boxShadow: '0 12px 32px rgba(45, 90, 39, 0.08)',
+      transform: 'translateY(30px)',
+      opacity: 0,
+      transition: 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)',
+    },
+    whyChooseUsCardVisible: {
+      transform: 'translateY(0)',
+      opacity: 1,
+    },
+    whatWeOfferSection: {
+      background: 'white',
+      padding: isMobile ? '50px 0' : '100px 0',
+    },
+    whatWeOfferList: {
+      listStyle: 'none',
+      padding: 0,
+      textAlign: 'left',
+      maxWidth: isMobile ? '90%' : '700px',
+      margin: '0 auto',
+    },
+    whatWeOfferItem: {
+      display: 'flex',
+      alignItems: 'center',
+      marginBottom: '16px',
+      fontSize: isMobile ? '0.9rem' : '1rem',
+      color: '#6c757d',
+    },
+    whatWeOfferIcon: {
+      width: isMobile ? '16px' : '20px',
+      height: isMobile ? '16px' : '20px',
+      marginRight: '12px',
+      color: '#6b8e23',
     },
     valuesSection: {
       background: 'linear-gradient(135deg, #f8fffe 0%, #f0f8e8 100%)',
-      padding: '80px 0',
+      padding: isMobile ? '40px 0' : '80px 0',
     },
     valuesGrid: {
       display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-      gap: '40px',
-      marginTop: '60px',
+      gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(280px, 1fr))',
+      gap: isMobile ? '20px' : '40px',
+      marginTop: isMobile ? '30px' : '60px',
     },
     valueCard: {
       background: 'white',
-      padding: '40px 30px',
+      padding: isMobile ? '20px' : '40px 30px',
       borderRadius: '20px',
       textAlign: 'center',
       border: '2px solid rgba(45, 90, 39, 0.05)',
@@ -318,8 +396,8 @@ const VRKAyurvedaAboutUsPage = () => {
       opacity: 1,
     },
     valueIconWrapper: {
-      width: '80px',
-      height: '80px',
+      width: isMobile ? '60px' : '80px',
+      height: isMobile ? '60px' : '80px',
       background: 'linear-gradient(135deg, #6b8e23, #90ee90)',
       borderRadius: '20px',
       display: 'flex',
@@ -329,87 +407,34 @@ const VRKAyurvedaAboutUsPage = () => {
       boxShadow: '0 12px 24px rgba(107, 142, 35, 0.2)',
     },
     valueIcon: {
-      width: '40px',
-      height: '40px',
+      width: isMobile ? '30px' : '40px',
+      height: isMobile ? '30px' : '40px',
       color: 'white',
     },
     valueTitle: {
-      fontSize: '1.4rem',
+      fontSize: isMobile ? '1.2rem' : '1.4rem',
       fontWeight: '700',
       color: '#2d5a27',
       marginBottom: '16px',
     },
     valueDescription: {
-      fontSize: '1rem',
+      fontSize: isMobile ? '0.9rem' : '1rem',
       color: '#6c757d',
       lineHeight: '1.6',
     },
-    timelineSection: {
-      background: 'linear-gradient(135deg, #2d5a27 0%, #3d6b37 100%)',
-      color: 'white',
-      padding: '80px 0',
-    },
-    timelineGrid: {
-      maxWidth: '900px',
-      margin: '0 auto',
-      position: 'relative',
-      padding: '0 20px',
-    },
-    timelineLine: {
-      position: 'absolute',
-      left: '50%',
-      top: 0,
-      bottom: 0,
-      width: '4px',
-      background: 'linear-gradient(180deg, #90ee90, #6b8e23)',
-      transform: 'translateX(-50%)',
-    },
-    timelineItem: {
-      display: 'grid',
-      gridTemplateColumns: '1fr 1fr',
-      gap: '40px',
-      marginBottom: '40px',
-      position: 'relative',
-    },
-    timelineYear: {
-      fontSize: '1.8rem',
-      fontWeight: '700',
-      color: '#90ee90',
-      textAlign: 'right',
-      paddingRight: '40px',
-    },
-    timelineEvent: {
-      fontSize: '1.1rem',
-      color: 'white',
-      lineHeight: '1.6',
-      paddingLeft: '40px',
-      position: 'relative',
-    },
-    timelineDot: {
-      position: 'absolute',
-      left: '50%',
-      top: '50%',
-      transform: 'translate(-50%, -50%)',
-      width: '16px',
-      height: '16px',
-      background: '#6b8e23',
-      border: '3px solid #90ee90',
-      borderRadius: '50%',
-      zIndex: 1,
-    },
     teamSection: {
       background: 'white',
-      padding: '100px 0',
+      padding: isMobile ? '50px 0' : '100px 0',
     },
     teamGrid: {
       display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-      gap: '40px',
-      marginTop: '60px',
+      gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(280px, 1fr))',
+      gap: isMobile ? '20px' : '40px',
+      marginTop: isMobile ? '30px' : '60px',
     },
     teamCard: {
       background: 'linear-gradient(135deg, #f8fffe 0%, #f0f8e8 100%)',
-      padding: '40px 30px',
+      padding: isMobile ? '20px' : '40px 30px',
       borderRadius: '20px',
       textAlign: 'center',
       border: '2px solid rgba(45, 90, 39, 0.05)',
@@ -423,8 +448,8 @@ const VRKAyurvedaAboutUsPage = () => {
       opacity: 1,
     },
     teamImage: {
-      width: '150px',
-      height: '150px',
+      width: isMobile ? '120px' : '150px',
+      height: isMobile ? '120px' : '150px',
       borderRadius: '50%',
       margin: '0 auto 24px',
       background: 'linear-gradient(135deg, #f0f8e8 0%, #e8f5e8 100%)',
@@ -432,28 +457,30 @@ const VRKAyurvedaAboutUsPage = () => {
       alignItems: 'center',
       justifyContent: 'center',
       color: '#6c757d',
-      fontSize: '0.9rem',
+      fontSize: isMobile ? '0.8rem' : '0.9rem',
       border: '2px solid rgba(45, 90, 39, 0.1)',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
     },
     teamName: {
-      fontSize: '1.4rem',
+      fontSize: isMobile ? '1.2rem' : '1.4rem',
       fontWeight: '700',
       color: '#2d5a27',
       marginBottom: '8px',
     },
     teamRole: {
-      fontSize: '1rem',
+      fontSize: isMobile ? '0.9rem' : '1rem',
       color: '#6b8e23',
       marginBottom: '16px',
     },
     teamBio: {
-      fontSize: '1rem',
+      fontSize: isMobile ? '0.9rem' : '1rem',
       color: '#6c757d',
       lineHeight: '1.6',
     },
     contactSection: {
       position: 'relative',
-      minHeight: '60vh',
+      minHeight: isMobile ? '50vh' : '60vh',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -461,7 +488,7 @@ const VRKAyurvedaAboutUsPage = () => {
       backgroundImage: 'url("/assets/hero_home.png")',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
-      backgroundAttachment: 'fixed',
+      backgroundAttachment: isMobile ? 'scroll' : 'fixed',
       overflow: 'hidden',
     },
     contactOverlay: {
@@ -477,28 +504,30 @@ const VRKAyurvedaAboutUsPage = () => {
     contactContent: {
       position: 'relative',
       zIndex: 2,
-      maxWidth: '800px',
+      maxWidth: isMobile ? '100%' : '800px',
       margin: '0 auto',
-      padding: '0 2rem',
+      padding: isMobile ? '0 1rem' : '0 2rem',
       textAlign: 'center',
     },
     contactHeader: {
       marginBottom: '2rem',
     },
     contactTitle: {
-      fontSize: '2.5rem',
+      fontSize: isMobile ? '1.8rem' : '2.5rem',
       fontWeight: '700',
       marginBottom: '1rem',
       lineHeight: '1.2',
+      color: '#fffff',
     },
     contactDescription: {
-      fontSize: '1.2rem',
+      fontSize: isMobile ? '1rem' : '1.2rem',
       opacity: 0.9,
       lineHeight: '1.6',
+      color: '#fffff',
     },
     contactActions: {
       display: 'flex',
-      gap: '1rem',
+      gap: isMobile ? '0.5rem' : '1rem',
       justifyContent: 'center',
       flexWrap: 'wrap',
     },
@@ -506,11 +535,11 @@ const VRKAyurvedaAboutUsPage = () => {
       display: 'flex',
       alignItems: 'center',
       gap: '0.5rem',
-      padding: '1rem 2rem',
+      padding: isMobile ? '0.8rem 1.5rem' : '1rem 2rem',
       borderRadius: '12px',
       textDecoration: 'none',
       fontWeight: '600',
-      fontSize: '1.1rem',
+      fontSize: isMobile ? '0.9rem' : '1.1rem',
       transition: 'all 0.3s ease',
       border: '2px solid transparent',
     },
@@ -524,39 +553,39 @@ const VRKAyurvedaAboutUsPage = () => {
       borderColor: 'rgba(255, 255, 255, 0.3)',
     },
     btnIcon: {
-      width: '20px',
-      height: '20px',
+      width: isMobile ? '16px' : '20px',
+      height: isMobile ? '16px' : '20px',
     },
     footerSection: {
       background: 'linear-gradient(135deg, #f0f8e8 0%, #e8f5e8 100%)',
-      padding: '80px 0 40px',
+      padding: isMobile ? '40px 0 20px' : '80px 0 40px',
       textAlign: 'center',
     },
     footerContent: {
-      maxWidth: '1200px',
+      maxWidth: isMobile ? '100%' : '1200px',
       margin: '0 auto',
-      padding: '0 2rem',
+      padding: isMobile ? '0 1rem' : '0 2rem',
     },
     footerTitle: {
-      fontSize: '2rem',
+      fontSize: isMobile ? '1.8rem' : '2rem',
       fontWeight: '700',
       color: '#2d5a27',
       marginBottom: '16px',
     },
     footerText: {
       color: '#6c757d',
-      fontSize: '1.1rem',
-      marginBottom: '40px',
+      fontSize: isMobile ? '0.9rem' : '1.1rem',
+      marginBottom: isMobile ? '20px' : '40px',
     },
     footerInfo: {
       display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-      gap: '30px',
-      marginTop: '40px',
+      gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(300px, 1fr))',
+      gap: isMobile ? '15px' : '30px',
+      marginTop: isMobile ? '20px' : '40px',
     },
     footerInfoCard: {
       background: 'white',
-      padding: '40px 30px',
+      padding: isMobile ? '20px' : '40px 30px',
       borderRadius: '20px',
       boxShadow: '0 12px 32px rgba(45, 90, 39, 0.08)',
       border: '1px solid rgba(45, 90, 39, 0.05)',
@@ -565,45 +594,35 @@ const VRKAyurvedaAboutUsPage = () => {
       fontWeight: '600',
       color: '#2d5a27',
       marginBottom: '16px',
-      fontSize: '1.2rem',
+      fontSize: isMobile ? '1rem' : '1.2rem',
     },
   };
 
   return (
     <div style={styles.modernContainer}>
       {/* Hero Section */}
-      <section style={{
-        ...styles.heroSection,
-        ...(isMobile ? styles.heroSectionMobile : {})
-      }}>
-        <div style={{
-          ...styles.heroBackground,
-          ...(isMobile ? styles.heroBackgroundMobile : {})
-        }}></div>
+      <section style={styles.heroSection}>
+        <div style={styles.heroBackground}></div>
         <div style={styles.heroContent}>
-          <h1 style={{
-            ...styles.heroTitle,
-            ...(isMobile ? styles.heroTitleMobile : {})
-          }}>
-            About Us
-            <span style={styles.heroAccent}> Vedic Raksha Kendra Ayurveda hospital</span>
+          <h1 style={styles.heroTitle}>
+            About Us <br/>Vedic Raksha Kendra Ayurvedic Hospital
           </h1>
           <p style={styles.heroDescription}>
             Discover our story, mission, and commitment to holistic healing
           </p>
-          {!isMobile && (
-            <div style={styles.heroFeatures}>
-              {features.map((feature, index) => (
-                <div key={index} style={styles.heroFeature}>
-                  <feature.icon style={styles.featureIcon} />
-                  <div>
-                    <h3 style={{ fontSize: '1.1rem', fontWeight: '600', marginBottom: '0.25rem' }}>{feature.title}</h3>
-                    <p style={{ fontSize: '0.9rem', opacity: 0.8, margin: 0 }}>{feature.desc}</p>
-                  </div>
+          <div style={styles.heroFeatures}>
+            {features.map((feature, index) => (
+              <div key={index} style={styles.heroFeature}>
+                <feature.icon style={styles.featureIcon} />
+                <div>
+                  <h3 style={{ fontSize: isMobile ? '1rem' : '1.1rem', fontWeight: '600', marginBottom: '0.25rem' }}>
+                    {feature.title}
+                  </h3>
+                  <p style={{ fontSize: isMobile ? '0.8rem' : '0.9rem', opacity: 0.8, margin: 0 }}>{feature.desc}</p>
                 </div>
-              ))}
-            </div>
-          )}
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -625,13 +644,86 @@ const VRKAyurvedaAboutUsPage = () => {
               <h2 style={styles.sectionTitle}>Our Story</h2>
               <div style={styles.decorativeLine}></div>
               <p style={styles.sectionSubtitle}>
-                A legacy of healing rooted in the traditions of Ayurveda
+                A legacy of healing rooted in the traditions of Ayurveda and Siddha
               </p>
             </div>
             <div style={styles.historyContent}>
               <p style={styles.historyDescription}>{aboutData.history}</p>
               <p style={styles.missionDescription}>{aboutData.mission}</p>
             </div>
+          </div>
+        </section>
+
+        {/* Why Choose Us */}
+        <section
+          id="why-choose-us"
+          data-animate
+          style={{
+            ...styles.whyChooseUsSection,
+            ...(visibleElements['why-choose-us'] ? styles.sectionVisible : {}),
+          }}
+        >
+          <div style={styles.container}>
+            <div style={styles.sectionHeader}>
+              <h2 style={styles.sectionTitle}>Why Choose Vedic Raksha Kendra Ayurvedic Hospital</h2>
+              <div style={styles.decorativeLine}></div>
+              <p style={styles.sectionSubtitle}>
+                Discover what sets us apart in delivering holistic wellness
+              </p>
+            </div>
+            <div style={styles.whyChooseUsGrid}>
+              {aboutData.whyChooseUs.map((reason, index) => {
+                const IconComponent = reason.icon;
+                return (
+                  <div
+                    key={index}
+                    id={`why-choose-us-${index}`}
+                    data-animate
+                    style={{
+                      ...styles.whyChooseUsCard,
+                      ...(visibleElements[`why-choose-us-${index}`] ? {
+                        ...styles.whyChooseUsCardVisible,
+                        transitionDelay: `${index * 0.15}s`,
+                      } : {}),
+                    }}
+                  >
+                    <div style={styles.valueIconWrapper}>
+                      <IconComponent style={styles.valueIcon} />
+                    </div>
+                    <h3 style={styles.valueTitle}>{reason.title}</h3>
+                    <p style={styles.valueDescription}>{reason.description}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* What We Offer */}
+        <section
+          id="what-we-offer"
+          data-animate
+          style={{
+            ...styles.whatWeOfferSection,
+            ...(visibleElements['what-we-offer'] ? styles.sectionVisible : {}),
+          }}
+        >
+          <div style={styles.container}>
+            <div style={styles.sectionHeader}>
+              <h2 style={styles.sectionTitle}>What We Offer at Vedic Raksha Kendra Ayurvedic Hospital</h2>
+              <div style={styles.decorativeLine}></div>
+              <p style={styles.sectionSubtitle}>
+                Personalized treatments and programs for your wellness journey
+              </p>
+            </div>
+            <ul style={styles.whatWeOfferList}>
+              {aboutData.whatWeOffer.map((item, index) => (
+                <li key={index} style={styles.whatWeOfferItem}>
+                  <Sparkles style={styles.whatWeOfferIcon} />
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 
@@ -711,7 +803,12 @@ const VRKAyurvedaAboutUsPage = () => {
                     } : {}),
                   }}
                 >
-                  <div style={styles.teamImage}>{member.photo.replace('.jpg', '')}</div>
+                  <div
+                    style={{
+                      ...styles.teamImage,
+                      backgroundImage: `url(/assets/${member.photo})`,
+                    }}
+                  ></div>
                   <h3 style={styles.teamName}>{member.name}</h3>
                   <p style={styles.teamRole}>{member.role}</p>
                   <p style={styles.teamBio}>{member.bio}</p>
@@ -727,14 +824,14 @@ const VRKAyurvedaAboutUsPage = () => {
         <div style={styles.contactOverlay}></div>
         <div style={styles.contactContent}>
           <div style={styles.contactHeader}>
-            <h2 style={styles.contactTitle}>Connect with Us</h2>
+            <h2 style={styles.contactTitle}>Connect with Vedic Raksha Kendra Ayurvedic Hospital</h2>
             <p style={styles.contactDescription}>
               Reach out to learn more about our holistic approach to healing
             </p>
           </div>
           <div style={styles.contactActions}>
             <a
-              href="tel:+919080108558"
+              href="tel:+918838395570"
               style={{ ...styles.contactBtn, ...styles.contactBtnPrimary }}
               onMouseEnter={(e) => {
                 e.target.style.background = '#f8f9fa';
@@ -751,7 +848,7 @@ const VRKAyurvedaAboutUsPage = () => {
               <span>Call Now</span>
             </a>
             <a
-              href="mailto:v.sglobal2025@gmail.com"
+              href="mailto:vedicrakshakendra1@gmail.com"
               style={{ ...styles.contactBtn, ...styles.contactBtnSecondary }}
               onMouseEnter={(e) => {
                 e.target.style.background = 'rgba(255, 255, 255, 0.1)';
@@ -772,7 +869,9 @@ const VRKAyurvedaAboutUsPage = () => {
       {/* Footer Section */}
       <section style={styles.footerSection}>
         <div style={styles.footerContent}>
-          <h3 style={styles.footerTitle}>Vedic Raksha Kendra Ayurveda hospital</h3>
+          <h3 style={styles.footerTitle}>
+            Vedic Raksha Kendra Ayurvedic Hospital
+          </h3>
           <p style={styles.footerText}>Your partner in natural healing and holistic wellness</p>
           <div style={styles.footerInfo}>
             <div style={styles.footerInfoCard}>
