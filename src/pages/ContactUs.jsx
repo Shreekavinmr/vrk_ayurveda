@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/ContactUs.css';
-import { HelpCircle, MessageCircle, BookOpen, Instagram } from 'lucide-react';
+import { HelpCircle, MessageCircle, BookOpen, Instagram ,Facebook} from 'lucide-react';
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -63,9 +63,7 @@ const ContactPage = () => {
 };
 
   const features = [
-    { icon: HelpCircle, title: 'Common Questions', desc: 'Find answers to frequently asked questions about our services.' },
     { icon: MessageCircle, title: 'Customer Support', desc: 'Still need help? Reach out to our support team anytime.' },
-    { icon: BookOpen, title: 'Detailed Guides', desc: 'Explore step-by-step information to understand our treatments better.' }
   ];
 
   return (
@@ -101,7 +99,7 @@ const ContactPage = () => {
             <p className="hero-description">
               Reach out to us for inquiries about our ayurvedic hospital or any other information.
             </p>
-            {!isMobile && (
+            {/* {!isMobile && (
               <div className="hero-features">
                 {features.map((feature, index) => (
                   <div key={index} className="hero-feature">
@@ -113,7 +111,7 @@ const ContactPage = () => {
                   </div>
                 ))}
               </div>
-            )}
+            )} */}
           </div>
         </div>
       </section>
@@ -165,7 +163,11 @@ const ContactPage = () => {
               </div>
               <h3>Phone</h3>
               <p>
-                <a href="tel:+918838395570">+91 8838395570</a>
+                <div className="contact-numbers">
+                  <a href="tel:+918838395570">+91 88383 95570</a>,{' '}
+                  <br />
+                  <a href="tel:+919123456789">0424-2411222</a>
+                </div>
               </p>
             </div>
             <div className="contact-info-card">
@@ -199,6 +201,18 @@ const ContactPage = () => {
                 <a href="https://www.instagram.com/vedic_raksha_kendra/" target="_blank" rel="noopener noreferrer">@vedicrakshakendra</a>
               </p>
             </div>
+            <div className="contact-info-card">
+  <div className="contact-icon">
+    <Facebook size={24} />
+  </div>
+  <h3>Facebook</h3>
+  <p>
+    <a href="https://www.facebook.com/profile.php?id=61552574695231#" target="_blank" rel="noopener noreferrer">
+      @Vedic Raksha Kendra 
+    </a>
+  </p>
+</div>
+
             <div className="contact-info-card">
               <div className="contact-icon">
                 <svg

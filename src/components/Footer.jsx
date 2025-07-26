@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Mail, Phone, MapPin, ArrowUpRight, Clock, Heart } from 'lucide-react';
+import { Mail, Phone, MapPin, ArrowUpRight, Clock, Heart,Facebook,Instagram } from 'lucide-react';
 import '../styles/Footer.css';
 import logo from '/assets/logo.png';
 
@@ -123,8 +123,13 @@ const Footer = () => {
               </li>
               <li className="contact-item">
                 <Phone size={16} />
-                <a href="tel:+918838395570">+91 88383 95570</a>
+                <div className="contact-numbers">
+                  <a href="tel:+918838395570">+91 88383 95570</a>,{' '}
+                  <br />
+                  <a href="tel:+919123456789">0424-2411222</a>
+                </div>
               </li>
+
               <li className="contact-item">
                 <Mail size={16} />
                 <a href="mailto:vedicrakshakendra1@gmail.com">vedicrakshakendra1@gmail.com</a>
@@ -135,6 +140,18 @@ const Footer = () => {
                   Outpatient: 9:00 AM - 6:00 PM<br/>
                 </span>
               </li>
+              <li className="contact-item">
+      <Instagram size={16} />
+      <a href="https://www.instagram.com/vedic_raksha_kendra/" target="_blank" rel="noopener noreferrer">
+        vedicrakshakendra
+      </a>
+    </li>
+    <li className="contact-item">
+      <Facebook size={16} />
+      <a href="https://www.facebook.com/profile.php?id=61552574695231#" target="_blank" rel="noopener noreferrer">
+      Vedic Raksha Kendra 
+    </a>
+    </li>
             </ul>
           </div>
         </div>
