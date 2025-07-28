@@ -474,6 +474,7 @@ const VRKAyurvedaFromTheFounderPage = () => {
           <p style={styles.heroDescription}>
             Meet the visionaries behind our mission to bring holistic healing through Ayurveda
           </p>
+          {!isMobile && <>
           <div style={styles.heroFeatures}>
             {features.map((feature, index) => (
               <div key={index} style={styles.heroFeature}>
@@ -487,6 +488,7 @@ const VRKAyurvedaFromTheFounderPage = () => {
               </div>
             ))}
           </div>
+          </>}
         </div>
       </section>
 

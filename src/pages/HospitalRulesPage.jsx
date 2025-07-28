@@ -119,27 +119,27 @@ const HospitalRulesPage = () => {
       maxWidth: '1400px',
       width: '100%',
       margin: '0 auto',
-      padding: '0 2rem',
+      padding: isMobile ? '0 1rem' : '0 2rem',
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
-      alignItems: 'flex-start',
+      alignItems: isMobile ? 'center' : 'flex-start',
       height: '100%',
       zIndex: 1,
-      textAlign: 'left'
+      textAlign: isMobile ? 'center' : 'left'
     },
     badgeIcon: {
       width: '18px',
       height: '18px'
     },
     heroTitle: {
-      marginTop: '5rem',
-      fontSize: '4rem',
+      marginTop: isMobile ? '2rem' : '5rem',
+      fontSize: isMobile ? '2rem' : '4rem',
       fontWeight: '700',
       marginBottom: '1.5rem',
       lineHeight: '1.1',
       letterSpacing: '-0.02em',
-      maxWidth: '800px',
+      maxWidth: isMobile ? '90%' : '800px',
       color: '#2d5a27',
     },
     heroTitleMobile: {
@@ -153,19 +153,20 @@ const HospitalRulesPage = () => {
       backgroundClip: 'text'
     },
     heroDescription: {
-      fontSize: '1.25rem',
+      fontSize: isMobile ? '1rem' : '1.25rem',
       opacity: 0.9,
-      marginBottom: '3rem',
-      maxWidth: '600px',
+      marginBottom: isMobile ? '2rem' : '3rem',
+      maxWidth: isMobile ? '90%' : '600px',
       lineHeight: '1.6',
       color: '#1a3d1a'
     },
     heroFeatures: {
       display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+      gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(280px, 1fr))',
       gap: '1.5rem',
       width: '100%',
-      maxWidth: '900px'
+      maxWidth: isMobile ? '90%' : '900px',
+      justifyContent: 'center'
     },
     heroFeature: {
       display: 'flex',
@@ -194,26 +195,29 @@ const HospitalRulesPage = () => {
     navContainer: {
       maxWidth: '1200px',
       margin: '0 auto',
-      padding: '1rem 2rem'
+      padding: isMobile ? '1rem' : '1rem 2rem'
     },
     navTabs: {
       display: 'flex',
-      gap: '0.5rem',
-      justifyContent: 'center',
-      flexWrap: 'wrap'
+      gap: isMobile ? '0.25rem' : '0.5rem',
+      justifyContent: isMobile ? 'flex-start' : 'center',
+      flexWrap: 'wrap',
+      overflowX: isMobile ? 'auto' : 'visible',
+      whiteSpace: isMobile ? 'nowrap' : 'normal'
     },
     navTab: {
       display: 'flex',
       alignItems: 'center',
       gap: '0.5rem',
-      padding: '0.75rem 1.5rem',
+      padding: isMobile ? '0.5rem 1rem' : '0.75rem 1.5rem',
       borderRadius: '12px',
       border: 'none',
       background: 'none',
       cursor: 'pointer',
       fontWeight: '500',
       transition: 'all 0.3s ease',
-      color: '#2d5a27'
+      color: '#2d5a27',
+      fontSize: isMobile ? '0.9rem' : '1rem'
     },
     navTabActive: {
       background: 'linear-gradient(135deg, #2d5a27, #6b8e23)',
@@ -221,42 +225,46 @@ const HospitalRulesPage = () => {
       boxShadow: '0 4px 12px rgba(45, 90, 39, 0.15)'
     },
     tabIcon: {
-      width: '18px',
-      height: '18px'
+      width: isMobile ? '16px' : '18px',
+      height: isMobile ? '16px' : '18px'
     },
     mainContent: {
-      padding: '3rem 2rem',
+      padding: isMobile ? '2rem 1rem' : '3rem 2rem',
       color: '#f8fdf6',
       background: '#f8fdf6',
     },
     contentContainer: {
-      maxWidth: '1200px',
+      maxWidth: isMobile ? '100%' : '1200px',
       margin: '0 auto',
-      padding: '0 2rem',
+      padding: isMobile ? '0 1rem' : '0 2rem',
     },
     contentSection: {
       animation: 'fadeIn 0.5s ease-in-out'
     },
     sectionHeader: {
       textAlign: 'center',
-      marginBottom: '3rem'
+      marginBottom: isMobile ? '2rem' : '3rem'
     },
     sectionTitle: {
-      fontSize: '2.5rem',
+      fontSize: isMobile ? '1.8rem' : '2.5rem',
       fontWeight: '700',
       color: '#2d5a27',
       marginBottom: '0.5rem'
     },
     sectionDescription: {
-      fontSize: '1.1rem',
+      fontSize: isMobile ? '0.9rem' : '1.1rem',
       color: '#6c757d',
-      maxWidth: '600px',
+      maxWidth: isMobile ? '90%' : '600px',
       margin: '0 auto'
     },
     rulesGrid: {
       display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-      gap: '1.5rem'
+      gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(320px, 1fr))',
+      gap: isMobile ? '1rem' : '1.5rem',
+      justifyContent: 'center',
+      width: '100%',
+      margin: '0 auto',
+      maxWidth: isMobile ? '90%' : '100%'
     },
     ruleCard: {
       display: 'flex',
@@ -264,16 +272,17 @@ const HospitalRulesPage = () => {
       gap: '1rem',
       background: 'white',
       borderRadius: '16px',
-      padding: '1.5rem',
+      padding: isMobile ? '1rem' : '1.5rem',
       boxShadow: '0 4px 12px rgba(45, 90, 39, 0.15)',
       border: '1px solid #f8f9fa',
-      transition: 'all 0.3s ease'
+      transition: 'all 0.3s ease',
+      width: isMobile ? '100%' : 'auto'
     },
     cardIcon: {
       background: '#f0f8e8',
       color: '#2d5a27',
-      width: '2.5rem',
-      height: '2.5rem',
+      width: isMobile ? '2rem' : '2.5rem',
+      height: isMobile ? '2rem' : '2.5rem',
       borderRadius: '12px',
       display: 'flex',
       alignItems: 'center',
@@ -284,7 +293,7 @@ const HospitalRulesPage = () => {
       flex: 1
     },
     cardTitle: {
-      fontSize: '1.1rem',
+      fontSize: isMobile ? '1rem' : '1.1rem',
       fontWeight: '600',
       color: '#1a3d1a',
       marginBottom: '0.5rem'
@@ -292,12 +301,17 @@ const HospitalRulesPage = () => {
     cardDescription: {
       color: '#6c757d',
       margin: 0,
-      lineHeight: '1.5'
+      lineHeight: '1.5',
+      fontSize: isMobile ? '0.85rem' : '1rem'
     },
     packingGrid: {
       display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-      gap: '1rem'
+      gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(280px, 1fr))',
+      gap: isMobile ? '0.75rem' : '1rem',
+      justifyContent: 'center',
+      width: '100%',
+      margin: '0 auto',
+      maxWidth: isMobile ? '90%' : '100%'
     },
     packingCard: {
       display: 'flex',
@@ -305,23 +319,25 @@ const HospitalRulesPage = () => {
       gap: '1rem',
       background: 'white',
       borderRadius: '12px',
-      padding: '1.2rem',
+      padding: isMobile ? '1rem' : '1.2rem',
       boxShadow: '0 2px 8px rgba(45, 90, 39, 0.1)',
       border: '1px solid #f8f9fa',
-      transition: 'all 0.3s ease'
+      transition: 'all 0.3s ease',
+      width: isMobile ? '100%' : 'auto'
     },
     packingIcon: {
-      fontSize: '1.5rem',
+      fontSize: isMobile ? '1.25rem' : '1.5rem',
       flexShrink: 0
     },
     packingText: {
       color: '#2d5a27',
       fontWeight: '500',
-      margin: 0
+      margin: 0,
+      fontSize: isMobile ? '0.9rem' : '1rem'
     },
     contactSection: {
       position: 'relative',
-      minHeight: '60vh',
+      minHeight: isMobile ? '50vh' : '60vh',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -329,7 +345,7 @@ const HospitalRulesPage = () => {
       backgroundImage: 'url("../assets/hero_home.png")',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
-      backgroundAttachment: 'fixed',
+      backgroundAttachment: isMobile ? 'scroll' : 'fixed',
       overflow: 'hidden'
     },
     contactOverlay: {
@@ -345,22 +361,22 @@ const HospitalRulesPage = () => {
     contactContent: {
       position: 'relative',
       zIndex: 2,
-      maxWidth: '800px',
+      maxWidth: isMobile ? '90%' : '800px',
       margin: '0 auto',
-      padding: '0 2rem',
+      padding: isMobile ? '0 1rem' : '0 2rem',
       textAlign: 'center'
     },
     contactHeader: {
-      marginBottom: '2rem'
+      marginBottom: isMobile ? '1.5rem' : '2rem'
     },
     contactTitle: {
-      fontSize: '2.5rem',
+      fontSize: isMobile ? '1.8rem' : '2.5rem',
       fontWeight: '700',
       marginBottom: '1rem',
       lineHeight: '1.2'
     },
     contactDescription: {
-      fontSize: '1.2rem',
+      fontSize: isMobile ? '1rem' : '1.2rem',
       opacity: 0.9,
       lineHeight: '1.6'
     },
@@ -374,11 +390,11 @@ const HospitalRulesPage = () => {
       display: 'flex',
       alignItems: 'center',
       gap: '0.5rem',
-      padding: '1rem 2rem',
+      padding: isMobile ? '0.75rem 1.5rem' : '1rem 2rem',
       borderRadius: '12px',
       textDecoration: 'none',
       fontWeight: '600',
-      fontSize: '1.1rem',
+      fontSize: isMobile ? '0.9rem' : '1.1rem',
       transition: 'all 0.3s ease',
       border: '2px solid transparent'
     },
@@ -392,39 +408,39 @@ const HospitalRulesPage = () => {
       borderColor: 'rgba(255, 255, 255, 0.3)'
     },
     btnIcon: {
-      width: '20px',
-      height: '20px'
+      width: isMobile ? '18px' : '20px',
+      height: isMobile ? '18px' : '20px'
     },
     footerSection: {
       background: '#f0f8e8',
-      padding: '3rem 0',
+      padding: isMobile ? '2rem 0' : '3rem 0',
       textAlign: 'center'
     },
     footerContent: {
-      maxWidth: '1200px',
+      maxWidth: isMobile ? '100%' : '1200px',
       margin: '0 auto',
-      padding: '0 2rem'
+      padding: isMobile ? '0 1rem' : '0 2rem'
     },
     footerTitle: {
-      fontSize: '1.5rem',
+      fontSize: isMobile ? '1.25rem' : '1.5rem',
       fontWeight: '600',
       color: '#2d5a27',
       marginBottom: '1rem'
     },
     footerText: {
       color: '#6c757d',
-      fontSize: '1rem',
-      marginBottom: '2rem'
+      fontSize: isMobile ? '0.9rem' : '1rem',
+      marginBottom: isMobile ? '1.5rem' : '2rem'
     },
     footerInfo: {
       display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-      gap: '2rem',
-      marginTop: '2rem'
+      gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(250px, 1fr))',
+      gap: isMobile ? '1rem' : '2rem',
+      marginTop: isMobile ? '1rem' : '2rem'
     },
     footerInfoCard: {
       background: 'white',
-      padding: '1.5rem',
+      padding: isMobile ? '1rem' : '1.5rem',
       borderRadius: '12px',
       boxShadow: '0 2px 8px rgba(45, 90, 39, 0.1)'
     },

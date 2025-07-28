@@ -610,6 +610,7 @@ const VRKAyurvedaAboutUsPage = () => {
           <p style={styles.heroDescription}>
             Discover our story, mission, and commitment to holistic healing
           </p>
+          {!isMobile && <>
           <div style={styles.heroFeatures}>
             {features.map((feature, index) => (
               <div key={index} style={styles.heroFeature}>
@@ -623,6 +624,7 @@ const VRKAyurvedaAboutUsPage = () => {
               </div>
             ))}
           </div>
+          </>}
         </div>
       </section>
 
